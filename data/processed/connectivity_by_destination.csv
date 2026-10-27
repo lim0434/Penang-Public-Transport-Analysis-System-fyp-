@@ -1,0 +1,693 @@
+destination_id,destination_type,destination_name,district,mukim,destination_lat,destination_lon,destination_geometry,nearest_stop_id,nearest_stop_name,network_distance_m,destination_snap_gap_m,stop_snap_gap_m,status,snap_needs_review
+school_0001,School,School 001,Timur Laut,DTL MUKIM 13,5.352608,100.302348,Point,12001505.0,USM,123.6,8.2,10.9,Within 400 m,False
+school_0002,School,RCSI & UCD Malaysia Campus,Timur Laut,DTL GEORGE TOWN,5.419858,100.306943,Point,12001368.0,Heritage Club,276.7,30.5,22.9,Within 400 m,False
+school_0003,School,Hu Yew Seah Girls School,Timur Laut,DTL GEORGE TOWN,5.416904,100.326876,Point,12000356.0,TM Point,260.9,7.4,14.2,Within 400 m,False
+school_0004,School,Nazlina Cooking Class,Timur Laut,DTL GEORGE TOWN,5.417125,100.335736,Point,12001919.0,Love Lane,153.6,19.4,6.8,Within 400 m,False
+school_0005,School,"SJK(C) Chin Hua, Pantai Aceh",Barat Daya,DBD MUKIM 1,5.416451,100.197398,Point,12000986.0,Hub Pantai Acheh,0.0,35.9,16.3,Within 400 m,False
+school_0006,School,Penang Hill East Vipassana Meditation Center,Timur Laut,DTL MUKIM 16,5.415866,100.283437,Point,12000292.0,Pasukan Bomba & Penyelamat,1759.8,121.5,9.8,Beyond 400 m,True
+school_0007,School,Langkawi Coral,Timur Laut,DTL TANJONG BUNGAH,5.466008,100.289512,Point,12001679.0,Hotel Flamingo,149.7,35.0,17.0,Within 400 m,False
+school_0008,School,Universal Hua Xia International School,Timur Laut,DTL GEORGE TOWN,5.423484,100.305662,Point,12000839.0,St. Christoper School,179.7,78.3,16.1,Within 400 m,False
+school_0009,School,D'Ark International School,Seberang Perai Utara,SPU MUKIM 14,5.434316,100.389986,Point,12001907.0,Pusat Perniagaan Ong Yi How,152.3,37.4,32.0,Within 400 m,False
+school_0010,School,Akedemi Olimpik Mathematik,Seberang Perai Utara,SPU BUTTERWORT,5.417925,100.379861,Point,12001341.0,Pusat Perniagaan Raja Uda,200.5,36.0,8.5,Within 400 m,False
+school_0011,School,Sekolah Kebangsaan Perempuan Island,Timur Laut,DTL GEORGE TOWN,5.42333,100.328286,Point,12001413.0,(M3) SK Perempuan Island,32.3,8.8,4.5,Within 400 m,False
+school_0012,School,Masrasah Irshad Al-Ashraf Al-Wataniah,Seberang Perai Selatan,SPS MUKIM 12,5.223619,100.492213,Point,12000277.0,Taman Jelatik,645.4,43.1,26.5,Beyond 400 m,False
+school_0013,School,Sekolah Agama Rakyat Ar-Ridwan,Seberang Perai Utara,SPU MUKIM 11,5.462381,100.449956,Point,12001548.0,Masjid Nyior Sebatang,201.0,34.0,11.0,Within 400 m,False
+school_0014,School,Sekolah Agama Islamiyah As-Sharifiah Pokok Machang,Seberang Perai Utara,SPU MUKIM 12,5.486442,100.475415,Point,12000496.0,Kg Air Melintas Besar,371.4,15.2,14.6,Within 400 m,False
+school_0015,School,Sekolah Menengah Jenis Kebangsaan (Cina) Perempuan China,Timur Laut,DTL GEORGE TOWN,5.433963,100.302065,Point,12000894.0,Kwang Tung & Teng Chow Association,243.5,60.4,17.6,Within 400 m,False
+school_0016,School,Sekolah Menengah Han Chiang,Timur Laut,DTL GEORGE TOWN,5.406866,100.305031,Point,12000073.0,SMKA Al-Mashoor (L),283.9,72.5,32.8,Within 400 m,False
+school_0017,School,Sekolah Kebangsaan Convent Green Lane,Timur Laut,DTL GEORGE TOWN,5.397576,100.30466,Point,12000869.0,SMK Convent Green Lane,255.4,21.3,19.9,Within 400 m,False
+school_0018,School,Sekolah Menengah Kebangsaan Convent Green Lane,Timur Laut,DTL GEORGE TOWN,5.396618,100.303915,Point,12000869.0,SMK Convent Green Lane,313.0,32.1,19.9,Within 400 m,False
+school_0019,School,Sekolah Jenis Kebangsaan (Cina) Li Tek ‘B’,Timur Laut,DTL GEORGE TOWN,5.405638,100.333803,Point,12002017.0,SJK (C) Li Tek,56.9,34.6,10.1,Within 400 m,False
+school_0020,School,Sekolah Jenis Kebangsaan (Cina) Li Tek Cawangan,Timur Laut,DTL GEORGE TOWN,5.405223,100.333512,Point,12002017.0,SJK (C) Li Tek,142.4,34.4,10.1,Within 400 m,False
+school_0021,School,Sekolah Jenis Kebangsaan (Cina) Li Tek A,Timur Laut,DTL GEORGE TOWN,5.406017,100.334073,Point,12002017.0,SJK (C) Li Tek,119.4,34.2,10.1,Within 400 m,False
+school_0022,School,Sekolah Jenis Kebangsaan (Cina) Hu Yew Seah,Timur Laut,DTL GEORGE TOWN,5.416543,100.326694,Point,12000356.0,TM Point,272.4,23.4,14.2,Within 400 m,False
+school_0023,School,Sekolah Menengah Jenis Kebangsaan Convent Datuk Keramat,Timur Laut,DTL GEORGE TOWN,5.411977,100.318109,Point,12000449.0,SMK/SK Convent Dato Keramat,15.1,73.3,19.7,Within 400 m,False
+school_0024,School,Sekolah Jenis Kebangsaan (Cina) Convent Datuk Keramat,Timur Laut,DTL GEORGE TOWN,5.412255,100.317859,Point,12000449.0,SMK/SK Convent Dato Keramat,90.5,56.1,19.7,Within 400 m,False
+school_0025,School,Penang Chinese Girls Private High School 槟华女子独立中学,Timur Laut,DTL GEORGE TOWN,5.434215,100.301234,Point,12000894.0,Kwang Tung & Teng Chow Association,323.1,14.1,17.6,Within 400 m,False
+school_0026,School,PCGHS Kindergarten,Timur Laut,DTL GEORGE TOWN,5.434726,100.301828,Point,12000894.0,Kwang Tung & Teng Chow Association,243.5,27.9,17.6,Within 400 m,False
+school_0027,School,School 027,Timur Laut,DTL GEORGE TOWN,5.422235,100.338813,Point,12001926.0,Muzium Pulau Pinang,279.3,21.3,2.5,Within 400 m,False
+school_0028,School,SJK (T) Tasek Permai,Seberang Perai Selatan,SPS MUKIM 15,5.280236,100.503993,Point,12001692.0,Taman Puteri Gunung,659.0,47.1,15.0,Beyond 400 m,False
+school_0029,School,SK Tasek Permai,Seberang Perai Selatan,SPS MUKIM 15,5.280318,100.504422,Point,12001692.0,Taman Puteri Gunung,685.5,49.7,15.0,Beyond 400 m,False
+school_0030,School,School 030,Barat Daya,DBD MUKIM H,5.341728,100.207511,Point,12000156.0,Masjid Sg. Burung,0.0,50.6,32.6,Within 400 m,False
+school_0031,School,Sekolah Rendah Agama Nur Al-Amin,Seberang Perai Selatan,SPS MUKIM 9,5.127898,100.45179,Point,12000266.0,Jalan Besar,2491.0,32.1,20.1,Beyond 400 m,False
+school_0032,School,Sekolah Menengah Kebangsaan Seri Balik Pulau,Barat Daya,DBD MUKIM G,5.334448,100.212572,Point,12001565.0,(M1) SMK Seri Balik Pulau,43.5,15.4,11.4,Within 400 m,False
+school_0033,School,SK Bandar Baru Perda,Seberang Perai Tengah,SPT MUKIM 6,5.373364,100.43018,Point,12001097.0,KPJ Perda,757.4,18.9,32.5,Beyond 400 m,False
+school_0034,School,SMK Bandar Baru Perda,Seberang Perai Tengah,SPT MUKIM 6,5.372502,100.430909,Point,12001097.0,KPJ Perda,518.8,80.2,32.5,Beyond 400 m,False
+school_0035,School,SAR Tarbiatul Al-Islamiah,Seberang Perai Selatan,SPS MUKIM 9,5.132023,100.479023,Point,12000266.0,Jalan Besar,1160.3,15.5,20.1,Beyond 400 m,False
+school_0036,School,SK Saujana Indah,Seberang Perai Selatan,SPS MUKIM 9,5.150796,100.487418,Point,12000441.0,Kampung Haji Osman,2068.8,57.0,26.1,Beyond 400 m,False
+school_0037,School,SMK Saujana Indah,Seberang Perai Selatan,SPS MUKIM 9,5.151166,100.486212,Point,12000441.0,Kampung Haji Osman,1809.8,56.8,26.1,Beyond 400 m,False
+school_0038,School,Sekolah Menengah Jenis Kebangsaan Heng Ee,Timur Laut,DTL GEORGE TOWN,5.401604,100.30952,Point,12000538.0,SMJK Heng Ee,98.4,50.6,4.7,Within 400 m,False
+school_0039,School,SJK (C) Han Chiang 韩江华文小学,Timur Laut,DTL GEORGE TOWN,5.406,100.307021,Point,12002222.0,Taman Free School,412.6,36.2,16.9,Beyond 400 m,False
+school_0040,School,Sekolah Kebangsaan Padang Tembak,Timur Laut,DTL AYER ITAM,5.410177,100.291741,Point,12000968.0,SK Padang Tembak,37.1,27.0,13.5,Within 400 m,False
+school_0041,School,SJK (C) Nung Min,Seberang Perai Utara,SPU MUKIM 3,5.554428,100.436596,Point,12000999.0,Kemas Kepala Batas,2456.2,58.8,18.7,Beyond 400 m,False
+school_0042,School,School 042,Seberang Perai Utara,SPU MUKIM 3,5.555744,100.436317,Point,12000999.0,Kemas Kepala Batas,2653.6,24.9,18.7,Beyond 400 m,False
+school_0043,School,SK Alma,Seberang Perai Tengah,SPT MUKIM 15,5.331317,100.473715,Point,12000047.0,SK Alma,351.8,97.2,33.7,Within 400 m,False
+school_0044,School,SK Permatang Tok Kandu,Seberang Perai Tengah,SPT MUKIM 4,5.393969,100.417037,Point,12001184.0,Shell Permatang To' Kandu,76.6,17.5,9.9,Within 400 m,False
+school_0045,School,SMK Convent Bukit Mertajam,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.35867,100.465123,Point,12002541.0,SK Convent Bukit Mertajam,136.3,45.7,3.9,Within 400 m,False
+school_0046,School,SK Convent Bukit Mertajam,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.358066,100.465347,Point,12002541.0,SK Convent Bukit Mertajam,225.4,26.2,3.9,Within 400 m,False
+school_0047,School,SK Juara,Seberang Perai Tengah,SPT MUKIM 15,5.345275,100.487015,Point,12000793.0,SK Juara,278.4,57.4,7.8,Within 400 m,False
+school_0048,School,SJK (C) True Light 柔府真光华文小学,Seberang Perai Tengah,SPT MUKIM 13,5.31548,100.445599,Point,12002517.0,Pusat Perniagaan Juru,641.6,51.9,18.8,Beyond 400 m,False
+school_0049,School,SJK (T) Ladang Batu Kawan,Seberang Perai Selatan,SPS MUKIM 13,5.26759,100.430314,Point,12002329.0,Masjid Simpang Empat,6635.4,21.5,15.9,Beyond 400 m,False
+school_0050,School,SMK Taman Perwira,Seberang Perai Tengah,SPT MUKIM 14,5.298586,100.472512,Point,12001271.0,Taman Perwira,971.1,39.8,6.3,Beyond 400 m,False
+school_0051,School,School 051,Seberang Perai Selatan,SPS MUKIM 5,5.209127,100.528286,Point,12002332.0,JKR Jawi,3996.2,78.5,12.2,Beyond 400 m,False
+school_0052,School,Sekolah Menengah Kebangsaan Penang Free,Timur Laut,DTL GEORGE TOWN,5.404161,100.305437,Point,12000872.0,SMK Penang Free,131.2,100.6,36.1,Within 400 m,True
+school_0053,School,Sekolah Rendah Kebangsaan Wellesley,Timur Laut,DTL GEORGE TOWN,5.423215,100.327327,Point,12001413.0,(M3) SK Perempuan Island,272.3,28.6,4.5,Within 400 m,False
+school_0054,School,Sekolah Menengah Kebangsaan Convent Lebuh Light,Timur Laut,DTL GEORGE TOWN,5.422176,100.338237,Point,12001926.0,Muzium Pulau Pinang,190.6,72.7,2.5,Within 400 m,False
+school_0055,School,Sekolah Menengah Kebangsaan St Xavier,Timur Laut,DTL GEORGE TOWN,5.420684,100.336589,Point,12001928.0,SMK St. Xavier,29.1,56.9,3.5,Within 400 m,False
+school_0056,School,Sekolah Menengah Kebangsaan Hamid Khan,Timur Laut,DTL GEORGE TOWN,5.381874,100.303218,Point,12000466.0,Jalan Delima,240.6,36.7,3.0,Within 400 m,False
+school_0057,School,Dalat International School,Timur Laut,DTL TANJONG BUNGAH,5.467546,100.290229,Point,12001679.0,Hotel Flamingo,269.3,46.2,17.0,Within 400 m,False
+school_0058,School,Sekolah Menengah Kebangsaan Convent Pulau Tikus,Timur Laut,DTL GEORGE TOWN,5.433045,100.308439,Point,12000368.0,SMK/SK Convent Pulau Tikus,0.0,45.9,9.1,Within 400 m,False
+school_0059,School,Penang Chinese Girls' High School,Timur Laut,DTL GEORGE TOWN,5.433979,100.301741,Point,12000894.0,Kwang Tung & Teng Chow Association,323.1,49.0,17.6,Within 400 m,False
+school_0060,School,Sekolah Menengah Chung Ling (Persendirian),Timur Laut,DTL GEORGE TOWN,5.403859,100.294086,Point,12000067.0,Balai Polis Kampung Baru,229.2,30.1,9.6,Within 400 m,False
+school_0061,School,Sekolah Menengah Jenis Kebangsaan Chung Ling,Timur Laut,DTL GEORGE TOWN,5.403176,100.295145,Point,12000067.0,Balai Polis Kampung Baru,430.1,42.6,9.6,Beyond 400 m,False
+school_0062,School,SK Desa Murni,Seberang Perai Utara,SPU MUKIM 16,5.439152,100.42367,Point,12001518.0,Taman Sungai Dua,1035.9,40.2,5.6,Beyond 400 m,False
+school_0063,School,The International School of Penang (Uplands),Timur Laut,DTL BATU FERRINGGI,5.470133,100.249205,Point,12000216.0,PARKROYAL Penang Resort,709.7,31.0,7.5,Beyond 400 m,False
+school_0064,School,SMK Bukit Gambir,Timur Laut,DTL MUKIM 13,5.369815,100.297212,Point,12000309.0,SMK Bukit Gambir,242.9,68.4,33.8,Within 400 m,False
+school_0065,School,SMK Teluk Bahang,Barat Daya,DBD MUKIM 2,5.450577,100.213446,Point,12001752.0,SMK Teluk Bahang,150.5,43.0,18.5,Within 400 m,False
+school_0066,School,Sekolah Kebangsaan Pendidikan Khas Persekutuan,Timur Laut,DTL MUKIM 18,5.457971,100.279685,Point,12000813.0,Sekolah Kebangsaan Pendidikan Khas,143.6,68.0,27.5,Within 400 m,False
+school_0067,School,Sekolah Jenis Kebangsaan (Cina) Hun Bin,Timur Laut,DTL TANJONG TOKONG,5.45828,100.304541,Point,12000289.0,Jalan Bintang,392.5,42.9,15.4,Within 400 m,False
+school_0068,School,SJK (C) Phor Tay,Timur Laut,DTL GEORGE TOWN,5.438355,100.30572,Point,12000102.0,SMJK Phor Tay,148.4,72.8,7.6,Within 400 m,False
+school_0069,School,Sekolah Rendah Jenis Kebangsaan (Cina) Perempuan China,Timur Laut,DTL GEORGE TOWN,5.432979,100.301534,Point,12000894.0,Kwang Tung & Teng Chow Association,320.5,35.1,17.6,Within 400 m,False
+school_0070,School,Sekolah Menengah Kebangsaan (Perempuan) St George,Timur Laut,DTL GEORGE TOWN,5.421552,100.308187,Point,12000838.0,Kolej Disted-Stamford,354.6,57.0,37.9,Within 400 m,False
+school_0071,School,Sekolah Menengah Kebangsaan Tunku Puan Habsah,Timur Laut,DTL GEORGE TOWN,5.420685,100.307877,Point,12000839.0,St. Christoper School,365.2,25.1,16.1,Within 400 m,False
+school_0072,School,Sekolah Kebangsaan Jalan Residensi,Timur Laut,DTL GEORGE TOWN,5.420682,100.310784,Point,12001355.0,(M2) SK Jalan Residensi,135.3,48.2,12.3,Within 400 m,False
+school_0073,School,Sekolah Jenis Kebangsaan (Cina) Kheng Tean,Timur Laut,DTL JELUTONG,5.39715,100.311929,Point,12002247.0,Jalan Sir Ibrahim II,380.2,32.3,15.0,Within 400 m,False
+school_0074,School,Straits International School,Barat Daya,DBD MUKIM 12,5.328998,100.283802,Point,12000850.0,I Avenue,290.3,45.1,21.2,Within 400 m,False
+school_0075,School,Sekolah Jenis Kebangsaan (Cina) Min Sin,Timur Laut,DTL MUKIM 13,5.33213,100.282316,Point,12001842.0,Bukit Jambul Golf Club,183.7,58.2,21.0,Within 400 m,False
+school_0076,School,Sekolah Kebangsaan Seri Permai,Barat Daya,DBD MUKIM 12,5.319566,100.283853,Point,12001804.0,Hospital Pantai Mutiara,249.3,41.3,13.6,Within 400 m,False
+school_0077,School,SK Sungai Ara,Barat Daya,DBD MUKIM 12,5.326393,100.272788,Point,12000246.0,Kampung Sungai Ara,520.2,50.3,15.1,Beyond 400 m,False
+school_0078,School,Sekolah Menengah Kebangsaan Georgetown,Timur Laut,DTL GEORGE TOWN,5.399908,100.299114,Point,12002048.0,SMK Georgetown,250.2,87.2,37.6,Within 400 m,False
+school_0079,School,Sekolah Jenis Kebangsaan (Cina) Chung Hwa Confucian,Timur Laut,DTL GEORGE TOWN,5.405969,100.299639,Point,12000071.0,Masjid Negeri P.Pinang,259.0,60.4,9.0,Within 400 m,False
+school_0080,School,Sekolah Jenis Kebangsaan (Cina) Shang Wu,Timur Laut,DTL GEORGE TOWN,5.408108,100.300415,Point,12000071.0,Masjid Negeri P.Pinang,48.7,57.5,9.0,Within 400 m,False
+school_0081,School,Sekolah Kebangsaan St. Xavier,Timur Laut,DTL GEORGE TOWN,5.408945,100.300471,Point,12000071.0,Masjid Negeri P.Pinang,172.7,71.1,9.0,Within 400 m,False
+school_0082,School,SMKA (L) Al-Mashoor,Timur Laut,DTL GEORGE TOWN,5.409894,100.303142,Point,12000073.0,SMKA Al-Mashoor (L),375.1,56.4,32.8,Within 400 m,False
+school_0083,School,Sekolah Jenis Kebangsaan (Tamil) Ramakrishna,Timur Laut,DTL GEORGE TOWN,5.413089,100.302877,Point,12001366.0,SJK (T) Ramakrishna,370.3,5.0,27.2,Within 400 m,False
+school_0084,School,Sekolah Menengah Jenis Kebangsaan Union,Timur Laut,DTL GEORGE TOWN,5.414906,100.302785,Point,12001366.0,SJK (T) Ramakrishna,388.6,12.4,27.2,Within 400 m,False
+school_0085,School,Sekolah Menengah Kebangsaan (Perempuan) Sri Mutiara,Timur Laut,DTL GEORGE TOWN,5.410307,100.308234,Point,12000075.0,SMK Sri Mutiara,62.4,17.1,20.5,Within 400 m,False
+school_0086,School,Sekolah Kebangsaan Ayer Itam,Timur Laut,DTL MUKIM 13,5.400372,100.287255,Point,12000626.0,Makam Sheikh Omar,107.0,29.3,7.0,Within 400 m,False
+school_0087,School,Sekolah Kebangsaan Seri Indah,Timur Laut,DTL MUKIM 13,5.395691,100.288176,Point,12001814.0,Pasaraya Sunshine Farlim,205.8,39.8,27.4,Within 400 m,False
+school_0088,School,SMK Air Itam,Timur Laut,DTL MUKIM 13,5.395316,100.287414,Point,12001814.0,Pasaraya Sunshine Farlim,82.8,22.9,27.4,Within 400 m,False
+school_0089,School,Sekolah Jenis Kebangsaan (Cina) Kong Min Cawangan Kedua,Timur Laut,DTL MUKIM 13,5.395268,100.276296,Point,12002289.0,SJK (C) Kong Min,147.8,50.5,41.2,Within 400 m,False
+school_0090,School,School 090,Barat Daya,DBD MUKIM 6,5.352664,100.237028,Point,12001886.0,SJK (C) Chong Teik,342.3,38.6,14.9,Within 400 m,False
+school_0091,School,Sekolah Jenis Kebangsaan (Cina) Chong Teik,Barat Daya,DBD MUKIM 6,5.350331,100.23775,Point,12001886.0,SJK (C) Chong Teik,266.5,30.0,14.9,Within 400 m,False
+school_0092,School,Sekolah Kebangsaan Batu Maung,Barat Daya,DBD MUKIM 12,5.281694,100.282704,Point,12002312.0,SK Batu  Maung,74.1,21.9,8.7,Within 400 m,False
+school_0093,School,SMK Sungai Ara,Barat Daya,DBD MUKIM 12,5.318338,100.271264,Point,12000431.0,SMK Sungai Ara,354.7,85.1,21.3,Within 400 m,False
+school_0094,School,School 094,Barat Daya,DBD MUKIM 12,5.322298,100.2709,Point,12000433.0,SK Agama Sungai Ara,88.0,42.4,8.1,Within 400 m,False
+school_0095,School,Sekolah Menengah Kebangsaan Jelutong,Timur Laut,DTL JELUTONG,5.389316,100.310487,Point,12002319.0,Balai Polis Jelutong,399.4,33.2,34.1,Within 400 m,False
+school_0096,School,Sekolah Jenis Kebangsaan (Cina) Jelutong,Timur Laut,DTL JELUTONG,5.391326,100.310423,Point,12002319.0,Balai Polis Jelutong,289.6,35.6,34.1,Within 400 m,False
+school_0097,School,Sekolah Menengah Jenis Kebangsaan Chung Hwa Confucian,Timur Laut,DTL GEORGE TOWN,5.390608,100.301049,Point,12002221.0,Jalan Besi II,301.5,39.1,15.6,Within 400 m,False
+school_0098,School,Sekolah Kebangsaan Jelutong,Timur Laut,DTL JELUTONG,5.394096,100.317759,Point,12000568.0,Taman Dato Syed Abbas,107.6,56.7,11.7,Within 400 m,False
+school_0099,School,SK Bukit Gelugor,Timur Laut,DTL GLUGOR,5.375689,100.302103,Point,12000314.0,SK Bukit Gelugor,297.1,55.4,27.7,Within 400 m,False
+school_0100,School,Sekolah Menengah Kebangsaan Datuk Hj. Mohamed Nor Ahmad,Timur Laut,DTL GLUGOR,5.370579,100.304617,Point,12000018.0,Flat Taman Tun Sardon,129.4,92.1,22.3,Within 400 m,False
+school_0101,School,Sekolah Kebangsaan & Sekolah Menengah Kebangsaan Hutchings,Timur Laut,DTL GEORGE TOWN,5.419793,100.338343,Point,12001926.0,Muzium Pulau Pinang,151.2,45.2,2.5,Within 400 m,False
+school_0102,School,Sekolah Jenis Kebangsaan (Cina) Li Tek,Timur Laut,DTL GEORGE TOWN,5.405658,100.333782,Point,12002017.0,SJK (C) Li Tek,56.9,32.3,10.1,Within 400 m,False
+school_0103,School,Convent Datuk Keramat,Timur Laut,DTL GEORGE TOWN,5.412197,100.317846,Point,12000449.0,SMK/SK Convent Dato Keramat,90.5,60.1,19.7,Within 400 m,False
+school_0104,School,Sekolah Jenis Kebangsaan (Cina) Moh Ghee (Pusat),Timur Laut,DTL GEORGE TOWN,5.403664,100.316699,Point,12001075.0,Kampung Dodol,284.1,22.4,11.5,Within 400 m,False
+school_0105,School,Sekolah Jenis Kebangsaan (Cina) Beng Teik Cawangan,Timur Laut,DTL JELUTONG,5.399094,100.319274,Point,12002314.0,Mutiara Vista,134.5,30.2,10.7,Within 400 m,False
+school_0106,School,Penang Japanese School,Timur Laut,DTL GEORGE TOWN,5.408529,100.318073,Point,12001588.0,Penang Japanese School,89.3,4.9,8.0,Within 400 m,False
+school_0107,School,SMK Perai,Seberang Perai Tengah,SPT MUKIM 1,5.377443,100.396899,Point,12001067.0,Megamal Pinang - Pacific,340.4,59.4,35.7,Within 400 m,False
+school_0108,School,Sekolah Jenis Kebangsaan (Tamil) Ladang Prye,Seberang Perai Tengah,SPT MUKIM 1,5.376846,100.396343,Point,12001067.0,Megamal Pinang - Pacific,359.7,20.2,35.7,Within 400 m,False
+school_0109,School,SMK Tun Hussein Onn,Seberang Perai Tengah,SPT MUKIM 1,5.389298,100.406457,Point,,,,51.3,,No route in candidate network - review,False
+school_0110,School,Sekolah Menengah Kebangsaan Teluk Bahang,Barat Daya,DBD MUKIM 2,5.452526,100.214065,Point,12001754.0,SMK Teluk Bahang,192.8,48.6,14.5,Within 400 m,False
+school_0111,School,SK Tanjung Bunga,Timur Laut,DTL TANJONG BUNGAH,5.461306,100.280708,Point,12000816.0,Pangsapuri Azuria,145.7,56.6,18.4,Within 400 m,False
+school_0112,School,Sekolah Ikhtisas Tentera Udara Diraja,Timur Laut,DTL TANJONG BUNGAH,5.457929,100.290614,Point,12000080.0,Sekolah Ikthisas Tentera Udara,207.2,69.4,65.1,Within 400 m,False
+school_0113,School,Sekolah Kebangsaan Sungai Nibong,Barat Daya,DBD MUKIM 12,5.338122,100.299759,Point,12001438.0,SK Sungai Nibong,104.5,38.8,13.0,Within 400 m,False
+school_0114,School,Sekolah Rendah Jenis Kebangsaan (Cina) Sum Min,Timur Laut,DTL GEORGE TOWN,5.409478,100.331133,Point,12001939.0,Wisma Ong Hye Guon Thong,84.2,41.2,33.2,Within 400 m,False
+school_0115,School,Sekolah Kanak-Kanak Terencat Akal,Timur Laut,DTL GEORGE TOWN,5.413836,100.313842,Point,12000460.0,Penjara P.Pinang(Hospital),89.9,24.2,18.5,Within 400 m,False
+school_0116,School,Sekolah Rendah Antarabangsa St Christopher's,Timur Laut,DTL GEORGE TOWN,5.42402,100.306189,Point,12000839.0,St. Christoper School,304.1,45.8,16.1,Within 400 m,False
+school_0117,School,"SJK (C) Sin Min, Sungai Pinang 双溪槟榔新民华文小学",Barat Daya,DBD MUKIM A,5.398857,100.213688,Point,12000975.0,SJK (C) Sin Min,51.1,38.3,3.6,Within 400 m,False
+school_0118,School,Sekolah Kebangsaan Sungai Pinang,Barat Daya,DBD MUKIM A,5.397771,100.212516,Point,12001625.0,SK Sungai Pinang,141.1,53.6,22.0,Within 400 m,False
+school_0119,School,SJK (C) Yu Chye,Barat Daya,DBD MUKIM B,5.392879,100.201795,Point,12000767.0,SJK (C) Yu Chye,55.5,29.4,27.1,Within 400 m,False
+school_0120,School,Sekolah Kebangsaan Sungai Rusa,Barat Daya,DBD MUKIM 3,5.383714,100.214473,Point,12001611.0,Masjid Jamek Sungai Rusa,183.2,42.0,8.3,Within 400 m,False
+school_0121,School,Sekolah Kebangsaan Sungai Korok,Barat Daya,DBD MUKIM D,5.353041,100.209901,Point,12000166.0,SK Sg. Korok,7.2,44.3,12.7,Within 400 m,False
+school_0122,School,Sekolah Kebangsaan Titi Teras,Barat Daya,DBD MUKIM E,5.358586,100.2244,Point,12001575.0,SK Titi Teras,37.9,8.3,10.3,Within 400 m,False
+school_0123,School,SMK Seri Balik Pulau,Barat Daya,DBD MUKIM G,5.335329,100.213041,Point,12001565.0,(M1) SMK Seri Balik Pulau,255.9,77.1,11.4,Within 400 m,False
+school_0124,School,Sekolah Kebangsaan Seri Bayu,Barat Daya,DBD MUKIM 9,5.294912,100.230034,Point,12000622.0,SK Seri Bayu,128.1,40.1,11.9,Within 400 m,False
+school_0125,School,SMK Seri Bayu,Barat Daya,DBD MUKIM 9,5.290127,100.222984,Point,12000619.0,SMK Seri Bayu,80.7,26.0,18.3,Within 400 m,False
+school_0126,School,School 126,Barat Daya,DBD MUKIM I,5.30785,100.202309,Point,12000632.0,SK Pulau Betong,4.4,66.4,26.7,Within 400 m,False
+school_0127,School,SK Teluk Kumbar,Barat Daya,DBD MUKIM 9,5.290658,100.232094,Point,12001780.0,SK Teluk Kumbar,84.3,13.8,9.5,Within 400 m,False
+school_0128,School,SK Bayan Lepas 2,Barat Daya,DBD MUKIM 11,5.287948,100.258484,Point,12001154.0,Kampung Seronok,354.6,46.4,8.5,Within 400 m,False
+school_0129,School,Sekolah Kebangsaan Bayan Baru,Barat Daya,DBD MUKIM 12,5.329701,100.289582,Point,12000849.0,Jalan Mahsuri,547.9,67.8,42.0,Beyond 400 m,False
+school_0130,School,Sekolah Kebangsaan Minden Height,Timur Laut,DTL GLUGOR,5.366949,100.305287,Point,12000016.0,Astaka Taman Tun Sardon,614.6,19.4,13.4,Beyond 400 m,False
+school_0131,School,Sekolah Kebangsaan Sungai Gelugor,Timur Laut,DTL MUKIM 13,5.36366,100.311716,Point,12001451.0,SK Sungai Gelugor,68.8,38.4,7.5,Within 400 m,False
+school_0132,School,School 132,Timur Laut,DTL TANJONG BUNGAH,5.462861,100.281748,Point,12000817.0,Kondominium Azuria,186.0,27.4,21.6,Within 400 m,False
+school_0133,School,SJK (C) Pai Chai 峇都丁宜培才华文小学,Timur Laut,DTL BATU FERRINGGI,5.474927,100.250831,Point,12000220.0,Long Beach Food Court,113.7,32.0,24.5,Within 400 m,False
+school_0134,School,Tenby Schools Penang,Timur Laut,DTL MUKIM 18,5.457725,100.281558,Point,12000812.0,Tenby School,118.4,24.4,41.3,Within 400 m,False
+school_0135,School,Sekolah Agama Rakyat Darul Iman Fasa 2,Timur Laut,DTL MUKIM 13,5.389183,100.277034,Point,12001970.0,Lone Pine Club,358.1,23.4,57.7,Within 400 m,False
+school_0136,School,S.M.K. Abdullah Munshi,Timur Laut,DTL GEORGE TOWN,5.408916,100.312098,Point,12002248.0,Jalan P.Ramlee I,354.8,25.8,31.3,Within 400 m,False
+school_0137,School,SJK (T) Ramathasar,Timur Laut,DTL GEORGE TOWN,5.405448,100.324726,Point,12001903.0,Apartmen Taman Sri Pinang,249.1,2.0,15.0,Within 400 m,False
+school_0138,School,SMK Taman Inderawasih,Seberang Perai Tengah,SPT PRAI,5.38937,100.386093,Point,12000390.0,Taman Inderawasih,629.3,8.1,46.3,Beyond 400 m,False
+school_0139,School,SK Pauh Jaya,Seberang Perai Tengah,SPT MUKIM 6,5.375725,100.416032,Point,12001198.0,Petron Permatang Pauh,793.2,36.8,17.2,Beyond 400 m,False
+school_0140,School,SJK (C) Seng Keow 双溪六甲醒侨华文小学,Seberang Perai Tengah,SPT MUKIM 4,5.395714,100.411853,Point,12001881.0,Hospital Seberang Jaya,763.1,16.2,39.6,Beyond 400 m,False
+school_0141,School,Madrasah Nahdatul Hasanah,Seberang Perai Tengah,SPT MUKIM 1,5.394232,100.405487,Point,12001880.0,Pangsapuri A1,186.9,20.4,55.5,Within 400 m,False
+school_0142,School,SK Seberang Jaya 2,Seberang Perai Tengah,SPT MUKIM 1,5.397727,100.404291,Point,12002531.0,Pangsapuri Lintang Tenggiri,295.1,24.0,21.0,Within 400 m,False
+school_0143,School,SMK Seberang Jaya,Seberang Perai Tengah,SPT MUKIM 1,5.403022,100.399937,Point,12001993.0,Masjid Sembilang,256.6,33.5,23.8,Within 400 m,False
+school_0144,School,School 144,Seberang Perai Utara,SPU BUTTERWORT,5.390188,100.371134,Point,12000909.0,SMK Convent Butterworth,1139.3,18.7,11.4,Beyond 400 m,False
+school_0145,School,SK Jalan Baharu,Seberang Perai Tengah,SPT MUKIM 6,5.366366,100.419188,Point,12000184.0,SK Jalan Baru,137.1,44.8,4.4,Within 400 m,False
+school_0146,School,SK Sungai Nyior,Seberang Perai Utara,SPU BUTTERWORT,5.400719,100.373838,Point,12002349.0,Econsave Butterworth,413.2,26.4,15.7,Beyond 400 m,False
+school_0147,School,SK Convent,Seberang Perai Utara,SPU BUTTERWORT,5.401367,100.374002,Point,12002349.0,Econsave Butterworth,522.9,50.9,15.7,Beyond 400 m,False
+school_0148,School,SK St Mark (M),Seberang Perai Utara,SPU BUTTERWORT,5.404626,100.371555,Point,12000540.0,Pasar Awam,212.2,33.2,15.7,Within 400 m,False
+school_0149,School,SK Permatang Pauh,Seberang Perai Tengah,SPT MUKIM 2,5.411291,100.41406,Point,12001210.0,Taman Arowana,320.8,15.0,12.1,Within 400 m,False
+school_0150,School,SJK (C) Lay Keow 峇东埔励侨华文小学,Seberang Perai Tengah,SPT MUKIM 2,5.411035,100.412057,Point,12001210.0,Taman Arowana,198.5,8.6,12.1,Within 400 m,False
+school_0151,School,SJK (C) Chung Hwa 1 北海中华一校,Seberang Perai Utara,SPU BUTTERWORT,5.414374,100.377647,Point,12002369.0,Billion Shoping Centre,98.6,15.4,4.6,Within 400 m,False
+school_0152,School,SK Bagan Tuan Kechil,Seberang Perai Utara,SPU BUTTERWORT,5.416404,100.376137,Point,12000604.0,Masjid Kubang Buaya,652.1,39.0,12.6,Beyond 400 m,False
+school_0153,School,SJK (C) Chung Hwa Pusat,Seberang Perai Utara,SPU BUTTERWORT,5.415987,100.372414,Point,12000602.0,SJKC Chung Hwa Pusat,90.0,48.4,26.5,Within 400 m,False
+school_0154,School,SMK Kampung Kastam,Seberang Perai Utara,SPU BUTTERWORT,5.42505,100.378542,Point,12000089.0,Taman Bagan Jermal,303.5,47.7,23.0,Within 400 m,False
+school_0155,School,SK Bagan Jermal,Seberang Perai Utara,SPU BUTTERWORT,5.431757,100.379203,Point,12000092.0,SK Bagan Jermal,90.6,13.8,19.8,Within 400 m,False
+school_0156,School,SJK (T) Mak Mandin,Seberang Perai Utara,SPU BUTTERWORT,5.420344,100.392289,Point,12002039.0,Taman Mak Mandin,101.2,42.9,37.6,Within 400 m,False
+school_0157,School,SMK Mak Mandin,Seberang Perai Utara,SPU BUTTERWORT,5.420626,100.390138,Point,12002033.0,Balai Polis Mak Mandin,202.1,56.1,16.0,Within 400 m,False
+school_0158,School,SJK (C) Mak Mandin 麦曼珍华文小学,Seberang Perai Utara,SPU BUTTERWORT,5.421609,100.389318,Point,12002033.0,Balai Polis Mak Mandin,281.7,24.5,16.0,Within 400 m,False
+school_0159,School,SK Seri Sentosa,Seberang Perai Selatan,SPS MUKIM 11,5.168311,100.471689,Point,12002107.0,Hub Nibong Tebal,1120.0,21.5,43.6,Beyond 400 m,False
+school_0160,School,SK Nibong Tebal,Seberang Perai Selatan,SPS NIBONG TEBAL,5.163296,100.473562,Point,12002107.0,Hub Nibong Tebal,1452.9,77.0,43.6,Beyond 400 m,False
+school_0161,School,SMJK Jit Sin 大山脚日新华文中学,Seberang Perai Tengah,SPT MUKIM 11,5.343407,100.446068,Point,12000344.0,Kampung Bersatu,1477.0,38.1,26.3,Beyond 400 m,False
+school_0162,School,SK Kebun Sireh,Seberang Perai Tengah,SPT MUKIM 11,5.357943,100.435524,Point,12000702.0,SK Kebun Sireh,54.9,46.0,10.8,Within 400 m,False
+school_0163,School,SMK Taman Widuri,Seberang Perai Selatan,SPS MUKIM 6,5.201843,100.529036,Point,12000925.0,Taman Jawi Jaya,4605.2,20.4,20.8,Beyond 400 m,False
+school_0164,School,Jit Sin Independent High School,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.363832,100.46423,Point,12000056.0,SM Persendirian Jit Sin,214.6,57.9,13.8,Within 400 m,False
+school_0165,School,Sekolah Menengah Kebangsaan Tinggi Bukit Mertajam,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.358811,100.460346,Point,12002542.0,SJK(C) Jit Sin,922.7,18.3,3.5,Beyond 400 m,False
+school_0166,School,SK Stowell,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.357457,100.459295,Point,12002542.0,SJK(C) Jit Sin,1259.0,48.1,3.5,Beyond 400 m,False
+school_0167,School,SJK (C) Peng Bin 武吉丁雅平民华文小学,Seberang Perai Tengah,SPT MUKIM 11,5.349543,100.435354,Point,12000352.0,Petronas Bukit Tengah,248.4,21.8,9.3,Within 400 m,False
+school_0168,School,Sekolah Menengah Kebangsaan Berapit,Seberang Perai Tengah,SPT MUKIM 9,5.37685,100.471818,Point,12000031.0,SM Islam Al-Masriyah,1448.6,43.8,22.3,Beyond 400 m,False
+school_0169,School,SMK Simpang Empat,Seberang Perai Selatan,SPS MUKIM 14,5.2791,100.475397,Point,12001263.0,SMK Simpang Empat,249.6,45.5,9.0,Within 400 m,False
+school_0170,School,Penang Sports School (SMK Mutiara Impian),Seberang Perai Selatan,SPS MUKIM 15,5.273583,100.478255,Point,12001260.0,Taman Tempua,574.7,36.9,28.7,Beyond 400 m,False
+school_0171,School,SMK Bandar Tasek Mutiara,Seberang Perai Selatan,SPS MUKIM 15,5.275454,100.49836,Point,12001694.0,(M2) Pearl City Mall,1286.8,45.3,19.2,Beyond 400 m,False
+school_0172,School,SK Bandar Tasek Mutiara,Seberang Perai Selatan,SPS MUKIM 15,5.275242,100.500058,Point,12001694.0,(M2) Pearl City Mall,1395.4,11.3,19.2,Beyond 400 m,False
+school_0173,School,SJK (C) Boon Beng 新邦安拔文明华文小学,Seberang Perai Selatan,SPS MUKIM 15,5.274538,100.487273,Point,12001695.0,(M3) Pearl City Mall,741.1,29.0,31.0,Beyond 400 m,False
+school_0174,School,SJK (C) Kampung Valdor 华都村华文小学,Seberang Perai Selatan,SPS MUKIM 15,5.241081,100.491899,Point,12001484.0,Lean Teik Trading,719.0,63.4,22.3,Beyond 400 m,False
+school_0175,School,SJK (C) Pai Teik 高渊培德华文小学,Seberang Perai Selatan,SPS MUKIM 11,5.173022,100.467515,Point,12002107.0,Hub Nibong Tebal,1401.8,92.1,43.6,Beyond 400 m,False
+school_0176,School,SMK Seri Nibong,Seberang Perai Selatan,SPS MUKIM 11,5.171901,100.469831,Point,12002107.0,Hub Nibong Tebal,1489.4,43.4,43.6,Beyond 400 m,False
+school_0177,School,SMK Tunku Abdul Rahman,Seberang Perai Selatan,SPS MUKIM 7,5.166731,100.485721,Point,12002107.0,Hub Nibong Tebal,1226.3,95.5,43.6,Beyond 400 m,False
+school_0178,School,SMK Bukit Mertajam,Seberang Perai Tengah,SPT MUKIM 15,5.350558,100.471428,Point,12000249.0,SK Kampung Baru II,286.4,42.2,30.9,Within 400 m,False
+school_0179,School,SMK Jalan Damai,Seberang Perai Tengah,SPT MUKIM 15,5.340673,100.473544,Point,12002587.0,AADK Bukit Mertajam,282.2,100.9,6.8,Within 400 m,True
+school_0180,School,SM Sains Tun Syed Sheh Shahabuddin,Seberang Perai Tengah,SPT MUKIM 15,5.342198,100.47497,Point,12000405.0,SMK Jalan Damai,273.2,44.0,22.1,Within 400 m,False
+school_0181,School,SK Taman Impian,Seberang Perai Tengah,SPT MUKIM 14,5.309025,100.485078,Point,12001359.0,Taman Industri Impian,1311.3,20.3,50.2,Beyond 400 m,False
+school_0182,School,SMK Jawi,Seberang Perai Selatan,SPS MUKIM 11,5.195493,100.489176,Point,12000922.0,Masjid Daerah Jawi,734.4,65.4,58.2,Beyond 400 m,False
+school_0183,School,MRSM Kepala Batas,Seberang Perai Utara,SPU MUKIM 6,5.52183,100.473107,Point,,,,11.7,,No route in candidate network - review,False
+school_0184,School,SMKA Al-Irshad,Seberang Perai Utara,SPU MUKIM 6,5.491063,100.458964,Point,12001329.0,(M3) SMKA Al Irshad,201.3,44.0,13.4,Within 400 m,False
+school_0185,School,SMK Datuk Haji Ahmad Badawi,Seberang Perai Utara,SPU MUKIM 6,5.507685,100.428491,Point,12000535.0,SMK Dato Haji Ahmad Badawi,154.6,31.3,6.9,Within 400 m,False
+school_0186,School,SMK Penanti,Seberang Perai Tengah,SPT MUKIM 20,5.404704,100.468573,Point,12000778.0,SK Penanti,822.7,34.5,15.5,Beyond 400 m,False
+school_0187,School,SK Juru,Seberang Perai Tengah,SPT MUKIM 12,5.313488,100.425079,Point,12002521.0,Taman Perusahaan Ringan Juru,1017.5,46.7,22.9,Beyond 400 m,False
+school_0188,School,SK Sungai Rambai,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.363086,100.454118,Point,12001596.0,Masjid Sungai Rambai,357.8,25.0,21.7,Within 400 m,False
+school_0189,School,SJK (C) Keow Kuang 侨光华文小学,Seberang Perai Tengah,SPT MUKIM 10,5.356626,100.453345,Point,12000287.0,Pejabat MPSP,576.2,41.2,15.8,Beyond 400 m,False
+school_0190,School,SK Permai Indah,Seberang Perai Tengah,SPT MUKIM 13,5.331364,100.440782,Point,12000323.0,Klinik Kesihatan Bukit Minyak,1160.7,46.4,16.0,Beyond 400 m,False
+school_0191,School,SMK Permai Indah,Seberang Perai Tengah,SPT MUKIM 13,5.330266,100.442986,Point,12000323.0,Klinik Kesihatan Bukit Minyak,785.0,44.8,16.0,Beyond 400 m,False
+school_0192,School,SK Pendidikan Khas Alma (Penglihatan),Seberang Perai Tengah,SPT MUKIM 14,5.335375,100.458329,Point,12002515.0,Taman Kota Permai II,840.8,59.7,27.2,Beyond 400 m,False
+school_0193,School,SK Bukit Minyak,Seberang Perai Tengah,SPT MUKIM 14,5.334494,100.45808,Point,12002515.0,Taman Kota Permai II,840.8,58.0,27.2,Beyond 400 m,False
+school_0194,School,SMK Alma,Seberang Perai Tengah,SPT MUKIM 14,5.332875,100.458746,Point,12002515.0,Taman Kota Permai II,1145.1,25.4,27.2,Beyond 400 m,False
+school_0195,School,SJK (T) Permatang Tinggi,Seberang Perai Tengah,SPT MUKIM 14,5.299914,100.478444,Point,12001272.0,SRJK Permatang Tinggi,45.3,42.4,35.5,Within 400 m,False
+school_0196,School,SJK (C) Sin Ya 新亚华文小学,Seberang Perai Tengah,SPT MUKIM 15,5.330541,100.477817,Point,12000046.0,SJKC Sin Ya,113.2,47.5,8.9,Within 400 m,False
+school_0197,School,SK Alma Jaya,Seberang Perai Tengah,SPT MUKIM 15,5.326986,100.479182,Point,12000045.0,SJKC Sin Ya,704.5,31.5,21.1,Beyond 400 m,False
+school_0198,School,Sekolah Pendidikan Islam Sedhar,Seberang Perai Tengah,SPT MUKIM 15,5.325696,100.480748,Point,12002588.0,Taman Selesa,535.6,27.2,20.4,Beyond 400 m,False
+school_0199,School,SK Machang Bubok II,Seberang Perai Tengah,SPT MUKIM 15,5.328052,100.502537,Point,12000840.0,SK Machang Bubok II,196.8,29.7,10.5,Within 400 m,False
+school_0200,School,SMK Machang Bubok,Seberang Perai Tengah,SPT MUKIM 15,5.328042,100.500853,Point,12000840.0,SK Machang Bubok II,503.6,15.3,10.5,Beyond 400 m,False
+school_0201,School,"SJK (C) Kwang Hwa, Butterworth 北海光华华小",Seberang Perai Utara,SPU BUTTERWORT,5.427954,100.382606,Point,12001347.0,SJKC Kwang Hwa,212.0,47.5,16.4,Within 400 m,False
+school_0202,School,SMK Bagan Jaya,Seberang Perai Utara,SPU MUKIM 14,5.427239,100.392199,Point,12001906.0,SMK Chung Ling,697.7,55.9,10.4,Beyond 400 m,False
+school_0203,School,SMK St. Mark,Seberang Perai Utara,SPU MUKIM 9,5.450605,100.385762,Point,12001711.0,SMK ST Mark,362.8,39.1,11.8,Within 400 m,False
+school_0204,School,SJK (C) Li Hwa 北海励华华小,Seberang Perai Utara,SPU MUKIM 9,5.446952,100.387072,Point,12000099.0,Bagan Ajam,1033.0,43.3,14.8,Beyond 400 m,False
+school_0205,School,SMK Dato' Onn,Seberang Perai Utara,SPU MUKIM 9,5.448522,100.38175,Point,12001709.0,SMK Dato 'Onn,420.7,25.9,9.2,Beyond 400 m,False
+school_0206,School,SK Bagan Ajam,Seberang Perai Utara,SPU MUKIM 9,5.447203,100.381604,Point,12001708.0,SK Bagan Ajam,143.5,21.9,22.0,Within 400 m,False
+school_0207,School,SK Sungai Puyu,Seberang Perai Utara,SPU MUKIM 9,5.451379,100.395763,Point,12002392.0,Bengkel Kimpalan Sungai Puyu,485.1,31.0,20.6,Beyond 400 m,False
+school_0208,School,SMK Telok Air Tawar,Seberang Perai Utara,SPU MUKIM 7,5.480134,100.382232,Point,12001726.0,Masjid Jamek Daerah SPU,283.2,76.2,8.0,Within 400 m,False
+school_0209,School,SK Seberang Jaya,Seberang Perai Tengah,SPT MUKIM 1,5.384704,100.399881,Point,12002528.0,Padang Sony,538.4,27.9,12.1,Beyond 400 m,False
+school_0210,School,SJK(C) Chung Hwa 2 北海中华二校,Seberang Perai Utara,SPU BUTTERWORT,5.406341,100.384599,Point,12000393.0,Pusat Perniagaan Chain Ferry II,842.9,33.1,23.1,Beyond 400 m,False
+school_0211,School,Chung Ling Butterworth High School,Seberang Perai Utara,SPU MUKIM 14,5.433885,100.392932,Point,12001906.0,SMK Chung Ling,372.7,24.3,10.4,Within 400 m,False
+school_0212,School,SK Seri Tasek,Seberang Perai Selatan,SPS MUKIM 1,5.285762,100.521092,Point,12001698.0,SK Seri Tasek,302.3,47.8,24.6,Within 400 m,False
+school_0213,School,Kompleks Sekolah Wawasan,Seberang Perai Selatan,SPS MUKIM 15,5.280407,100.504391,Point,12001692.0,Taman Puteri Gunung,685.5,39.3,15.0,Beyond 400 m,False
+school_0214,School,SMK Tasek,Seberang Perai Selatan,SPS MUKIM 15,5.277541,100.504308,Point,12001692.0,Taman Puteri Gunung,997.7,42.3,15.0,Beyond 400 m,False
+school_0215,School,SK Kampong Selamat,Seberang Perai Utara,SPU MUKIM 12,5.498334,100.519017,Point,12000643.0,SK Kg Selamat,48.7,35.0,7.2,Within 400 m,False
+school_0216,School,SK Tasek Gelugor,Seberang Perai Utara,SPU MUKIM 12,5.483359,100.492369,Point,12000487.0,SK Tasek Gelugor,0.0,33.9,14.0,Within 400 m,False
+school_0217,School,SMK Pokok Sena,Seberang Perai Utara,SPU MUKIM 6,5.491515,100.461492,Point,12000504.0,Pejabat Veterinar,525.7,104.3,10.6,Beyond 400 m,True
+school_0218,School,SK Lahar Yooi,Seberang Perai Utara,SPU MUKIM 11,5.466776,100.456453,Point,12001551.0,SK Lahar Yooi,301.9,48.3,7.4,Within 400 m,False
+school_0219,School,SK Sungai Dua,Seberang Perai Utara,SPU MUKIM 11,5.449445,100.431561,Point,12001526.0,SK Sungai Dua,124.3,43.9,11.2,Within 400 m,False
+school_0220,School,SJK (T) Ladang Malakoff,Seberang Perai Utara,SPU MUKIM 6,5.492827,100.463989,Point,12000506.0,Taman Desa Sena,477.1,98.2,25.0,Beyond 400 m,False
+school_0221,School,SMKA Syeikh Abdullah Fahim,Seberang Perai Selatan,SPS MUKIM 9,5.144977,100.477556,Point,12000270.0,Taman Fajar,1022.9,6.5,6.6,Beyond 400 m,False
+school_0222,School,MRSM Transkrian,Seberang Perai Selatan,SPS MUKIM 9,5.154877,100.483974,Point,12000441.0,Kampung Haji Osman,2113.6,65.7,26.1,Beyond 400 m,False
+school_0223,School,SK Permatang Tok Mahat,Seberang Perai Selatan,SPS MUKIM 9,5.131743,100.473816,Point,12000266.0,Jalan Besar,570.3,57.3,20.1,Beyond 400 m,False
+school_0224,School,SMK Tun Syed Sheh Barakbah,Seberang Perai Selatan,SPS MUKIM 5,5.211185,100.501313,Point,12002332.0,JKR Jawi,653.5,21.2,12.2,Beyond 400 m,False
+school_0225,School,Sekolah Kebangsaan Bakap Indah,Seberang Perai Selatan,SPS MUKIM 4,5.233133,100.504788,Point,12000277.0,Taman Jelatik,1502.2,116.2,26.5,Beyond 400 m,True
+school_0226,School,SK Jawi,Seberang Perai Selatan,SPS MUKIM 7,5.19663,100.494015,Point,12000924.0,SK Jawi,138.9,22.7,17.7,Within 400 m,False
+school_0227,School,SK Taman Merak,Seberang Perai Selatan,SPS MUKIM 14,5.264239,100.46594,Point,12002330.0,Balai Bomba Sungai Bakap,1244.3,47.9,22.5,Beyond 400 m,False
+school_0228,School,SMK Valdor,Seberang Perai Selatan,SPS MUKIM 4,5.237509,100.493074,Point,12001484.0,Lean Teik Trading,579.2,41.8,22.3,Beyond 400 m,False
+school_0229,School,SJK (C) Chong Kuang,Seberang Perai Selatan,SPS MUKIM 4,5.23074,100.493582,Point,12000278.0,Taman Penyu,217.7,9.4,29.2,Within 400 m,False
+school_0230,School,Straits International School,Barat Daya,DBD MUKIM 12,5.297583,100.267839,Point,12001418.0,The Star Publication,236.9,42.0,6.5,Within 400 m,False
+school_0231,School,School 231,Barat Daya,DBD MUKIM 8,5.283276,100.196143,Point,12000519.0,SJK (C) Poi Eng,59.6,49.7,10.2,Within 400 m,False
+school_0232,School,SJK (C) Kim Sen,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.356037,100.466313,Point,12000804.0,SJK(C) Kim Sen,146.2,77.0,3.8,Within 400 m,False
+school_0233,School,"SJK(C) Kay Sin, Machang Bubok 马章武莫启新华文小学",Seberang Perai Tengah,SPT MUKIM 16,5.333448,100.50619,Point,12000339.0,Bukit Teh,374.8,5.7,28.7,Within 400 m,False
+school_0234,School,Sekolah Menengah Kebangsaan Kepala Batas,Seberang Perai Utara,SPU MUKIM 6,5.502856,100.435668,Point,12001338.0,Kolej Matrikulasi Kepala Batas,932.7,37.5,23.9,Beyond 400 m,False
+school_0235,School,SK Seri Penanti,Seberang Perai Tengah,SPT MUKIM 20,5.402682,100.464926,Point,12000040.0,SK Penanti,22.7,7.2,19.7,Within 400 m,False
+school_0236,School,SMK Guar Perahu,Seberang Perai Tengah,SPT MUKIM 20,5.421106,100.467249,Point,12002364.0,Pejabat Pos Penanti,2046.0,44.7,4.1,Beyond 400 m,False
+school_0237,School,SK Padang Menora,Seberang Perai Utara,SPU MUKIM 13,5.456977,100.472139,Point,12001553.0,Simpang Lahar Yooi,2380.8,58.0,13.0,Beyond 400 m,False
+school_0238,School,Wesley Methodist School Penang (International),Timur Laut,DTL GEORGE TOWN,5.397683,100.326528,Point,12001946.0,Pangsapuri Ocean View,292.1,26.3,15.4,Within 400 m,False
+school_0239,School,SK Permatang Buloh,Seberang Perai Utara,SPU MUKIM 11,5.478984,100.427887,Point,12001337.0,JPS Pokok Sena,2232.9,33.7,38.7,Beyond 400 m,False
+school_0240,School,SK Permatang Pasir,Seberang Perai Tengah,SPT MUKIM 3,5.414566,100.438266,Point,12001166.0,SK Permatang Pasir,0.0,46.9,21.7,Within 400 m,False
+school_0241,School,Fairview International School,Timur Laut,DTL MUKIM 13,5.34608,100.27447,Point,12001013.0,Simpang Tingkat Bukit Jambul,312.4,10.4,32.8,Within 400 m,False
+school_0242,School,SK Bertam Indah,Seberang Perai Utara,SPU MUKIM 6,5.523333,100.43639,Point,12000258.0,SK/SMK Bertam Indah,392.7,25.4,23.0,Within 400 m,False
+school_0243,School,SMK Taman Sejahtera,Seberang Perai Tengah,SPT MUKIM 15,5.334411,100.491176,Point,12000789.0,Kampung Janggus,1262.2,31.8,39.6,Beyond 400 m,False
+school_0244,School,SJK(T) Ladang Alma,Seberang Perai Tengah,SPT MUKIM 15,5.331883,100.476779,Point,12000046.0,SJKC Sin Ya,325.9,42.5,8.9,Within 400 m,False
+school_0245,School,SJK (C) Sungai Lembu,Seberang Perai Tengah,SPT MUKIM 18,5.389717,100.52222,Point,12000341.0,Chinese Temple,6997.8,53.3,76.8,Beyond 400 m,False
+school_0246,School,SMK Mengkuang,Seberang Perai Tengah,SPT MUKIM 18,5.404174,100.490419,Point,12000778.0,SK Penanti,3462.9,32.4,15.5,Beyond 400 m,False
+school_0247,School,SJK (C) Kubang Semang 高巴三万华文小学,Seberang Perai Tengah,SPT MUKIM 3,5.411092,100.462433,Point,12002364.0,Pejabat Pos Penanti,792.5,13.6,4.1,Beyond 400 m,False
+school_0248,School,SJK (C) Jit Sin A dan B,Seberang Perai Tengah,SPT MUKIM 9,5.37713,100.468069,Point,12000031.0,SM Islam Al-Masriyah,959.4,73.7,22.3,Beyond 400 m,False
+school_0249,School,SJK (C) Beng Teik (Pusat) 百利镇明德正校,Seberang Perai Tengah,SPT MUKIM 10,5.347553,100.457307,Point,12002524.0,Taman Lembah Permai,134.5,49.3,11.6,Within 400 m,False
+school_0250,School,SJK (C) Perkampungan Berapit,Seberang Perai Tengah,SPT MUKIM 9,5.382556,100.471485,Point,12000036.0,SK Tanah Liat,1725.4,66.3,1.3,Beyond 400 m,False
+school_0251,School,SMJK Jit Sin Ⅱ SPS 威南日新华文中学,Seberang Perai Selatan,SPS MUKIM 15,5.272912,100.514538,Point,12001680.0,Muda Paper I,2046.2,40.5,13.5,Beyond 400 m,False
+school_0252,School,SMJK Heng Ee Cawangan Bayan Baru 恒毅华文中学峇央峇鲁分校,Barat Daya,DBD MUKIM 12,5.304354,100.272914,Point,12004628.0,Sungai Tiram II,946.8,56.0,11.6,Beyond 400 m,False
+school_0253,School,SK Machang Bubok,Seberang Perai Tengah,SPT MUKIM 16,5.338841,100.511409,Point,12000341.0,Chinese Temple,453.0,11.9,76.8,Beyond 400 m,False
+school_0254,School,Sekolah Antarabangsa XCL,Seberang Perai Selatan,SPS MUKIM 15,5.279242,100.490433,Point,12002595.0,Taman Mutiara Simpang Empat,451.6,66.2,26.4,Beyond 400 m,False
+school_0255,School,Sekolah Sinar Harapan,Seberang Perai Tengah,SPT MUKIM 7,5.370655,100.444795,Point,12001216.0,Pusat Perniagaan Permatang Rawa,433.2,18.6,18.0,Beyond 400 m,False
+school_0256,School,SMK Permatang Rawa,Seberang Perai Tengah,SPT MUKIM 7,5.369715,100.446784,Point,12001218.0,SMK Permatang Rawa,212.8,21.2,35.7,Within 400 m,False
+school_0257,School,SMK Dato Hj Abdul Kadir,Seberang Perai Utara,SPU MUKIM 6,5.514957,100.433626,Point,12001284.0,Kompleks Dato Kailan,746.3,92.6,20.9,Beyond 400 m,False
+school_0258,School,SJK (C) Pei Yu 甲抛峇底培育华文小学,Seberang Perai Utara,SPU MUKIM 6,5.514443,100.429191,Point,12001284.0,Kompleks Dato Kailan,364.1,51.5,20.9,Within 400 m,False
+school_0259,School,SM Sains Kepala Batas,Seberang Perai Utara,SPU MUKIM 6,5.517862,100.468003,Point,12002966.0,SMK Sains Kepala Batas,280.1,30.0,45.1,Within 400 m,False
+school_0260,School,SMK Bakti,Seberang Perai Utara,SPU MUKIM 12,5.48447,100.492707,Point,12003000.0,Klinik Kesihatan Tasek Gelugor,362.2,28.6,14.5,Within 400 m,False
+school_0261,School,SK Hashim Awang,Seberang Perai Utara,SPU MUKIM 6,5.515826,100.42882,Point,12001284.0,Kompleks Dato Kailan,515.4,50.4,20.9,Beyond 400 m,False
+school_0262,School,SK Bertam Perdana,Seberang Perai Utara,SPU MUKIM 6,5.530641,100.468161,Point,12001862.0,(M1) SMK Sains Kepala Batas,1579.1,91.8,39.4,Beyond 400 m,False
+school_0263,School,SMK Bertam Perdana,Seberang Perai Utara,SPU MUKIM 6,5.530769,100.466766,Point,12001862.0,(M1) SMK Sains Kepala Batas,2135.2,56.4,39.4,Beyond 400 m,False
+school_0264,School,SK Seri Permai,Barat Daya,DBD MUKIM 12,5.319625,100.283868,Point,12001804.0,Hospital Pantai Mutiara,155.6,40.0,13.6,Within 400 m,False
+school_0265,School,SMK Raja Tun Uda,Barat Daya,DBD MUKIM 12,5.319575,100.282596,Point,12001804.0,Hospital Pantai Mutiara,12.4,81.6,13.6,Within 400 m,False
+school_0266,School,SJK (T) Bukit Mertajam,Seberang Perai Tengah,SPT MUKIM 15,5.348845,100.470519,Point,12000248.0,SK Kampung Baru I,147.4,35.0,15.6,Within 400 m,False
+school_0267,School,"SK Kampung Baru, Bukit Mertajam",Seberang Perai Tengah,SPT MUKIM 15,5.349703,100.470576,Point,12000249.0,SK Kampung Baru II,0.0,54.4,30.9,Within 400 m,False
+school_0268,School,SMK Sama Gagah,Seberang Perai Tengah,SPT MUKIM 2,5.419996,100.408731,Point,12002367.0,Pasar Malam Arowana,1418.9,91.1,36.1,Beyond 400 m,False
+school_0269,School,SK Bukit Teh,Seberang Perai Tengah,SPT MUKIM 16,5.320107,100.50698,Point,12000338.0,Pulau Mutiara Towel,1307.2,71.6,4.2,Beyond 400 m,False
+school_0270,School,SK Mengkuang,Seberang Perai Tengah,SPT MUKIM 19,5.405238,100.49327,Point,12000778.0,SK Penanti,3524.3,52.5,15.5,Beyond 400 m,False
+school_0271,School,SMK Guar Perahu indah,Seberang Perai Tengah,SPT MUKIM 20,5.426043,100.470681,Point,12002364.0,Pejabat Pos Penanti,3209.7,1.6,4.1,Beyond 400 m,False
+school_0272,School,SK Seri Impian,Seberang Perai Tengah,SPT MUKIM 20,5.428187,100.472515,Point,12002364.0,Pejabat Pos Penanti,3245.5,54.8,4.1,Beyond 400 m,False
+school_0273,School,SK Guar Perahu,Seberang Perai Tengah,SPT MUKIM 20,5.428138,100.47069,Point,12002364.0,Pejabat Pos Penanti,3102.3,33.7,4.1,Beyond 400 m,False
+school_0274,School,SMK Permatang Pasir,Seberang Perai Tengah,SPT MUKIM 3,5.420112,100.440029,Point,12001169.0,Permatang Pasir,472.5,61.9,7.2,Beyond 400 m,False
+school_0275,School,SJK (T) Ladang Mayfield,Seberang Perai Utara,SPU MUKIM 12,5.482899,100.502765,Point,12000647.0,Kampung Besar,236.8,36.2,23.0,Within 400 m,False
+school_0276,School,SMK Kampong Selamat,Seberang Perai Utara,SPU MUKIM 12,5.498014,100.521822,Point,12002611.0,SMK Kampung Selamat,251.2,46.9,11.5,Within 400 m,False
+school_0277,School,SK Seri Gemilang,Seberang Perai Utara,SPU MUKIM 4,5.498919,100.382088,Point,12001734.0,Hub Teluk Air Tawar,992.0,18.0,9.9,Beyond 400 m,False
+school_0278,School,SMK Sri Muda,Seberang Perai Utara,SPU MUKIM 4,5.533735,100.379921,Point,12001106.0,SMK Sri Muda,73.0,14.6,32.6,Within 400 m,False
+school_0279,School,School 279,Seberang Perai Utara,SPU MUKIM 3,5.551907,100.503184,Point,12002567.0,Kampung Pokok Jenerih I,4319.0,11.5,0.3,Beyond 400 m,False
+school_0280,School,"SJK {C} Sin Chung, Permatang Sintok 峇东仙托新中学校",Seberang Perai Utara,SPU MUKIM 5,5.513897,100.403726,Point,12000378.0,Klinik Desa Permatang Sintok,298.3,31.3,3.1,Within 400 m,False
+school_0281,School,SK Permatang Sintok,Seberang Perai Utara,SPU MUKIM 4,5.517413,100.398731,Point,12000378.0,Klinik Desa Permatang Sintok,917.2,68.1,3.1,Beyond 400 m,False
+school_0282,School,SMK Bandar Putra Bertam (U/C),Seberang Perai Utara,SPU MUKIM 6,5.516257,100.485798,Point,12002089.0,Bertam Putra 1,307.7,56.8,30.5,Within 400 m,False
+school_0283,School,SJK(C) Wen Khai 峇都茅文开华文小学,Barat Daya,DBD MUKIM 12,5.294508,100.280051,Point,12000198.0,SJK (C) Weng Khai,46.1,61.1,8.5,Within 400 m,False
+school_0284,School,SK Bayan Lepas II,Barat Daya,DBD MUKIM 11,5.288219,100.258547,Point,12001154.0,Kampung Seronok,354.6,16.6,8.5,Within 400 m,False
+school_0285,School,SK Tanah Liat,Seberang Perai Tengah,SPT MUKIM 9,5.384409,100.463804,Point,12000036.0,SK Tanah Liat,202.9,55.2,1.3,Within 400 m,False
+school_0286,School,SK Bukit Indera Muda,Seberang Perai Tengah,SPT MUKIM 3,5.408516,100.456688,Point,12002202.0,SK. Bukit Indera Muda,203.4,18.0,25.8,Within 400 m,False
+school_0287,School,SMK Datuk Haji Ahmad Said,Seberang Perai Utara,SPU MUKIM 11,5.444549,100.431813,Point,12001523.0,Pekan Sungai Dua,388.8,29.2,3.3,Within 400 m,False
+school_0288,School,"SJK (C) Kai Chee, Sungai Dua 双溪赖启智华文小学",Seberang Perai Utara,SPU MUKIM 11,5.444194,100.432738,Point,12001512.0,Taman Pengkalan Machang,660.1,27.0,8.9,Beyond 400 m,False
+school_0289,School,Sekolah Menengah Kebangsaan Padang Polo,Timur Laut,DTL GEORGE TOWN,5.4193,100.306128,Point,12001368.0,Heritage Club,364.7,40.7,22.9,Within 400 m,False
+school_0290,School,SJK (T) Ladang Juru,Seberang Perai Tengah,SPT MUKIM 12,5.313747,100.431041,Point,12002521.0,Taman Perusahaan Ringan Juru,376.3,21.7,22.9,Within 400 m,False
+school_0291,School,SJK (C) Yang Cheng 公巴养正华文小学,Barat Daya,DBD MUKIM 9,5.300838,100.232451,Point,12001787.0,PUSPAKOM,188.0,40.8,1.6,Within 400 m,False
+school_0292,School,Sekolah Rendah Islam Tarbiah Addiniah,Seberang Perai Tengah,SPT MUKIM 15,5.344087,100.495666,Point,12000789.0,Kampung Janggus,0.0,19.1,39.6,Within 400 m,False
+school_0293,School,"Sekolah Jenis Kebangsaan (Cina) Kwang Hwa, Sungai Nibong",Timur Laut,DTL MUKIM 13,5.336176,100.296294,Point,12001435.0,SRJK Kwang Hwa,66.4,70.1,5.4,Within 400 m,False
+school_0294,School,Sekolah Jenis Kebangsaan (Cina) Shih Chung Cawangan,Timur Laut,DTL MUKIM 13,5.33579,100.295836,Point,12001434.0,SRJK Kwang Hwa,183.0,48.1,6.8,Within 400 m,False
+school_0295,School,Sekolah Menengah Kebangsaan Sungai Nibong,Timur Laut,DTL MUKIM 13,5.335004,100.295273,Point,12001942.0,Kompleks Makanan,332.3,28.8,14.1,Within 400 m,False
+school_0296,School,SMK Bukit Jambul,Timur Laut,DTL MUKIM 13,5.348374,100.29063,Point,12000301.0,SMK Bukit Jambul,169.3,30.7,18.9,Within 400 m,False
+school_0297,School,Sekolah Jenis Kebangsaan (Cina) Chiao Nan,Timur Laut,DTL MUKIM 13,5.39473,100.284112,Point,12001819.0,SMK Air Itam,356.2,36.2,9.0,Within 400 m,False
+school_0298,School,Sekolah Kebangsaan Methodist,Seberang Perai Selatan,SPS NIBONG TEBAL,5.169813,100.477204,Point,12002107.0,Hub Nibong Tebal,488.6,44.9,43.6,Beyond 400 m,False
+school_0299,School,SK Pengkalan Jaya,Seberang Perai Utara,SPU MUKIM 12,5.47286,100.495063,Point,12000486.0,Kompleks Tasek Gelugor,1089.6,26.1,10.3,Beyond 400 m,False
+school_0300,School,SJK (C) Kampung Jawi,Seberang Perai Selatan,SPS MUKIM 11,5.214199,100.494566,Point,12001483.0,Perkampungan Jawi,608.6,64.4,40.5,Beyond 400 m,False
+school_0301,School,SMK Tasek Gelugor,Seberang Perai Utara,SPU MUKIM 12,5.477867,100.485682,Point,12000491.0,Petronas Tasek Gelugor,913.4,37.3,16.6,Beyond 400 m,False
+school_0302,School,SK Taman Senangan,Seberang Perai Utara,SPU MUKIM 7,5.47185,100.383854,Point,12001721.0,SK Taman Senangan,0.0,60.7,25.7,Within 400 m,False
+school_0303,School,Sekolah Kebangsaan St. Xavier Cawangwan,Timur Laut,DTL GEORGE TOWN,5.431311,100.307346,Point,12000367.0,Belissa Row,340.5,75.4,8.0,Within 400 m,False
+school_0304,School,SJK (C) Permatang Tinggi,Seberang Perai Tengah,SPT MUKIM 14,5.29938,100.478591,Point,12001271.0,Taman Perwira,250.8,60.0,6.3,Within 400 m,False
+school_0305,School,MRSM Balik Pulau,Barat Daya,DBD MUKIM 6,5.331039,100.228016,Point,12000143.0,SMK Pondok Upeh Balik Pulau,1269.6,39.5,31.0,Beyond 400 m,False
+school_0306,School,School 306,Seberang Perai Utara,SPU MUKIM 6,5.50681,100.481849,Point,12002089.0,Bertam Putra 1,1857.3,50.7,30.5,Beyond 400 m,False
+school_0307,School,SJK (T) Ladang Valdor,Seberang Perai Selatan,SPS MUKIM 15,5.24721,100.480089,Point,12000281.0,SJK Tamil Valdor,246.8,24.8,17.1,Within 400 m,False
+school_0308,School,Sekolah Islam Al-Masriyah (SABK),Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.373378,100.463526,Point,12000031.0,SM Islam Al-Masriyah,444.2,37.7,22.3,Beyond 400 m,False
+school_0309,School,SJK (C) Keng Koon,Seberang Perai Selatan,SPS MUKIM 14,5.271462,100.451445,Point,12002329.0,Masjid Simpang Empat,3282.8,21.9,15.9,Beyond 400 m,False
+school_0310,School,SK Bukit Tambun,Seberang Perai Selatan,SPS MUKIM 14,5.271157,100.451022,Point,12002329.0,Masjid Simpang Empat,3319.5,36.2,15.9,Beyond 400 m,False
+school_0311,School,Northern Lights Private School,Seberang Perai Selatan,SPS MUKIM 14,5.269771,100.475981,Point,12001258.0,Taman Tangling,206.0,21.0,17.8,Within 400 m,False
+school_0312,School,SK Sungai Bakap,Seberang Perai Selatan,SPS MUKIM 11,5.215658,100.495687,Point,12001483.0,Perkampungan Jawi,443.4,54.4,40.5,Beyond 400 m,False
+school_0313,School,SJK (T) Ladang Jawi,Seberang Perai Selatan,SPS MUKIM 11,5.202261,100.494258,Point,12000925.0,Taman Jawi Jaya,336.1,28.0,20.8,Within 400 m,False
+school_0314,School,KV Nibong Tebal,Seberang Perai Selatan,SPS MUKIM 7,5.164888,100.495561,Point,12000916.0,Pasaraya C-MART,2611.9,29.8,26.9,Beyond 400 m,False
+school_0315,School,SK Sungai Bakau,Seberang Perai Selatan,SPS MUKIM 10,5.124742,100.419656,Point,12000266.0,Jalan Besar,6337.5,43.3,20.1,Beyond 400 m,False
+school_0316,School,SK Khir Johari,Seberang Perai Tengah,SPT MUKIM 1,5.383603,100.387427,Point,12000389.0,Public Bank Inderawasih,775.1,10.8,35.4,Beyond 400 m,False
+school_0317,School,SK Pokok Tampang,Seberang Perai Utara,SPU MUKIM 12,5.476176,100.485597,Point,12000489.0,Pusat Komersial,1569.6,63.6,8.1,Beyond 400 m,False
+school_0318,School,Sekolah Jenis Kebangsaan (Cina) Kong Min Cawangan Satu,Timur Laut,DTL MUKIM 16,5.400863,100.275441,Point,12001037.0,Ambank Paya Terubong,279.3,49.7,7.4,Within 400 m,False
+school_0319,School,SK Lahar Kepar,Seberang Perai Utara,SPU MUKIM 5,5.537891,100.416991,Point,12000707.0,Lahar Ikan Mati,1904.6,32.0,11.4,Beyond 400 m,False
+school_0320,School,SK Penaga,Seberang Perai Utara,SPU MUKIM 4,5.536513,100.378387,Point,12001107.0,Dewan Bakar Kapor,176.4,49.7,22.9,Within 400 m,False
+school_0321,School,SK Penaga Jaya,Seberang Perai Utara,SPU MUKIM 5,5.538575,100.382199,Point,12001110.0,Masjid Bakar Kapor,525.2,20.5,1.8,Beyond 400 m,False
+school_0322,School,School 322,Seberang Perai Utara,SPU MUKIM 1,5.554334,100.372834,Point,12001112.0,Pasir Gebu,1278.4,33.5,4.5,Beyond 400 m,False
+school_0323,School,SK Pulau Mertajam,Seberang Perai Utara,SPU MUKIM 1,5.572711,100.364595,Point,12000748.0,SK Pulau Mertajam,76.4,39.9,11.1,Within 400 m,False
+school_0324,School,School 324,Seberang Perai Utara,SPU MUKIM 2,5.550833,100.37818,Point,12001114.0,SMK Tok Labu,170.7,7.7,49.7,Within 400 m,False
+school_0325,School,SMK Dato' Kailan,Seberang Perai Utara,SPU MUKIM 3,5.538667,100.468157,Point,12001862.0,(M1) SMK Sains Kepala Batas,3148.7,8.8,39.4,Beyond 400 m,False
+school_0326,School,SK Paya Keladi,Seberang Perai Utara,SPU MUKIM 3,5.538914,100.446009,Point,12000999.0,Kemas Kepala Batas,1564.9,4.1,18.7,Beyond 400 m,False
+school_0327,School,Prince of Wales Island International Primary School,Timur Laut,DTL TANJONG BUNGAH,5.460941,100.284171,Point,12000812.0,Tenby School,576.1,33.7,41.3,Beyond 400 m,False
+school_0328,School,Sekolah Jenis Kebangsaan (Cina) Phei Shin,Timur Laut,DTL JELUTONG,5.387185,100.313637,Point,12000566.0,Pekan Jelutong,161.9,5.1,24.2,Within 400 m,False
+school_0329,School,Sekolah Kebangsaan Seri Relau,Barat Daya,DBD MUKIM 10,5.333369,100.275229,Point,12001004.0,SK Seri Relau,116.3,39.8,10.9,Within 400 m,False
+school_0330,School,Prince of Wales Island International School,Barat Daya,DBD MUKIM 4,5.367745,100.219961,Point,12001479.0,(M3) Bandar Baru Air Putih 2,571.8,51.9,57.2,Beyond 400 m,False
+school_0331,School,SJK (C) & SMJK Sacred Heart,Barat Daya,DBD MUKIM 6,5.352279,100.237078,Point,12001886.0,SJK (C) Chong Teik,316.1,40.6,14.9,Within 400 m,False
+school_0332,School,SMK Pondok Upeh,Barat Daya,DBD MUKIM 6,5.335259,100.220944,Point,12000136.0,SMK Pondok Upeh,160.7,37.5,16.5,Within 400 m,False
+school_0333,School,SK Kongsi,Barat Daya,DBD MUKIM F,5.346723,100.229592,Point,12000149.0,SK Kongsi,120.2,45.9,5.6,Within 400 m,False
+school_0334,School,"SJK (C) Chung Hwa 3, Perai 北赖中华三校",Seberang Perai Tengah,SPT PRAI,5.38419,100.384013,Point,12000390.0,Taman Inderawasih,1529.8,45.4,46.3,Beyond 400 m,False
+school_0335,School,Sekolah Menengah Jenis Kebangsaan Phor Tay,Timur Laut,DTL MUKIM 13,5.342724,100.296198,Point,12001991.0,Lip Sin 2,305.4,52.5,35.6,Within 400 m,False
+school_0336,School,"SJK (C) Chong Cheng, Sungai Ara 新港崇正华文小学",Barat Daya,DBD MUKIM 12,5.324062,100.271192,Point,12000436.0,Masjid Al-huda Sungai Ara,297.3,34.8,18.4,Within 400 m,False
+school_0337,School,SJK (T) Sungai Ara,Barat Daya,DBD MUKIM 12,5.322282,100.270839,Point,12000433.0,SK Agama Sungai Ara,88.0,40.4,8.1,Within 400 m,False
+school_0338,School,SK Mutiara Perdana,Barat Daya,DBD MUKIM 12,5.308701,100.264384,Point,12000425.0,Taman Sri Bayan,17.2,39.8,49.3,Within 400 m,False
+school_0339,School,Sekolah Agama Sungai Ara,Barat Daya,DBD MUKIM 12,5.322202,100.271275,Point,12000435.0,SK Agama Sungai Ara,47.4,30.7,10.3,Within 400 m,False
+school_0340,School,SJK (C) Chung Shan,Barat Daya,DBD MUKIM 12,5.29804,100.27085,Point,12001419.0,Chung Shan Chinese School,0.0,71.6,27.4,Within 400 m,False
+school_0341,School,School 341,Seberang Perai Tengah,SPT MUKIM 5,5.400812,100.464704,Point,12000777.0,Masjid Kubang Semang,110.5,23.3,9.1,Within 400 m,False
+school_0342,School,SK St. Mark,Seberang Perai Tengah,SPT PRAI,5.387009,100.380689,Point,12000390.0,Taman Inderawasih,1586.2,41.2,46.3,Beyond 400 m,False
+school_0343,School,SK Permatang Binjai,Seberang Perai Utara,SPU MUKIM 7,5.502359,100.395001,Point,12002387.0,Kedai Runcit Permatang Binjai,246.0,27.1,5.9,Within 400 m,False
+school_0344,School,SK Permatang Tok Jaya,Seberang Perai Utara,SPU MUKIM 7,5.478248,100.402378,Point,12001044.0,Persimpang Jalan Haji Murshid,156.4,41.8,11.3,Within 400 m,False
+school_0345,School,Madrasah Darul Atfal Pekan Darat,Seberang Perai Utara,SPU MUKIM 7,5.474578,100.400907,Point,12002384.0,Masjid Pekan Darat,116.8,33.1,10.7,Within 400 m,False
+school_0346,School,SMK Permatang Tok Jaya,Seberang Perai Utara,SPU MUKIM 10,5.47129,100.402733,Point,12001042.0,SMK Permatang Tok Jaya,328.1,63.1,9.5,Within 400 m,False
+school_0347,School,Madrasah Addiniah Al-Islamia,Seberang Perai Utara,SPU MUKIM 10,5.461626,100.40092,Point,12001039.0,Madrasah Adiniah A-Islamiah,87.3,15.1,5.7,Within 400 m,False
+school_0348,School,SAR Ma'had Al-Samadani,Seberang Perai Utara,SPU MUKIM 11,5.468171,100.42906,Point,12001541.0,Taman Merbau Indah,2313.9,25.6,4.4,Beyond 400 m,False
+school_0349,School,"SJK (C) Mah Hua, Kampung Selamat 平安村马华华文小学",Seberang Perai Utara,SPU MUKIM 12,5.506977,100.521372,Point,12002632.0,PUSAT SERENTI KG. SELAMAT,754.4,22.2,13.3,Beyond 400 m,False
+school_0350,School,SK Telok Ayer Tawar,Seberang Perai Utara,SPU MUKIM 7,5.484996,100.384056,Point,12001728.0,SK Telok Air Tawar,36.2,33.4,30.9,Within 400 m,False
+school_0351,School,"SJK (C) Aik Keow, Telok Ayer Tawar 日落斗哇益侨华文小学",Seberang Perai Utara,SPU MUKIM 7,5.480621,100.384113,Point,12001727.0,SMK Telok Air Tawar,159.0,21.7,11.1,Within 400 m,False
+school_0352,School,Sekolah Tunas Bakti Teluk Air Tawar,Seberang Perai Utara,SPU MUKIM 7,5.475633,100.38441,Point,12001724.0,Taman Teluk Molek,324.4,33.4,31.7,Within 400 m,False
+school_0353,School,SAR Pajak Song,Seberang Perai Utara,SPU MUKIM 8,5.5003,100.426766,Point,12001337.0,JPS Pokok Sena,523.1,25.5,38.7,Beyond 400 m,False
+school_0354,School,School 354,Seberang Perai Utara,SPU MUKIM 12,5.529013,100.523606,Point,12002631.0,TAMAN SELESA,3114.7,42.2,15.5,Beyond 400 m,False
+school_0355,School,Madrasah Tarbiahtul Ibtidaiyah,Seberang Perai Utara,SPU MUKIM 12,5.529217,100.522117,Point,12002631.0,TAMAN SELESA,3397.0,79.8,15.5,Beyond 400 m,False
+school_0356,School,School 356,Seberang Perai Utara,SPU MUKIM 3,5.549691,100.509635,Point,12002567.0,Kampung Pokok Jenerih I,4130.5,41.9,0.3,Beyond 400 m,False
+school_0357,School,Sekolah Menengah Teknik Tunku Abdul Rahman Putra,Timur Laut,DTL GEORGE TOWN,5.403919,100.29794,Point,,,,89.2,,No route in candidate network - review,False
+school_0358,School,SK Bukit Gambir,Timur Laut,DTL MUKIM 13,5.369054,100.299054,Point,12000309.0,SMK Bukit Gambir,398.7,21.8,33.8,Within 400 m,False
+school_0359,School,SJK (T) Subramaniya Barathee,Timur Laut,DTL MUKIM 13,5.368525,100.30066,Point,12000309.0,SMK Bukit Gambir,580.7,10.6,33.8,Beyond 400 m,False
+school_0360,School,School 360,Seberang Perai Utara,SPU MUKIM 8,5.510301,100.425509,Point,12000535.0,SMK Dato Haji Ahmad Badawi,717.3,32.7,6.9,Beyond 400 m,False
+school_0361,School,SMA Daeratul Maarifil Wataniah,Seberang Perai Utara,SPU MUKIM 8,5.513785,100.423946,Point,12000384.0,Kompleks Kepala Batas,519.9,43.6,18.2,Beyond 400 m,False
+school_0362,School,SK Pokok Sena,Seberang Perai Utara,SPU MUKIM 6,5.489881,100.4611,Point,12000504.0,Pejabat Veterinar,141.7,47.5,10.6,Within 400 m,False
+school_0363,School,Madrasah,Seberang Perai Utara,SPU MUKIM 12,5.473037,100.484296,Point,12000491.0,Petronas Tasek Gelugor,1481.2,48.0,16.6,Beyond 400 m,False
+school_0364,School,SJK (C) Lee Chee 打昔汝莪励志华文小学,Seberang Perai Utara,SPU MUKIM 12,5.482834,100.496296,Point,12000486.0,Kompleks Tasek Gelugor,230.1,22.1,10.3,Within 400 m,False
+school_0365,School,Pondok Moden Darulsalam Pulau Pinang,Seberang Perai Utara,SPU MUKIM 12,5.480784,100.492835,Point,12000508.0,Pejabat Pos Tasek Gelugor,221.2,23.4,4.7,Within 400 m,False
+school_0366,School,School 366,Seberang Perai Utara,SPU MUKIM 2,5.554767,100.389953,Point,12001114.0,SMK Tok Labu,1421.5,96.4,49.7,Beyond 400 m,False
+school_0367,School,SMK Batu Kawan,Seberang Perai Selatan,SPS MUKIM 13,5.272552,100.433816,Point,12002329.0,Masjid Simpang Empat,6713.4,8.2,15.9,Beyond 400 m,False
+school_0368,School,Maahadul Irsyad,Seberang Perai Utara,SPU MUKIM 13,5.453216,100.473762,Point,12001553.0,Simpang Lahar Yooi,2850.8,21.9,13.0,Beyond 400 m,False
+school_0369,School,School 369,Seberang Perai Tengah,SPT MUKIM 20,5.429719,100.471061,Point,12002364.0,Pejabat Pos Penanti,3150.8,37.1,4.1,Beyond 400 m,False
+school_0370,School,KAFA Surau Nurul Ehsan,Seberang Perai Tengah,SPT MUKIM 14,5.310087,100.487731,Point,12001359.0,Taman Industri Impian,1369.6,19.7,50.2,Beyond 400 m,False
+school_0371,School,SK Bertam Putra,Seberang Perai Utara,SPU MUKIM 6,5.516203,100.486628,Point,12002089.0,Bertam Putra 1,99.3,64.4,30.5,Within 400 m,False
+school_0372,School,Madrasah An-Nur,Barat Daya,DBD MUKIM 12,5.322669,100.287276,Point,12000880.0,Giant Bayan Baru,268.4,16.4,12.1,Within 400 m,False
+school_0373,School,SMK Convent Butterworth,Seberang Perai Utara,SPU BUTTERWORT,5.396439,100.368152,Point,12000909.0,SMK Convent Butterworth,53.3,7.2,11.4,Within 400 m,False
+school_0374,School,Sekolah Jenis Kebangsaan (Cina) Kong Min Pusat,Timur Laut,DTL AYER ITAM,5.405085,100.282751,Point,12000065.0,Tadika St. Paul,105.9,22.6,7.2,Within 400 m,False
+school_0375,School,SK Sri Tanjung,Timur Laut,DTL GEORGE TOWN,5.421171,100.327677,Point,12000808.0,Hotel Royal,346.4,19.0,6.0,Within 400 m,False
+school_0376,School,"Sekolah Jenis Kebangsaan (Cina) Keong Hoe, Sungai Dua",Timur Laut,DTL MUKIM 13,5.346576,100.294736,Point,12001497.0,SJK (C) Keong Hoe,82.0,19.3,18.6,Within 400 m,False
+school_0377,School,SMK Sungai Batu,Barat Daya,DBD MUKIM 11,5.287557,100.241156,Point,12001773.0,SMK Teluk Kumbar,110.4,7.2,45.7,Within 400 m,False
+school_0378,School,SK Sungai Batu,Barat Daya,DBD MUKIM 11,5.288935,100.241734,Point,12001773.0,SMK Teluk Kumbar,372.0,29.5,45.7,Within 400 m,False
+school_0379,School,SMK Bayan Lepas,Barat Daya,DBD MUKIM 11,5.285785,100.25792,Point,12001152.0,Jejantas SMK Bayan Lepas,244.4,24.2,9.6,Within 400 m,False
+school_0380,School,SMK Batu Maung,Barat Daya,DBD MUKIM 12,5.282281,100.285554,Point,12001146.0,SMK Batu Maung,148.7,50.1,34.4,Within 400 m,False
+school_0381,School,SJK (C) Sum Sun 三山华文小学,Timur Laut,DTL GEORGE TOWN,5.403667,100.314746,Point,12001073.0,Klinik Kesihatan Jalan Perak,170.9,24.5,6.7,Within 400 m,False
+school_0382,School,Sekolah Jenis Kebangsaan Tamil Azad,Timur Laut,DTL GEORGE TOWN,5.433032,100.296701,Point,12000371.0,(M1) Hospital Adventist,1162.3,30.1,15.9,Beyond 400 m,False
+school_0383,School,School 383,Seberang Perai Selatan,SPS MUKIM 14,5.282006,100.474614,Point,12002329.0,Masjid Simpang Empat,406.7,5.1,15.9,Beyond 400 m,False
+school_0384,School,Sekolah Kebangsaan Jalan Hamilton,Timur Laut,DTL GEORGE TOWN,5.398888,100.305843,Point,12000537.0,Taman Hutchings,350.7,26.9,39.9,Within 400 m,False
+school_0385,School,SJK (T) Ladang Transkrian,Seberang Perai Selatan,SPS MUKIM 9,5.147445,100.485122,Point,12000441.0,Kampung Haji Osman,2340.2,32.1,26.1,Beyond 400 m,False
+school_0386,School,SMK Sungai Acheh,Seberang Perai Selatan,SPS MUKIM 9,5.149259,100.460528,Point,12000269.0,Taman Seri Acheh,1699.8,56.9,42.0,Beyond 400 m,False
+school_0387,School,Stonyhurst International School Penang,Timur Laut,DTL TANJONG PINANG,5.460462,100.310055,Point,12001660.0,Flat Uda,492.7,61.3,15.5,Beyond 400 m,False
+school_0388,School,Sekolah Rendah Jenis Kebangsaan (Cina) Shih Chung Pusat,Timur Laut,DTL GEORGE TOWN,5.419257,100.336286,Point,12001920.0,Love Lane,117.8,21.9,8.6,Within 400 m,False
+school_0389,School,Sekolah Menengah Kebangsaan (Lelaki) Methodist,Timur Laut,DTL GEORGE TOWN,5.411077,100.306344,Point,12000074.0,SMK (L) Methodist,128.7,64.0,11.5,Within 400 m,False
+school_0390,School,Sekolah Jenis Kebangsaan (Cina) Union,Timur Laut,DTL GEORGE TOWN,5.422792,100.321344,Point,12003016.0,1926 Heritage Hotel,242.5,24.0,13.6,Within 400 m,False
+school_0391,School,Sekolah Jenis Kebangsaan (Cina) Eng Chuan,Timur Laut,DTL GEORGE TOWN,5.408642,100.328839,Point,12001941.0,Pasar Lebuh Cecil,212.1,32.9,10.4,Within 400 m,False
+school_0392,School,Sekolah Kebangsaan Jelutong Barat,Timur Laut,DTL JELUTONG,5.388381,100.311005,Point,12002319.0,Balai Polis Jelutong,370.3,49.0,34.1,Within 400 m,False
+school_0393,School,Convent Green Lane,Timur Laut,DTL GEORGE TOWN,5.396811,100.304323,Point,12000869.0,SMK Convent Green Lane,418.4,45.4,19.9,Beyond 400 m,False
+school_0394,School,Sekolah Jenis Kebangsaan (Cina) Moh Ghee Cawangan,Timur Laut,DTL GEORGE TOWN,5.40048,100.321567,Point,12000576.0,SJK(C) MOH GHEE Cawangan,74.8,17.1,5.4,Within 400 m,False
+school_0395,School,Sekolah Kebangsaan Tan Sri P. Ramlee,Timur Laut,DTL GEORGE TOWN,5.411268,100.327571,Point,12000530.0,Jalan Gurdwara,148.8,35.3,23.8,Within 400 m,False
+school_0396,School,Sekolah Jenis Kebangsaan (C) Hu Yew Seah,Timur Laut,DTL GEORGE TOWN,5.416681,100.326904,Point,12000356.0,TM Point,286.3,14.7,14.2,Within 400 m,False
+school_0397,School,Sekolah Jenis Kebangsaan (Tamil) Rajaji,Timur Laut,DTL GEORGE TOWN,5.405209,100.289551,Point,12001374.0,Nasi Kandar Salam,99.9,19.1,5.2,Within 400 m,False
+school_0398,School,Sekolah Kebangsaan Sri Aman,Timur Laut,DTL MUKIM 13,5.399672,100.286977,Point,12000624.0,Flat Kampung Melayu,122.4,5.0,7.5,Within 400 m,False
+school_0399,School,Sekolah Kebangsaan Convent Pulau Tikus,Timur Laut,DTL GEORGE TOWN,5.434248,100.309648,Point,12000727.0,Gurney Plaza,182.0,40.2,19.6,Within 400 m,False
+school_0400,School,Sekolah Kebangsaan Francis Light,Timur Laut,DTL GEORGE TOWN,5.416036,100.314297,Point,12001079.0,Astaka Padang Brown,359.1,44.7,10.2,Within 400 m,False
+school_0401,School,Sekolah Kebangsaan Dato Keramat,Timur Laut,DTL GEORGE TOWN,5.416286,100.315008,Point,12001080.0,Koperasi Melayu Pulau Pinang,421.1,29.2,10.5,Beyond 400 m,False
+school_0402,School,Sekolah Menengah Agama Tarbiah Islamiah (SABK),Timur Laut,DTL GEORGE TOWN,5.415172,100.314591,Point,12001079.0,Astaka Padang Brown,250.8,28.1,10.2,Within 400 m,False
+school_0403,School,Sekolah Jenis Kebangsaan (Cina) Tong Sian,Timur Laut,DTL GEORGE TOWN,5.412205,100.317285,Point,12000449.0,SMK/SK Convent Dato Keramat,90.5,53.2,19.7,Within 400 m,False
+school_0404,School,Sekolah Kebangsaan Batu Lanchang,Timur Laut,DTL GEORGE TOWN,5.399551,100.300157,Point,12002022.0,SK Batu Lanchang,106.0,53.4,4.7,Within 400 m,False
+school_0405,School,Sekolah Jenis Kebangsaan (Cina) Sin Kang,Timur Laut,DTL MUKIM 13,5.400403,100.291272,Point,12001816.0,Apartmen Desa Mawar,106.2,52.8,21.9,Within 400 m,False
+school_0406,School,Sekolah Menengah Kebangsaan (Perempuan) Methodist,Timur Laut,DTL GEORGE TOWN,5.419154,100.321803,Point,12000831.0,Ayam Garam Macalister,290.0,32.0,4.0,Within 400 m,False
+school_0407,School,SJK (C) Yeok Hua 新路头育华华文小学,Barat Daya,DBD MUKIM D,5.352776,100.201554,Point,12000738.0,SJK (C) Yeok Hua,57.4,25.0,7.0,Within 400 m,False
+school_0408,School,SK Tanjong Tokong,Timur Laut,DTL TANJONG TOKONG,5.45878,100.307119,Point,12001658.0,Lotus Tanjung Pinang II,44.8,55.0,27.2,Within 400 m,False
+school_0409,School,Sekolah Agama Rakyat Al-Hidayah Lahar Tiang,Seberang Perai Utara,SPU MUKIM 3,5.549025,100.479092,Point,12002966.0,SMK Sains Kepala Batas,4055.1,30.2,45.1,Beyond 400 m,False
+school_0410,School,SJK (T) Palaniandy,Seberang Perai Utara,SPU KEPALA BATAS,5.52049,100.427144,Point,12000386.0,Pasaraya Longwan,126.4,16.9,13.2,Within 400 m,False
+school_0411,School,Sekolah Menengah Kebangsaan Westlands,Timur Laut,DTL GEORGE TOWN,5.422248,100.319523,Point,12003016.0,1926 Heritage Hotel,324.0,25.9,13.6,Within 400 m,False
+school_0412,School,Sekolah Kebangsaan Permatang Damar Laut,Barat Daya,DBD MUKIM 12,5.2798,100.272767,Point,12001138.0,SK Permatang Damar Laut,167.3,30.2,5.3,Within 400 m,False
+school_0413,School,Sekolah Kebangsaan Bayan Lepas,Barat Daya,DBD MUKIM 12,5.296492,100.26096,Point,12000411.0,SK Bayan Lepas,113.1,39.1,13.9,Within 400 m,False
+school_0414,School,SJK (T) Ladang Sempah,Seberang Perai Selatan,SPS MUKIM 6,5.185484,100.509438,Point,12000925.0,Taman Jawi Jaya,3097.0,22.3,20.8,Beyond 400 m,False
+school_0415,School,KAFA Masjid Sungai Kechil,Seberang Perai Selatan,SPS MUKIM 8,5.161938,100.515938,Point,12000916.0,Pasaraya C-MART,5030.1,65.5,26.9,Beyond 400 m,False
+school_0416,School,SK Sungai Kechil,Seberang Perai Selatan,SPS MUKIM 7,5.165133,100.512622,Point,12000916.0,Pasaraya C-MART,4939.4,62.4,26.9,Beyond 400 m,False
+school_0417,School,SJK (T) Ladang Krian,Seberang Perai Selatan,SPS MUKIM 7,5.164818,100.498731,Point,12000916.0,Pasaraya C-MART,2925.5,32.1,26.9,Beyond 400 m,False
+school_0418,School,Pusat Jagaan Suria,Barat Daya,DBD MUKIM 10,5.334773,100.27412,Point,12001004.0,SK Seri Relau,311.6,43.0,10.9,Within 400 m,False
+school_0419,School,Sekolah Jenis Kebangsaan (Cina) Aik Hua,Barat Daya,DBD MUKIM 10,5.334598,100.274764,Point,12001004.0,SK Seri Relau,158.6,53.9,10.9,Within 400 m,False
+school_0420,School,School 420,Seberang Perai Selatan,SPS MUKIM 9,5.145645,100.465822,Point,12000269.0,Taman Seri Acheh,534.5,39.0,42.0,Beyond 400 m,False
+school_0421,School,SMA Tasik Junjong,Seberang Perai Tengah,SPT MUKIM 16,5.295629,100.526636,Point,12002577.0,Masjid Jamek Tasik Junjung,235.7,50.8,23.4,Within 400 m,False
+school_0422,School,School 422,Seberang Perai Selatan,SPS MUKIM 2,5.281577,100.520932,Point,12001680.0,Muda Paper I,585.2,25.1,13.5,Beyond 400 m,False
+school_0423,School,SMK Tanjong Bunga,Timur Laut,DTL TANJONG BUNGAH,5.457719,100.292977,Point,12000080.0,Sekolah Ikthisas Tentera Udara,552.1,10.2,65.1,Beyond 400 m,False
+school_0424,School,Sekolah Menengah Kebangsaan Pendidikan Khas (SMKPK) Bumbong Lima,Seberang Perai Utara,SPU MUKIM 3,5.550268,100.447721,Point,12000999.0,Kemas Kepala Batas,3193.8,45.8,18.7,Beyond 400 m,False
+school_0425,School,School 425,Seberang Perai Utara,SPU MUKIM 1,5.572205,100.339706,Point,12002637.0,Hub Kuala Muda,1166.8,15.3,21.8,Beyond 400 m,False
+school_0426,School,School 426,Seberang Perai Utara,SPU MUKIM 1,5.56987,100.342442,Point,12002637.0,Hub Kuala Muda,705.3,40.9,21.8,Beyond 400 m,False
+school_0427,School,School 427,Barat Daya,DBD MUKIM G,5.33087,100.216199,Point,12000662.0,Taman Desa Genting,128.2,56.8,30.9,Within 400 m,False
+school_0428,School,SJK (C) Pulau Betong,Barat Daya,DBD MUKIM 7,5.30369,100.200035,Point,12000653.0,Pekan Pulau Betong,144.6,45.6,16.1,Within 400 m,False
+school_0429,School,Sekolah Menengah Kebangsaan St. George Balik Pulau,Barat Daya,DBD MUKIM 4,5.353932,100.236864,Point,12001886.0,SJK (C) Chong Teik,489.9,62.5,14.9,Beyond 400 m,False
+school_0430,School,School 430,Seberang Perai Tengah,SPT MUKIM 5,5.400594,100.464225,Point,12000777.0,Masjid Kubang Semang,212.6,2.8,9.1,Within 400 m,False
+school_0431,School,School 431,Seberang Perai Tengah,SPT MUKIM 20,5.388841,100.464079,Point,12000774.0,Permatang Tok Elong,133.4,37.9,7.3,Within 400 m,False
+school_0432,School,School 432,Seberang Perai Tengah,SPT MUKIM 19,5.413031,100.49506,Point,12000778.0,SK Penanti,4023.4,87.5,15.5,Beyond 400 m,False
+school_0433,School,School 433,Seberang Perai Tengah,SPT MUKIM 19,5.412563,100.490193,Point,12000778.0,SK Penanti,3269.2,15.6,15.5,Beyond 400 m,False
+school_0434,School,School 434,Seberang Perai Utara,SPU MUKIM 13,5.447226,100.472506,Point,12001553.0,Simpang Lahar Yooi,3550.9,10.5,13.0,Beyond 400 m,False
+school_0435,School,School 435,Seberang Perai Tengah,SPT MUKIM 3,5.412081,100.462972,Point,12002364.0,Pejabat Pos Penanti,895.3,29.6,4.1,Beyond 400 m,False
+school_0436,School,School 436,Seberang Perai Utara,SPU MUKIM 12,5.498769,100.518345,Point,12000643.0,SK Kg Selamat,123.0,76.3,7.2,Within 400 m,False
+school_0437,School,School 437,Seberang Perai Utara,SPU MUKIM 13,5.456376,100.476295,Point,12001553.0,Simpang Lahar Yooi,2825.6,22.2,13.0,Beyond 400 m,False
+school_0438,School,Pusat Pendidikan Al-Ikram,Seberang Perai Utara,SPU MUKIM 12,5.486472,100.483198,Point,12000493.0,Taman Gelugor Indah,274.6,50.2,30.2,Within 400 m,False
+school_0439,School,School 439,Seberang Perai Utara,SPU MUKIM 8,5.485174,100.45243,Point,12001559.0,Pokok Sena,613.2,19.7,51.9,Beyond 400 m,False
+school_0440,School,SK Ara Rendang,Seberang Perai Utara,SPU MUKIM 11,5.484024,100.452837,Point,12001559.0,Pokok Sena,528.0,48.3,51.9,Beyond 400 m,False
+school_0441,School,Sekolah Menengah Agama Al-Ahmadiah Al-Ijtimaiah,Seberang Perai Tengah,SPT MUKIM 7,5.366032,100.445258,Point,12000957.0,Pusat Perniagaan Padang Lalang,204.2,21.0,16.1,Within 400 m,False
+school_0442,School,SJK (T) Sungai Bakap,Seberang Perai Selatan,SPS SUNGAI BAKAP,5.223711,100.499699,Point,12002336.0,Masjid Lama Sungai Bakap,685.2,31.9,7.6,Beyond 400 m,False
+school_0443,School,School 443,Seberang Perai Utara,SPU MUKIM 10,5.472624,100.404889,Point,12001043.0,SMK Permatang Tok Jaya,530.0,10.3,9.9,Beyond 400 m,False
+school_0444,School,SK Sungai Setar,Seberang Perai Selatan,SPS MUKIM 10,5.147755,100.432571,Point,12000269.0,Taman Seri Acheh,4754.3,36.9,42.0,Beyond 400 m,False
+school_0445,School,Sekolah Menengah Kebangsaan Agama Perempuan Al Mashoor,Timur Laut,DTL GEORGE TOWN,5.422801,100.329695,Point,,,,53.3,,No route in candidate network - review,False
+school_0446,School,SJK (C) Poay Wah,Timur Laut,DTL TANJONG BUNGAH,5.462825,100.281962,Point,12000817.0,Kondominium Azuria,315.6,21.8,21.6,Within 400 m,False
+school_0447,School,SK Taman Inderawasih,Seberang Perai Tengah,SPT PRAI,5.390384,100.385623,Point,12000390.0,Taman Inderawasih,574.6,42.4,46.3,Beyond 400 m,False
+school_0448,School,Tadika Graduan Kualiti,Seberang Perai Selatan,SPS MUKIM 6,5.196985,100.501452,Point,12000925.0,Taman Jawi Jaya,1127.8,65.3,20.8,Beyond 400 m,False
+school_0449,School,Tadika Interaktif,Seberang Perai Selatan,SPS MUKIM 4,5.232546,100.495456,Point,12001486.0,(M2) Taman Seri Aman,640.8,26.5,10.8,Beyond 400 m,False
+school_0450,School,Tabika Perpaduan,Timur Laut,DTL MUKIM 13,5.388908,100.276954,Point,12001970.0,Lone Pine Club,272.5,36.9,57.7,Within 400 m,False
+school_0451,School,Sekolah Pendidikan Islam Kampung Perlis,Barat Daya,DBD MUKIM I,5.318495,100.205198,Point,12000629.0,Lrg Kpg Perlis 3,246.5,33.1,28.4,Within 400 m,False
+school_0452,School,Tadika Intan Gemilang Taman Perda Indah,Seberang Perai Utara,SPU MUKIM 12,5.511486,100.502012,Point,12001852.0,Taman Perda Indah,304.6,19.1,9.6,Within 400 m,False
+school_0453,School,Phoy Tay Private High School,Timur Laut,DTL GEORGE TOWN,5.437811,100.305136,Point,12000102.0,SMJK Phor Tay,30.1,50.9,7.6,Within 400 m,False
+school_0454,School,SMKA Sheikh Tahir Jalaluddin,Seberang Perai Tengah,SPT MUKIM 18,5.397608,100.492755,Point,12000778.0,SK Penanti,4617.6,88.9,15.5,Beyond 400 m,False
+school_0455,School,School 455,Seberang Perai Selatan,SPS MUKIM 10,5.141435,100.42081,Point,12000269.0,Taman Seri Acheh,6683.9,52.7,42.0,Beyond 400 m,False
+hospital_0001,Hospital,iTCM Healthcare Centre,Timur Laut,DTL GEORGE TOWN,5.424023,100.317763,Point,12001086.0,Wat Bhuparam,236.2,36.6,22.2,Within 400 m,False
+hospital_0002,Hospital,Pantai Integrated Rehab (Satellite),Barat Daya,DBD MUKIM 12,5.322981,100.283136,Point,12000888.0,Hub Giant Bayan Baru,259.5,24.9,5.4,Within 400 m,False
+hospital_0003,Hospital,AVERY TAN PHYSIO & REHAB CENTRE,Seberang Perai Utara,SPU BUTTERWORT,5.441461,100.386696,Point,12000098.0,Pasar Awam,715.2,18.7,13.4,Beyond 400 m,False
+hospital_0004,Hospital,L Dental Clinic,Timur Laut,DTL AYER ITAM,5.404276,100.287961,Point,12001373.0,Restoran Nasi Kandar Salam,108.6,25.9,1.7,Within 400 m,False
+hospital_0005,Hospital,Klinik Pergigian L,Timur Laut,DTL MUKIM 13,5.388758,100.284183,Point,12000048.0,Petronas Farlim,0.0,10.0,14.5,Within 400 m,False
+hospital_0006,Hospital,Klinik Pergigian L,Seberang Perai Tengah,SPT MUKIM 11,5.351198,100.439355,Point,12002339.0,Kampung Tengah Kebun Sireh,619.3,20.8,14.8,Beyond 400 m,False
+hospital_0007,Hospital,Spinecare Chiropractic Penang,Barat Daya,DBD MUKIM 12,5.335162,100.308333,Point,12002060.0,Hadapan Queensbay Mall,621.9,56.4,38.5,Beyond 400 m,False
+hospital_0008,Hospital,Optimax Eye Specialist Hospital,Timur Laut,DTL GEORGE TOWN,5.39902,100.304261,Point,12000870.0,Restoran McDonald,328.2,16.8,20.9,Within 400 m,False
+hospital_0009,Hospital,Island Hospital,Timur Laut,DTL GEORGE TOWN,5.424135,100.314867,Point,12001086.0,Wat Bhuparam,451.6,14.4,22.2,Beyond 400 m,False
+hospital_0010,Hospital,Gleneagles Pulau Pinang,Timur Laut,DTL GEORGE TOWN,5.426835,100.319938,Point,12000972.0,Gleneagles II,90.1,56.3,9.0,Within 400 m,False
+hospital_0011,Hospital,Hospital Pulau Pinang,Timur Laut,DTL GEORGE TOWN,5.417032,100.311487,Point,12003627.0,Hospital Pulau Pinang,157.0,11.9,23.8,Within 400 m,False
+hospital_0012,Hospital,Penang Adventist Hospital,Timur Laut,DTL GEORGE TOWN,5.431723,100.304855,Point,12000371.0,(M1) Hospital Adventist,389.7,23.7,15.9,Within 400 m,False
+hospital_0013,Hospital,Pusat Pakar Loh Guan Lye,Timur Laut,DTL GEORGE TOWN,5.420174,100.318085,Point,12000833.0,Hospital Loh Guan Lye,163.5,8.3,4.5,Within 400 m,False
+hospital_0014,Hospital,Pantai Hospital Penang,Barat Daya,DBD MUKIM 12,5.321402,100.282278,Point,12000888.0,Hub Giant Bayan Baru,253.6,47.7,5.4,Within 400 m,False
+hospital_0015,Hospital,Hospital Balik Pulau,Barat Daya,DBD MUKIM F,5.350301,100.232629,Point,12001567.0,Hospital Balik Pulau,115.1,24.9,10.5,Within 400 m,False
+hospital_0016,Hospital,Hospital Lam Wah Ee,Timur Laut,DTL JELUTONG,5.391196,100.304684,Point,12001643.0,Hospital Lam Wah Ee,245.4,7.7,19.8,Within 400 m,False
+hospital_0017,Hospital,Hospital Pakar Georgetown,Timur Laut,DTL GEORGE TOWN,5.402553,100.30355,Point,12000873.0,SMK Penang Free,226.8,23.7,7.4,Within 400 m,False
+hospital_0018,Hospital,Hospital Seberang Jaya,Seberang Perai Tengah,SPT MUKIM 1,5.39404,100.408205,Point,12001879.0,Hospital Seberang Jaya II,245.6,58.9,5.6,Within 400 m,False
+hospital_0019,Hospital,Hospital Bukit Mertajam,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.3592,100.463852,Point,12002541.0,SK Convent Bukit Mertajam,230.7,8.2,3.9,Within 400 m,False
+hospital_0020,Hospital,KPJ Penang Specialist Hospital,Seberang Perai Tengah,SPT MUKIM 7,5.369127,100.43449,Point,12002346.0,Bank Rakyat Perda,293.7,28.2,19.8,Within 400 m,False
+hospital_0021,Hospital,Bagan Specialist Centre,Seberang Perai Utara,SPU BUTTERWORT,5.409725,100.386088,Point,12001194.0,Taman Bagan,806.9,33.4,22.2,Beyond 400 m,False
+hospital_0022,Hospital,Hospital Sungai Bakap,Seberang Perai Selatan,SPS MUKIM 12,5.219318,100.497233,Point,12000275.0,Hospital Sungai Bakap,95.3,23.4,6.5,Within 400 m,False
+hospital_0023,Hospital,Sunway Medical Centre Penang,Seberang Perai Tengah,SPT MUKIM 1,5.395793,100.397035,Point,12002647.0,(M2) Pasar Seberang Jaya,123.2,38.0,13.6,Within 400 m,False
+hospital_0024,Hospital,Columbia Asia Hospital,Seberang Perai Selatan,SPS MUKIM 13,5.239174,100.436734,Point,12000281.0,SJK Tamil Valdor,7182.2,71.2,17.1,Beyond 400 m,False
+hospital_0025,Hospital,Hospital Kepala Batas,Seberang Perai Utara,SPU MUKIM 6,5.511315,100.438061,Point,12000252.0,Hospital Kepala Batas,308.6,5.8,36.0,Within 400 m,False
+hospital_0026,Hospital,Mount Miriam Cancer Hospital,Timur Laut,DTL TANJONG TOKONG,5.458784,100.300827,Point,12000289.0,Jalan Bintang,302.7,11.2,15.4,Within 400 m,False
+hospital_0027,Hospital,Hospital Kebajikan Kek Lok Si,Timur Laut,DTL AYER ITAM,5.401809,100.275538,Point,12000151.0,Kek Lok Si Temple,255.2,28.0,25.7,Within 400 m,False
+clinic_0001,Clinic,Klinik Desa Sungai Puyu,Seberang Perai Utara,SPU MUKIM 14,5.446041,100.396132,Point,12002392.0,Bengkel Kimpalan Sungai Puyu,361.1,23.2,20.6,Within 400 m,False
+clinic_0002,Clinic,Klinik Neoh (Neoh Clinic),Timur Laut,DTL MUKIM 13,5.338911,100.295359,Point,12001942.0,Kompleks Makanan,387.2,36.5,14.1,Within 400 m,False
+clinic_0003,Clinic,Klinik Munawar,Seberang Perai Tengah,SPT MUKIM 1,5.38459,100.402759,Point,12001388.0,SP Arena,409.9,28.9,19.2,Beyond 400 m,False
+clinic_0004,Clinic,Poliklinik Koay & Cheah,Seberang Perai Utara,SPU BUTTERWORT,5.426143,100.382518,Point,12001344.0,Petron Bagan Lalang,279.5,30.7,18.1,Within 400 m,False
+clinic_0005,Clinic,Pusat Rawatan Tradisional Cina XIAMEN,Seberang Perai Utara,SPU BUTTERWORT,5.426211,100.382534,Point,12001344.0,Petron Bagan Lalang,246.5,31.9,18.1,Within 400 m,False
+clinic_0006,Clinic,Northern Care Clinic,Timur Laut,DTL GEORGE TOWN,5.397723,100.328121,Point,12001946.0,Pangsapuri Ocean View,58.4,27.6,15.4,Within 400 m,False
+clinic_0007,Clinic,Pusat Rawatan Syifa,Seberang Perai Utara,SPU KEPALA BATAS,5.517906,100.425608,Point,12000385.0,Taman Aman Putra,57.9,36.3,19.4,Within 400 m,False
+clinic_0008,Clinic,Poliklinik Taman Wakaf,Seberang Perai Tengah,SPT MUKIM 4,5.403758,100.407627,Point,12001187.0,Taman Arowana Emas,1270.7,23.5,8.8,Beyond 400 m,False
+clinic_0009,Clinic,Klinik Harmoni,Seberang Perai Utara,SPU MUKIM 8,5.488695,100.457172,Point,12000502.0,Taman Sena Jaya 1,110.7,17.8,29.2,Within 400 m,False
+clinic_0010,Clinic,Klinik Desa Kampung Pertama,Seberang Perai Tengah,SPT MUKIM 4,5.392117,100.418032,Point,12001183.0,Klinik Desa Kampung Pertama,33.3,8.3,14.0,Within 400 m,False
+clinic_0011,Clinic,Klinik Rawatan Dr Mahmud,Seberang Perai Utara,SPU BUTTERWORT,5.398312,100.367546,Point,12002549.0,Maybank Butterworth,187.0,26.3,6.8,Within 400 m,False
+clinic_0012,Clinic,Poliklinik Ikhsan,Seberang Perai Tengah,SPT MUKIM 6,5.367153,100.427107,Point,12002366.0,Nashmir Perda,183.9,27.8,22.7,Within 400 m,False
+clinic_0013,Clinic,Clinic Bersatu,Timur Laut,DTL MUKIM 13,5.333692,100.2763,Point,12001004.0,SK Seri Relau,18.9,39.7,10.9,Within 400 m,False
+clinic_0014,Clinic,Clinic Singapore,Timur Laut,DTL MUKIM 13,5.334119,100.276108,Point,12001000.0,Kompleks Golden Triangle,307.2,22.7,32.3,Within 400 m,False
+clinic_0015,Clinic,Clinic Bistari,Timur Laut,DTL MUKIM 13,5.334651,100.275817,Point,,,,37.2,,No route in candidate network - review,False
+clinic_0016,Clinic,Clinic 016,Seberang Perai Utara,SPU BUTTERWORT,5.425708,100.376259,Point,12000089.0,Taman Bagan Jermal,134.8,26.6,23.0,Within 400 m,False
+clinic_0017,Clinic,Clinic Joseph,Seberang Perai Utara,SPU MUKIM 5,5.513351,100.405378,Point,12002548.0,Taman Permatang Sintok,55.4,30.0,34.3,Within 400 m,False
+clinic_0018,Clinic,Klinik Koh,Seberang Perai Utara,SPU BUTTERWORT,5.435044,100.385439,Point,12001353.0,Medan Selera Raja Uda,239.9,33.6,12.7,Within 400 m,False
+clinic_0019,Clinic,Poliklinik Teo 张百科药房,Seberang Perai Tengah,SPT MUKIM 11,5.361407,100.444841,Point,12002513.0,Taman Cempedak,237.8,19.3,0.9,Within 400 m,False
+clinic_0020,Clinic,Klinik Kesihatan Lebuh Mutri,Timur Laut,DTL GEORGE TOWN,5.420122,100.336033,Point,12001920.0,Love Lane,260.2,20.0,8.6,Within 400 m,False
+clinic_0021,Clinic,O2 Clinic Skin Specialist,Barat Daya,DBD MUKIM 12,5.338384,100.308411,Point,12002066.0,Putra Place,281.7,25.9,2.1,Within 400 m,False
+clinic_0022,Clinic,The Pearl,Timur Laut,DTL GEORGE TOWN,5.416599,100.339059,Point,12001917.0,Little India,43.1,11.7,29.8,Within 400 m,False
+clinic_0023,Clinic,Klinik Singapore,Timur Laut,DTL GEORGE TOWN,5.416003,100.339439,Point,12001916.0,Restoran Kapitan,101.9,9.0,29.1,Within 400 m,False
+clinic_0024,Clinic,Kinik Perdana,Timur Laut,DTL MUKIM 13,5.352318,100.301051,Point,12001503.0,USM (Jalan Sungai Dua),119.6,15.8,19.0,Within 400 m,False
+clinic_0025,Clinic,Klinik C.H. Ang,Seberang Perai Utara,SPU MUKIM 14,5.435469,100.389418,Point,12000932.0,Pusat Perniagaan Ong Yi How,126.3,31.7,17.9,Within 400 m,False
+clinic_0026,Clinic,Selva Klinik,Seberang Perai Utara,SPU MUKIM 14,5.430232,100.397399,Point,12000113.0,Pusat Perniagaan Taman Mesra,17.0,36.6,38.2,Within 400 m,False
+clinic_0027,Clinic,Poliklinik Chong & Su,Seberang Perai Tengah,SPT MUKIM 1,5.393636,100.403086,Point,12001995.0,Pangsapuri RPKN,235.5,10.8,8.3,Within 400 m,False
+clinic_0028,Clinic,Klinik 1 Utama,Seberang Perai Utara,SPU BUTTERWORT,5.433433,100.385446,Point,12001353.0,Medan Selera Raja Uda,102.1,21.7,12.7,Within 400 m,False
+clinic_0029,Clinic,O2 Clinic,Barat Daya,DBD MUKIM 10,5.33194,100.276249,Point,12001002.0,Kompleks Golden Triangle,0.0,17.2,34.0,Within 400 m,False
+clinic_0030,Clinic,Klinik Tan Dan Rakan Rakan,Seberang Perai Utara,SPU BUTTERWORT,5.406661,100.372316,Point,12000539.0,Pangsapuri Capri,86.9,6.4,21.8,Within 400 m,False
+clinic_0031,Clinic,Klinik Pakar Kanak-Kanak B'Worth,Seberang Perai Utara,SPU MUKIM 14,5.435464,100.388927,Point,12000932.0,Pusat Perniagaan Ong Yi How,15.3,27.7,17.9,Within 400 m,False
+clinic_0032,Clinic,Klinik Universiti,Timur Laut,DTL MUKIM 13,5.353821,100.304527,Point,12003137.0,Jalan Sungai Dua II,198.8,51.6,43.1,Within 400 m,False
+clinic_0033,Clinic,Klinik Health Plus,Timur Laut,DTL MUKIM 13,5.350327,100.297387,Point,12001500.0,Lotus Sungai Dua,76.7,31.0,17.0,Within 400 m,False
+clinic_0034,Clinic,klinik relau,Timur Laut,DTL MUKIM 13,5.331251,100.280861,Point,12000438.0,Public Bank Jalan Relau,136.3,50.8,16.8,Within 400 m,False
+clinic_0035,Clinic,Klinik Bersatu,Seberang Perai Utara,SPU BUTTERWORT,5.430979,100.384258,Point,12001348.0,Jalan Raja Uda I,222.6,17.7,23.8,Within 400 m,False
+clinic_0036,Clinic,Klinik Utama,Seberang Perai Tengah,SPT MUKIM 11,5.363847,100.444963,Point,12002527.0,Sri Rambai,49.8,18.5,14.9,Within 400 m,False
+clinic_0037,Clinic,Klinik Ria Dr. Foo,Seberang Perai Tengah,SPT MUKIM 11,5.363906,100.444974,Point,12002527.0,Sri Rambai,49.8,20.8,14.9,Within 400 m,False
+clinic_0038,Clinic,Guan Klinik,Timur Laut,DTL AYER ITAM,5.402109,100.278291,Point,12000057.0,Pekan Air Itam,27.5,13.3,10.7,Within 400 m,False
+clinic_0039,Clinic,Clinic 039,Barat Daya,DBD MUKIM 1,5.457133,100.209089,Point,12001758.0,Flat Hassan Abbas,43.7,35.6,7.0,Within 400 m,False
+clinic_0040,Clinic,O2 Clinic,Timur Laut,DTL AYER ITAM,5.404724,100.288464,Point,12001373.0,Restoran Nasi Kandar Salam,67.4,13.6,1.7,Within 400 m,False
+clinic_0041,Clinic,Klinik Komuniti Jelutong,Timur Laut,DTL GEORGE TOWN,5.400993,100.322555,Point,12000579.0,Peugeot Center,61.6,22.5,14.4,Within 400 m,False
+clinic_0042,Clinic,Klinik Sri Pinang dan Surgeri,Timur Laut,DTL GEORGE TOWN,5.398636,100.328838,Point,12001946.0,Pangsapuri Ocean View,100.7,35.4,15.4,Within 400 m,False
+clinic_0043,Clinic,Clinic 043,Barat Daya,DBD MUKIM 6,5.351362,100.238596,Point,12002115.0,Terminal Bas Balik Pulau,115.9,50.1,39.7,Within 400 m,False
+clinic_0044,Clinic,Clinic 044,Timur Laut,DTL TANJONG BUNGAH,5.465434,100.291126,Point,12001563.0,Petron Jalan Sungai Kelian,119.2,38.1,13.7,Within 400 m,False
+clinic_0045,Clinic,Clinic 045,Barat Daya,DBD MUKIM 12,5.324605,100.291208,Point,12000846.0,Jalan Mahsuri,520.8,15.7,39.4,Beyond 400 m,False
+clinic_0046,Clinic,Medicare Clinic,Seberang Perai Utara,SPU BUTTERWORT,5.427862,100.386211,Point,12001349.0,Jalan Raja Uda I,401.0,22.7,18.5,Beyond 400 m,False
+clinic_0047,Clinic,Healthy Clinic,Timur Laut,DTL MUKIM 13,5.389464,100.284254,Point,12000048.0,Petronas Farlim,95.9,18.3,14.5,Within 400 m,False
+clinic_0048,Clinic,Klinik Mediviron,Timur Laut,DTL MUKIM 13,5.39043,100.284175,Point,12000048.0,Petronas Farlim,250.4,25.9,14.5,Within 400 m,False
+clinic_0049,Clinic,Intan Poliklinik,Barat Daya,DBD MUKIM 12,5.285323,100.281734,Point,12000242.0,Balai Polis Batu Maung,463.1,18.4,24.7,Beyond 400 m,False
+clinic_0050,Clinic,Klinik Tenang,Seberang Perai Tengah,SPT MUKIM 15,5.347957,100.472433,Point,12000599.0,Pasar Awam Kampung Baru,173.3,38.9,25.6,Within 400 m,False
+clinic_0051,Clinic,Klinik Desa Sungai Bakau,Seberang Perai Selatan,SPS MUKIM 10,5.125499,100.41938,Point,12000266.0,Jalan Besar,6290.1,46.2,20.1,Beyond 400 m,False
+clinic_0052,Clinic,Klinik Desa Tasek,Seberang Perai Selatan,SPS MUKIM 1,5.284889,100.518694,Point,12001681.0,Muda Paper II,135.6,36.4,9.8,Within 400 m,False
+clinic_0053,Clinic,Pusat Sejahtera USM,Seberang Perai Selatan,SPS MUKIM 9,5.146045,100.490606,Point,12000441.0,Kampung Haji Osman,3113.5,35.7,26.1,Beyond 400 m,False
+clinic_0054,Clinic,Kelinik Ratna,Barat Daya,DBD BALIK PULAU,5.350341,100.234686,Point,12002281.0,AADK Pekan Kongsi,0.0,15.9,9.7,Within 400 m,False
+clinic_0055,Clinic,Klinik Koeh,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.363911,100.462454,Point,12002542.0,SJK(C) Jit Sin,48.3,23.2,3.5,Within 400 m,False
+clinic_0056,Clinic,Pusat Haemodialisis Zakat,Seberang Perai Utara,SPU MUKIM 12,5.483884,100.490705,Point,12003000.0,Klinik Kesihatan Tasek Gelugor,67.2,27.8,14.5,Within 400 m,False
+clinic_0057,Clinic,Klinik Impiana,Seberang Perai Utara,SPU MUKIM 6,5.515973,100.430686,Point,12001284.0,Kompleks Dato Kailan,170.1,20.8,20.9,Within 400 m,False
+clinic_0058,Clinic,Klinik Pakar Kanak-Kanak Oh,Seberang Perai Tengah,SPT MUKIM 7,5.36644,100.437907,Point,12002345.0,TM Point Perda,293.6,40.0,22.5,Within 400 m,False
+clinic_0059,Clinic,Klinik Caring,Seberang Perai Tengah,SPT MUKIM 15,5.33211,100.485905,Point,12002588.0,Taman Selesa,914.9,10.4,20.4,Beyond 400 m,False
+clinic_0060,Clinic,Klinik Sri Rambai,Seberang Perai Tengah,SPT MUKIM 11,5.363383,100.444572,Point,12002527.0,Sri Rambai,74.4,17.0,14.9,Within 400 m,False
+clinic_0061,Clinic,Precise Rehab Georgetown,Timur Laut,DTL GEORGE TOWN,5.416795,100.326496,Point,12000356.0,TM Point,272.4,14.6,14.2,Within 400 m,False
+clinic_0062,Clinic,Poliklinik Khoo,Timur Laut,DTL JELUTONG,5.397663,100.319332,Point,12000573.0,Maybank Jelutong,37.8,17.8,10.9,Within 400 m,False
+clinic_0063,Clinic,Jabatan Pesakit Luar Hospital Bukit Mertajam,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.360324,100.464311,Point,12002541.0,SK Convent Bukit Mertajam,167.6,26.0,3.9,Within 400 m,False
+clinic_0064,Clinic,Renal Link Dialysis Centre Penang,Timur Laut,DTL JELUTONG,5.392593,100.313375,Point,12001069.0,Asrama Munshi,79.7,15.5,9.1,Within 400 m,False
+clinic_0065,Clinic,Klinik Bersatu,Timur Laut,DTL JELUTONG,5.388998,100.313219,Point,12000567.0,Pekan Jelutong,49.8,13.1,5.3,Within 400 m,False
+clinic_0066,Clinic,O2 Klinik,Timur Laut,DTL JELUTONG,5.392342,100.307354,Point,12001642.0,Mewah Court,160.9,9.1,14.6,Within 400 m,False
+clinic_0067,Clinic,Klinik Zainal,Barat Daya,DBD MUKIM 12,5.337122,100.298556,Point,12001437.0,Ayamas Sg. Nibong,203.2,35.3,21.9,Within 400 m,False
+clinic_0068,Clinic,I-Care Poliklinik Dewasa & Kanak-Kanak,Barat Daya,DBD MUKIM 12,5.340869,100.303313,Point,12000079.0,Taman Pantai Jerejak,354.5,28.7,21.8,Within 400 m,False
+clinic_0069,Clinic,Island Klinik,Timur Laut,DTL GEORGE TOWN,5.382612,100.304315,Point,12000473.0,Jalan Delima,274.7,11.2,18.4,Within 400 m,False
+clinic_0070,Clinic,Klink Bersatu Georgetown,Timur Laut,DTL GEORGE TOWN,5.407366,100.333391,Point,12000012.0,Apartmen Sri Saujana,0.0,30.0,13.9,Within 400 m,False
+clinic_0071,Clinic,Klink 1 Utama,Timur Laut,DTL AYER ITAM,5.40161,100.277399,Point,12000057.0,Pekan Air Itam,198.9,16.1,10.7,Within 400 m,False
+clinic_0072,Clinic,Klinik Kesihatan Ibu dan Anak Taman Tun Sardon,Timur Laut,DTL GLUGOR,5.368618,100.305543,Point,12000016.0,Astaka Taman Tun Sardon,125.3,13.6,13.4,Within 400 m,False
+clinic_0073,Clinic,Hyperbaric Clinic,Timur Laut,DTL GEORGE TOWN,5.41763,100.320346,Point,12000832.0,Tropicana Hotel,25.5,13.1,8.8,Within 400 m,False
+clinic_0074,Clinic,KLINIK ANDA POKOK SENA 24JAM,Seberang Perai Utara,SPU MUKIM 8,5.488838,100.457174,Point,12000502.0,Taman Sena Jaya 1,114.6,11.9,29.2,Within 400 m,False
+clinic_0075,Clinic,Klinik Cheng Ghee,Timur Laut,DTL JELUTONG,5.38775,100.312533,Point,12000566.0,Pekan Jelutong,57.6,14.8,24.2,Within 400 m,False
+clinic_0076,Clinic,Klinik Lim Siew Kim,Timur Laut,DTL JELUTONG,5.388769,100.312682,Point,12000567.0,Pekan Jelutong,46.8,15.6,5.3,Within 400 m,False
+clinic_0077,Clinic,Klinik Salahudin,Timur Laut,DTL JELUTONG,5.388817,100.312688,Point,12000567.0,Pekan Jelutong,46.8,12.0,5.3,Within 400 m,False
+clinic_0078,Clinic,EC Clinic,Seberang Perai Tengah,SPT MUKIM 1,5.398123,100.400078,Point,12001830.0,Prudential,215.3,23.7,2.5,Within 400 m,False
+clinic_0079,Clinic,Burma Klinik,Timur Laut,DTL GEORGE TOWN,5.432404,100.311029,Point,12000367.0,Belissa Row,143.2,14.7,8.0,Within 400 m,False
+clinic_0080,Clinic,Luke Klinik,Timur Laut,DTL GEORGE TOWN,5.432379,100.311076,Point,12000367.0,Belissa Row,143.2,18.2,8.0,Within 400 m,False
+clinic_0081,Clinic,Klinik Koay,Timur Laut,DTL GEORGE TOWN,5.432042,100.31161,Point,12000724.0,Pangsapuri Festival,198.4,17.6,27.4,Within 400 m,False
+clinic_0082,Clinic,Klinik Psikiatri,Timur Laut,DTL GEORGE TOWN,5.415266,100.312147,Point,12000077.0,Masjid Jamek Shaikh Eusoff,289.3,13.9,3.6,Within 400 m,False
+clinic_0083,Clinic,Klinik Metadon,Timur Laut,DTL GEORGE TOWN,5.415211,100.312109,Point,12000077.0,Masjid Jamek Shaikh Eusoff,289.3,8.5,3.6,Within 400 m,False
+clinic_0084,Clinic,Trauma & Kecemasan,Timur Laut,DTL GEORGE TOWN,5.416346,100.310196,Point,12003627.0,Hospital Pulau Pinang,203.8,18.4,23.8,Within 400 m,False
+clinic_0085,Clinic,Klinik Kesihatan Bukit Jambul,Timur Laut,DTL MUKIM 13,5.336501,100.289433,Point,12000294.0,Taman Bukit Jambul,319.4,24.9,28.2,Within 400 m,False
+clinic_0086,Clinic,Klinik Tropika,Timur Laut,DTL GEORGE TOWN,5.424551,100.319608,Point,12000360.0,Chinese Recreation Club,117.5,20.5,5.7,Within 400 m,False
+clinic_0087,Clinic,Poliklinik Teluk Kumbar,Barat Daya,DBD MUKIM 9,5.293136,100.231629,Point,12002105.0,7-Eleven Teluk Kumbar,153.2,14.6,6.2,Within 400 m,False
+clinic_0088,Clinic,Klinik Bersatu,Timur Laut,DTL AYER ITAM,5.402041,100.276693,Point,12000151.0,Kek Lok Si Temple,84.7,18.9,25.7,Within 400 m,False
+clinic_0089,Clinic,Koe Klinik,Timur Laut,DTL GEORGE TOWN,5.430055,100.312816,Point,12000365.0,Hardware Pulau Tikus,10.8,23.7,13.3,Within 400 m,False
+clinic_0090,Clinic,Klinik Joel,Timur Laut,DTL GEORGE TOWN,5.432175,100.310242,Point,12000367.0,Belissa Row,14.6,25.7,8.0,Within 400 m,False
+clinic_0091,Clinic,Geh Plastic & Cosmetic Surgery,Timur Laut,DTL GEORGE TOWN,5.432456,100.311965,Point,12000724.0,Pangsapuri Festival,131.3,20.7,27.4,Within 400 m,False
+clinic_0092,Clinic,Singapore Children Specialist Centre,Timur Laut,DTL GEORGE TOWN,5.432473,100.311921,Point,12000724.0,Pangsapuri Festival,131.3,25.5,27.4,Within 400 m,False
+clinic_0093,Clinic,Poliklinik Bagan,Timur Laut,DTL GEORGE TOWN,5.403906,100.30863,Point,12002222.0,Taman Free School,75.7,15.3,16.9,Within 400 m,False
+clinic_0094,Clinic,Klinik Singapore,Timur Laut,DTL GEORGE TOWN,5.40344,100.308705,Point,12002222.0,Taman Free School,163.6,24.4,16.9,Within 400 m,False
+clinic_0095,Clinic,Klinik Sentosa,Timur Laut,DTL JELUTONG,5.386099,100.312536,Point,12000582.0,(M3) Pejabat Pos Jelutong,100.0,21.6,8.7,Within 400 m,False
+clinic_0096,Clinic,KLINIK KARE-LINE,Barat Daya,DBD MUKIM 12,5.288459,100.281329,Point,12000243.0,Balai Polis Batu Maung,144.1,23.6,22.0,Within 400 m,False
+clinic_0097,Clinic,KLINIK SINGAPORE,Barat Daya,DBD MUKIM 12,5.288339,100.28151,Point,12000243.0,Balai Polis Batu Maung,130.8,16.3,22.0,Within 400 m,False
+clinic_0098,Clinic,Klinik Menara,Seberang Perai Selatan,SPS MUKIM 13,5.236943,100.443978,Point,12000281.0,SJK Tamil Valdor,6183.2,17.9,17.1,Beyond 400 m,False
+clinic_0099,Clinic,Klinik Menara,Barat Daya,DBD MUKIM 12,5.302449,100.261027,Point,12002078.0,Klinik Menara,0.0,48.3,24.2,Within 400 m,False
+clinic_0100,Clinic,Kelinik Kulit Socka,Seberang Perai Tengah,SPT MUKIM 1,5.383222,100.38939,Point,12000389.0,Public Bank Inderawasih,958.2,46.5,35.4,Beyond 400 m,False
+clinic_0101,Clinic,Klinik Bersatu (Bukit Tambun),Seberang Perai Selatan,SPS MUKIM 14,5.276354,100.465064,Point,12002329.0,Masjid Simpang Empat,1557.4,17.2,15.9,Beyond 400 m,False
+clinic_0102,Clinic,Klinik Kesihatan Bandar Tasek Mutiara,Seberang Perai Selatan,SPS MUKIM 15,5.276771,100.490864,Point,12001694.0,(M2) Pearl City Mall,314.0,70.5,19.2,Within 400 m,False
+clinic_0103,Clinic,Spring Clinic Penang,Timur Laut,DTL MUKIM 13,5.397147,100.286112,Point,12001814.0,Pasaraya Sunshine Farlim,231.6,25.3,27.4,Within 400 m,False
+clinic_0104,Clinic,Klinik Lee,Timur Laut,DTL GEORGE TOWN,5.411955,100.332755,Point,12000842.0,Jalan Magazine,5.9,16.9,5.7,Within 400 m,False
+clinic_0105,Clinic,Klinik B. S. Tan,Timur Laut,DTL GEORGE TOWN,5.417771,100.341454,Point,12001934.0,Padang Kota Lama,329.8,42.6,15.2,Within 400 m,False
+clinic_0106,Clinic,Clinic 106,Timur Laut,DTL GEORGE TOWN,5.416299,100.324386,Point,12000829.0,Nasi Kandar Pelita,0.0,17.3,9.7,Within 400 m,False
+clinic_0107,Clinic,Pusat Pakar Perubatan Anwar,Seberang Perai Tengah,SPT MUKIM 1,5.396366,100.399828,Point,12001830.0,Prudential,94.3,27.8,2.5,Within 400 m,False
+clinic_0108,Clinic,Klinik Desa Permatang Tok Mahat,Seberang Perai Selatan,SPS MUKIM 9,5.131226,100.476332,Point,12000266.0,Jalan Besar,701.9,45.5,20.1,Beyond 400 m,False
+clinic_0109,Clinic,Klinik Team Medic,Timur Laut,DTL MUKIM 13,5.349996,100.298499,Point,12001500.0,Lotus Sungai Dua,216.4,30.2,17.0,Within 400 m,False
+clinic_0110,Clinic,Rozi & Teoh Klinik,Seberang Perai Utara,SPU BUTTERWORT,5.414036,100.37209,Point,12000600.0,Kampung Gajah,0.0,21.4,11.9,Within 400 m,False
+clinic_0111,Clinic,Klinik Dr. Ko Georgetown,Timur Laut,DTL GEORGE TOWN,5.384401,100.305529,Point,12000473.0,Jalan Delima,105.9,26.0,18.4,Within 400 m,False
+clinic_0112,Clinic,Loo Child Specialist Clinic,Timur Laut,DTL GEORGE TOWN,5.415412,100.320128,Point,12002208.0,Pasar Jalan Anson,103.1,17.6,7.2,Within 400 m,False
+clinic_0113,Clinic,Poliklinik Lourdes,Seberang Perai Selatan,SPS MUKIM 13,5.236154,100.443707,Point,12000281.0,SJK Tamil Valdor,6085.3,27.7,17.1,Beyond 400 m,False
+clinic_0114,Clinic,Novo Clinic,Seberang Perai Selatan,SPS MUKIM 13,5.236474,100.443623,Point,12000281.0,SJK Tamil Valdor,6117.9,17.3,17.1,Beyond 400 m,False
+clinic_0115,Clinic,Clarity Clinic,Barat Daya,DBD MUKIM 12,5.302996,100.260006,Point,12002077.0,Setia Triangle,255.0,22.6,10.1,Within 400 m,False
+clinic_0116,Clinic,O2 Clinic,Seberang Perai Selatan,SPS MUKIM 13,5.236064,100.443329,Point,12000281.0,SJK Tamil Valdor,6058.9,47.4,17.1,Beyond 400 m,False
+clinic_0117,Clinic,Klinik iHealth,Seberang Perai Selatan,SPS MUKIM 13,5.237243,100.443617,Point,12000281.0,SJK Tamil Valdor,6353.5,36.3,17.1,Beyond 400 m,False
+clinic_0118,Clinic,Sutra Medical Clinic,Seberang Perai Selatan,SPS MUKIM 13,5.237174,100.443309,Point,12000281.0,SJK Tamil Valdor,6353.5,34.3,17.1,Beyond 400 m,False
+clinic_0119,Clinic,Klinik Aman,Timur Laut,DTL GLUGOR,5.367184,100.310042,Point,12001453.0,Restoran Kampung Ku,260.7,28.1,39.5,Within 400 m,False
+clinic_0120,Clinic,Klinik Kesihatan Bandar Baru Air Itam,Timur Laut,DTL MUKIM 13,5.389553,100.285337,Point,12000049.0,Klinik Kesihatan Bandar Baru Air Itam,237.0,13.9,21.6,Within 400 m,False
+clinic_0121,Clinic,Klinik 1Malaysia,Barat Daya,DBD MUKIM 11,5.285705,100.241592,Point,12001773.0,SMK Teluk Kumbar,331.6,48.5,45.7,Within 400 m,False
+clinic_0122,Clinic,Pusat Pakar Public,Timur Laut,DTL GEORGE TOWN,5.423032,100.322636,Point,12003016.0,1926 Heritage Hotel,294.2,27.5,13.6,Within 400 m,False
+clinic_0123,Clinic,Osel Clinic,Timur Laut,DTL GEORGE TOWN,5.42117,100.313755,Point,12001081.0,Island Hospital,160.8,54.6,8.6,Within 400 m,False
+clinic_0124,Clinic,Clinic 124,Timur Laut,DTL BATU FERRINGGI,5.47324,100.24792,Point,12000217.0,Night Market,98.8,13.8,15.4,Within 400 m,False
+clinic_0125,Clinic,Singapore women's specialist centre,Timur Laut,DTL GEORGE TOWN,5.432443,100.30627,Point,12000369.0,Midlands One Stop Centre,187.0,19.4,17.7,Within 400 m,False
+clinic_0126,Clinic,Klinik Kesihatan Bukit Bendera,Timur Laut,DTL BUKIT BENDERA,5.424509,100.269068,Point,12000293.0,Stesen Bukit Bendera,2822.6,16.8,24.5,Beyond 400 m,False
+clinic_0127,Clinic,Klinik Desa Thean Teik,Timur Laut,DTL MUKIM 13,5.392786,100.281186,Point,12001974.0,Lebuhraya Thean Tek,520.9,24.0,28.6,Beyond 400 m,False
+clinic_0128,Clinic,Klinik Kesihatan Air Itam,Timur Laut,DTL AYER ITAM,5.405679,100.28221,Point,12002300.0,Klinik Kesihatan  Air Itam,85.2,16.9,9.6,Within 400 m,False
+clinic_0129,Clinic,Klinik Kesihatan Ibu dan Anak,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.359171,100.465047,Point,12002541.0,SK Convent Bukit Mertajam,37.2,2.6,3.9,Within 400 m,False
+clinic_0130,Clinic,Klinik Kesihatan Mak Mandin,Seberang Perai Utara,SPU BUTTERWORT,5.420711,100.389252,Point,12002033.0,Balai Polis Mak Mandin,105.7,36.2,16.0,Within 400 m,False
+clinic_0131,Clinic,Klinik Kesihatan Machang Bubok,Seberang Perai Tengah,SPT MUKIM 16,5.336342,100.50903,Point,12000340.0,Balai Polis,0.0,12.5,20.6,Within 400 m,False
+clinic_0132,Clinic,Clinic 132,Seberang Perai Utara,SPU MUKIM 11,5.466364,100.461454,Point,12001553.0,Simpang Lahar Yooi,701.4,14.3,13.0,Beyond 400 m,False
+clinic_0133,Clinic,Klinik Desa Permatang Buluh,Seberang Perai Utara,SPU MUKIM 10,5.480434,100.426579,Point,12001337.0,JPS Pokok Sena,2025.2,28.5,38.7,Beyond 400 m,False
+clinic_0134,Clinic,Klinik Desa Kubang Ulu,Seberang Perai Tengah,SPT MUKIM 18,5.408556,100.482227,Point,12000778.0,SK Penanti,2258.2,57.9,15.5,Beyond 400 m,False
+clinic_0135,Clinic,Klinik Desa Sungai Lembu,Seberang Perai Tengah,SPT MUKIM 18,5.391512,100.522629,Point,12000341.0,Chinese Temple,7163.5,15.8,76.8,Beyond 400 m,False
+clinic_0136,Clinic,Pusat Pemulihan Penagihan Narkotik Bukit Mertajam,Seberang Perai Tengah,SPT MUKIM 15,5.341345,100.47227,Point,12002587.0,AADK Bukit Mertajam,331.8,13.5,6.8,Within 400 m,False
+clinic_0137,Clinic,Klinik Komuniti Batu Kawan,Seberang Perai Selatan,SPS MUKIM 13,5.271105,100.431166,Point,12002329.0,Masjid Simpang Empat,6839.9,20.1,15.9,Beyond 400 m,False
+clinic_0138,Clinic,Klinik Kesihatan Bukit Minyak,Seberang Perai Tengah,SPT MUKIM 14,5.326481,100.448828,Point,12000337.0,Klinik Kesihatan Bukit Minyak,96.2,13.0,14.2,Within 400 m,False
+clinic_0139,Clinic,Klinik Desa Permatang Rawa,Seberang Perai Tengah,SPT MUKIM 8,5.369083,100.453406,Point,12001217.0,Permatang Rawa,134.3,11.5,7.0,Within 400 m,False
+clinic_0140,Clinic,Klinik Kesihatan Berapit,Seberang Perai Tengah,SPT MUKIM 17,5.376468,100.474363,Point,12000031.0,SM Islam Al-Masriyah,1863.0,19.3,22.3,Beyond 400 m,False
+clinic_0141,Clinic,Pejabat Kesihatan Daerah Seberang Perai Tengah,Seberang Perai Tengah,SPT MUKIM 17,5.375804,100.474062,Point,12000031.0,SM Islam Al-Masriyah,1886.0,6.2,22.3,Beyond 400 m,False
+clinic_0142,Clinic,Klinik Desa Kampung Selamat,Seberang Perai Utara,SPU MUKIM 12,5.50454,100.52201,Point,12002632.0,PUSAT SERENTI KG. SELAMAT,377.0,23.4,13.3,Within 400 m,False
+clinic_0143,Clinic,Klinik Kesihatan Sungai Dua,Seberang Perai Utara,SPU MUKIM 11,5.442213,100.431212,Point,12001562.0,Klinik Kesihatan Sungai Dua,199.8,28.6,11.1,Within 400 m,False
+clinic_0144,Clinic,Klinik Kesihatan Bandar Perda,Seberang Perai Tengah,SPT MUKIM 6,5.373915,100.433431,Point,12001097.0,KPJ Perda,782.3,20.5,32.5,Beyond 400 m,False
+clinic_0145,Clinic,Klinik Kesihatan Kubang Semang,Seberang Perai Tengah,SPT MUKIM 5,5.397419,100.463725,Point,12000038.0,Klinik Kesihatan Kubang Semang,101.9,38.8,8.9,Within 400 m,False
+clinic_0146,Clinic,Klinik Kesihatan Bukit Tengah,Seberang Perai Tengah,SPT MUKIM 11,5.364272,100.429167,Point,12001102.0,Petron Permatang Batu,99.6,13.3,3.9,Within 400 m,False
+clinic_0147,Clinic,Klinik Kesihatan Penaga,Seberang Perai Utara,SPU MUKIM 5,5.535301,100.380826,Point,12001105.0,SMK Sri Muda,185.2,14.5,22.9,Within 400 m,False
+clinic_0148,Clinic,Klinik Desa Paya Keladi,Seberang Perai Utara,SPU MUKIM 3,5.53833,100.442805,Point,12000999.0,Kemas Kepala Batas,1184.4,41.0,18.7,Beyond 400 m,False
+clinic_0149,Clinic,Klinik Mata Hospital Bukit Mertajam,Seberang Perai Tengah,SPT BUKIT MERTAJAM,5.357661,100.463988,Point,12002541.0,SK Convent Bukit Mertajam,377.9,17.3,3.9,Within 400 m,False
+clinic_0150,Clinic,Klinik Kesihatan Teluk Bahang,Barat Daya,DBD MUKIM 2,5.455692,100.215213,Point,12001756.0,Klinik Kesihatan Teluk Bahang,59.6,12.3,19.0,Within 400 m,False
+clinic_0151,Clinic,Pejabat Kesihatan Barat Daya,Barat Daya,DBD MUKIM E,5.363144,100.21706,Point,12001582.0,Pejabat Kesihatan Barat Daya,186.1,29.7,19.7,Within 400 m,False
+clinic_0152,Clinic,Klinik Kesihatan Perai,Seberang Perai Tengah,SPT MUKIM 1,5.383603,100.388164,Point,12000389.0,Public Bank Inderawasih,779.2,35.6,35.4,Beyond 400 m,False
+clinic_0153,Clinic,Klinik Kesihatan Sungai Dua,Timur Laut,DTL MUKIM 13,5.344387,100.297701,Point,12001495.0,Klinik Kesihatan Sg Dua,138.8,13.0,10.7,Within 400 m,False
+clinic_0154,Clinic,Klinik Desa Sungai Ara,Barat Daya,DBD MUKIM 12,5.318283,100.274287,Point,12000432.0,SMK Sungai Ara,581.4,34.2,33.6,Beyond 400 m,False
+clinic_0155,Clinic,Klinik Desa Pekan Darat,Seberang Perai Utara,SPU MUKIM 7,5.478683,100.401709,Point,12001046.0,Klinik Desa,0.0,18.2,9.8,Within 400 m,False
+clinic_0156,Clinic,Klinik Desa Pajak Song,Seberang Perai Utara,SPU MUKIM 8,5.499984,100.426337,Point,12001337.0,JPS Pokok Sena,586.5,23.3,38.7,Beyond 400 m,False
+clinic_0157,Clinic,Klinik Desa Alma,Seberang Perai Tengah,SPT MUKIM 15,5.332078,100.473239,Point,12000047.0,SK Alma,166.8,31.1,33.7,Within 400 m,False
+clinic_0158,Clinic,Klinik Kesihatan Tasek Gelugor,Seberang Perai Utara,SPU MUKIM 12,5.484099,100.491559,Point,12003000.0,Klinik Kesihatan Tasek Gelugor,172.7,26.6,14.5,Within 400 m,False
+clinic_0159,Clinic,Klinik Kesihatan Jalan Macalister,Timur Laut,DTL GEORGE TOWN,5.414892,100.325947,Point,12000829.0,Nasi Kandar Pelita,246.4,14.7,9.7,Within 400 m,False
+clinic_0160,Clinic,Klinik Kesihatan dan Klinik Pergigian Jalan Perak,Timur Laut,DTL JELUTONG,5.402657,100.314559,Point,12001073.0,Klinik Kesihatan Jalan Perak,45.3,31.0,6.7,Within 400 m,False
+clinic_0161,Clinic,Glugor Klinik,Timur Laut,DTL GLUGOR,5.368797,100.30974,Point,12001455.0,Maybank Gelugor,145.9,13.5,4.2,Within 400 m,False
+clinic_0162,Clinic,Klinik Desa Permatang Sintok,Seberang Perai Utara,SPU MUKIM 8,5.51131,100.404025,Point,12000378.0,Klinik Desa Permatang Sintok,34.8,7.5,3.1,Within 400 m,False
+clinic_0163,Clinic,Klinik Kesihatan Bayan Baru,Barat Daya,DBD MUKIM 12,5.320289,100.279761,Point,12001805.0,Klinik Kesihatan Bayan Baru,54.7,0.8,22.1,Within 400 m,False
+clinic_0164,Clinic,Clinic 164,Timur Laut,DTL GEORGE TOWN,5.424296,100.319869,Point,12003016.0,1926 Heritage Hotel,188.5,18.1,13.6,Within 400 m,False
+clinic_0165,Clinic,Klinik Feringghi,Timur Laut,DTL BATU FERRINGGI,5.470172,100.244956,Point,12000210.0,By The Sea,72.0,10.8,3.9,Within 400 m,False
+clinic_0166,Clinic,Pejabat Kesihatan Daerah,Seberang Perai Selatan,SPS MUKIM 7,5.165952,100.492233,Point,12000916.0,Pasaraya C-MART,2236.9,5.6,26.9,Beyond 400 m,False
+clinic_0167,Clinic,Klinik Kesihatan Relau,Barat Daya,DBD MUKIM 10,5.332289,100.274812,Point,12001002.0,Kompleks Golden Triangle,271.9,12.7,34.0,Within 400 m,False
+clinic_0168,Clinic,Klinik Kesihatan Bukit Tambun,Seberang Perai Selatan,SPS MUKIM 14,5.274196,100.448782,Point,12002329.0,Masjid Simpang Empat,3581.0,8.5,15.9,Beyond 400 m,False
+clinic_0169,Clinic,Klinik Desa Bukit Indera Muda,Seberang Perai Tengah,SPT MUKIM 3,5.407589,100.452086,Point,12002353.0,Masjid Al Muhtadin,164.5,27.7,4.3,Within 400 m,False
+clinic_0170,Clinic,Klinkk Desa Permatang Pasir,Seberang Perai Tengah,SPT MUKIM 3,5.415322,100.437957,Point,12001167.0,Klinik Desa,34.1,17.1,11.4,Within 400 m,False
+clinic_0171,Clinic,Klinik Desa Sungai Gelugor,Timur Laut,DTL MUKIM 13,5.373635,100.313946,Point,12001887.0,Lotus E-Gate,852.4,16.9,18.3,Beyond 400 m,False
+clinic_0172,Clinic,Klinik Kesihatan Padang Menora,Seberang Perai Utara,SPU MUKIM 13,5.455689,100.474683,Point,12001553.0,Simpang Lahar Yooi,2583.9,16.7,13.0,Beyond 400 m,False
+clinic_0173,Clinic,Klinik Kesihatan Bayan Lepas,Barat Daya,DBD MUKIM 12,5.299287,100.261553,Point,12000415.0,Klinik Kesihatan Bayan Lepas,90.6,52.3,17.2,Within 400 m,False
+clinic_0174,Clinic,Clinic 174,Seberang Perai Tengah,SPT MUKIM 14,5.298373,100.479351,Point,12001271.0,Taman Perwira,193.3,16.7,6.3,Within 400 m,False
+clinic_0175,Clinic,Klinik Kesihatan Ibu dan Anak Sungai Bakap,Seberang Perai Selatan,SPS MUKIM 5,5.217104,100.498069,Point,12000274.0,Kinik Kesihatan Sungai Bakap,44.4,34.9,22.6,Within 400 m,False
+clinic_0176,Clinic,Klinik Desa Valdor,Seberang Perai Selatan,SPS MUKIM 15,5.240479,100.491674,Point,12001484.0,Lean Teik Trading,748.6,6.0,22.3,Beyond 400 m,False
+clinic_0177,Clinic,Clinic 177,Seberang Perai Utara,SPU MUKIM 11,5.484476,100.450623,Point,12001559.0,Pokok Sena,744.9,34.1,51.9,Beyond 400 m,False
+clinic_0178,Clinic,Klinik Desa Wellesley,Seberang Perai Selatan,SPS MUKIM 5,5.211148,100.514576,Point,12002332.0,JKR Jawi,2086.3,8.6,12.2,Beyond 400 m,False
+clinic_0179,Clinic,Klinik Kesihatan Seberang Jaya,Seberang Perai Tengah,SPT MUKIM 1,5.39335,100.398473,Point,12001953.0,Kastam Seberang Jaya,289.9,27.1,7.8,Within 400 m,False
+clinic_0180,Clinic,Klinik Kesihatan Tg Bungah,Timur Laut,DTL TANJONG BUNGAH,5.461936,100.279514,Point,12000815.0,SK Tanjung Bunga,349.0,32.8,29.9,Within 400 m,False
+mall_0001,Mall,YAMAHA Lifestyle Mall-Hong Bee Motors,Seberang Perai Tengah,SPT MUKIM 11,5.337694,100.429216,Point,12002512.0,Nashmir Car Park,447.8,23.1,7.8,Beyond 400 m,False
+mall_0002,Mall,D'orient Mall,Timur Laut,DTL GEORGE TOWN,5.406517,100.335181,Point,12000009.0,Apartment Sri Saujana,304.5,54.9,27.7,Within 400 m,False
+mall_0003,Mall,ICT Digital Mall @ Komtar,Timur Laut,DTL GEORGE TOWN,5.41385,100.330814,Point,12001937.0,Komtar,0.0,14.2,4.5,Within 400 m,False
+mall_0004,Mall,Klippa Shopping Centre,Seberang Perai Selatan,SPS MUKIM 13,5.233218,100.440035,Point,12000281.0,SJK Tamil Valdor,7951.6,57.8,17.1,Beyond 400 m,False
+mall_0005,Mall,Sunshine Mall,Timur Laut,DTL MUKIM 13,5.39833,100.286886,Point,12000623.0,Medan Niaga Kampung Melayu,307.6,35.5,39.8,Within 400 m,False
+mall_0006,Mall,Penang Plaza,Timur Laut,DTL GEORGE TOWN,5.421442,100.325186,Point,12000357.0,Penang Plaza,35.5,44.6,5.5,Within 400 m,False
+mall_0007,Mall,1-Stop Midlands Park Centre,Timur Laut,DTL GEORGE TOWN,5.43347,100.306145,Point,12000369.0,Midlands One Stop Centre,85.3,48.9,17.7,Within 400 m,False
+mall_0008,Mall,Island 88,Timur Laut,DTL TANJONG TOKONG,5.450399,100.30611,Point,12001383.0,Palm / Nipah Court,165.6,44.9,13.6,Within 400 m,False
+mall_0009,Mall,Gurney Paragon Mall,Timur Laut,DTL GEORGE TOWN,5.435799,100.311034,Point,12000727.0,Gurney Plaza,196.9,76.8,19.6,Within 400 m,False
+mall_0010,Mall,Queensbay Mall,Barat Daya,DBD MUKIM 12,5.333272,100.306517,Point,12002060.0,Hadapan Queensbay Mall,160.4,45.5,38.5,Within 400 m,False
+mall_0011,Mall,D'Piazza Mall,Barat Daya,DBD MUKIM 12,5.325717,100.282324,Point,12000848.0,Mayang Mall,289.9,48.3,9.0,Within 400 m,False
+mall_0012,Mall,One Precinct,Barat Daya,DBD MUKIM 12,5.325348,100.284461,Point,12000882.0,Masjid Bayan Baru,465.9,33.7,24.4,Beyond 400 m,False
+mall_0013,Mall,Plaza Gurney,Timur Laut,DTL GEORGE TOWN,5.437297,100.309403,Point,12000727.0,Gurney Plaza,272.1,60.0,19.6,Within 400 m,False
+mall_0014,Mall,Kompleks Bukit Jambul,Timur Laut,DTL MUKIM 13,5.333955,100.290979,Point,12001843.0,Kompleks Bukit Jambul II,171.9,77.4,12.0,Within 400 m,False
+mall_0015,Mall,The Gallery Kompleks Seri Damai,Timur Laut,DTL JELUTONG,5.388833,100.305817,Point,12001960.0,(M2) Pasar Batu Lanchang I,179.1,14.9,1.0,Within 400 m,False
+mall_0016,Mall,Megamal Pinang,Seberang Perai Tengah,SPT MUKIM 1,5.376757,100.399385,Point,12001067.0,Megamal Pinang - Pacific,252.9,73.7,35.7,Within 400 m,False
+mall_0017,Mall,Kompleks Sri Wonder,Timur Laut,DTL GEORGE TOWN,5.402736,100.318367,Point,12001075.0,Kampung Dodol,423.7,41.9,11.5,Beyond 400 m,False
+mall_0018,Mall,Precinct 10,Timur Laut,DTL TANJONG TOKONG,5.449205,100.306504,Point,12001650.0,Wisma Binjul,172.2,42.3,21.2,Within 400 m,False
+mall_0019,Mall,City Junction,Timur Laut,DTL TANJONG TOKONG,5.449686,100.304794,Point,12001652.0,Island Plaza,0.0,62.5,27.1,Within 400 m,False
+mall_0020,Mall,Udini Square,Timur Laut,DTL JELUTONG,5.378237,100.314294,Point,,,,27.2,,No route in candidate network - review,False
+mall_0021,Mall,AEON MALL Bukit Mertajam,Seberang Perai Tengah,SPT MUKIM 15,5.320181,100.478255,Point,,,,13.3,,No route in candidate network - review,False
+mall_0022,Mall,Asas Super Centre,Seberang Perai Tengah,SPT MUKIM 14,5.310741,100.480871,Point,12001359.0,Taman Industri Impian,570.6,68.3,50.2,Beyond 400 m,False
+mall_0023,Mall,Pearl City Mall,Seberang Perai Selatan,SPS MUKIM 15,5.276937,100.490854,Point,12001694.0,(M2) Pearl City Mall,303.4,79.8,19.2,Within 400 m,False
+mall_0024,Mall,Sunshine Bertam Shopping Mall,Seberang Perai Utara,SPU MUKIM 6,5.516102,100.450365,Point,12002075.0,Sunshine Bertam,126.8,36.2,48.3,Within 400 m,False
+mall_0025,Mall,Penang Times Square,Timur Laut,DTL GEORGE TOWN,5.411845,100.326489,Point,12000456.0,Penang Times Square,176.4,82.2,13.7,Within 400 m,False
+mall_0026,Mall,Prangin Mall,Timur Laut,DTL GEORGE TOWN,5.414196,100.331509,Point,12000474.0,Komtar Timur,122.6,9.8,9.5,Within 400 m,False
+mall_0027,Mall,1st Avenue Mall,Timur Laut,DTL GEORGE TOWN,5.413366,100.33131,Point,12002988.0,(M1) Hub Lebuh Carnarvon,212.3,45.8,7.1,Within 400 m,False
+mall_0028,Mall,The Whiteaways Arcade,Timur Laut,DTL GEORGE TOWN,5.417718,100.342192,Point,12002971.0,Pejabat Pos Besar P.Pinang 1,231.3,12.8,3.4,Within 400 m,False
+mall_0029,Mall,Sunway Carnival Mall,Seberang Perai Tengah,SPT MUKIM 1,5.399234,100.398163,Point,,,,5.5,,No route in candidate network - review,False
+mall_0030,Mall,Ferringhi Walk,Timur Laut,DTL BATU FERRINGGI,5.474388,100.248097,Point,12000218.0,Night Market,87.1,22.8,10.0,Within 400 m,False

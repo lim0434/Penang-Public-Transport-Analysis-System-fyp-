@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_afa5bf5b6a78c18c672e6da70f2b2dcf {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="
+            position: fixed; bottom: 28px; left: 28px; z-index: 9999;
+            background: white; padding: 10px 12px; border: 1px solid #888;
+            border-radius: 4px; font-size: 13px;">
+            <b>Connectivity review</b><br>
+            <span style="color: red;">●</span> No route in candidate network<br>
+            <span style="color: orange;">●</span> Snap location needs review<br>
+            <span style="color: blue;">●</span> Nearest bus-stop-connected network node<br>
+            Lines show straight-line distance to that network node.
+        </div>
+        
+    
+            <div class="folium-map" id="map_afa5bf5b6a78c18c672e6da70f2b2dcf" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_afa5bf5b6a78c18c672e6da70f2b2dcf = L.map(
+                "map_afa5bf5b6a78c18c672e6da70f2b2dcf",
+                {
+                    center: [5.388884376923077, 100.38480190324692],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4b267c9b1f90bf9c58dabb421e68d69d = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri, DeLorme, HERE, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), MapmyIndia, TomTom",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4b267c9b1f90bf9c58dabb421e68d69d.addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var tile_layer_ecb08c796d9fe71c5804b4c6da6872fb = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Sources: Esri, Maxar, Earthstar Geographics, and the GIS User Community",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            var poly_line_9bec4a8ad94a74b896afa846b307b0a6 = L.polyline(
+                [[5.389297600000001, 100.40645687810253], [5.3888592, 100.4061609]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_196dbbdb7e25ec96e4bc274e5bd2c4cd = L.circleMarker(
+                [5.3888592, 100.4061609],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_196dbbdb7e25ec96e4bc274e5bd2c4cd.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cb28e3c4d60a38b30d899ff5b01cf56d = L.circleMarker(
+                [5.389297600000001, 100.40645687810253],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_6d4d288e5a9737734e52680f96f86fc7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_97b606a665d289a1a11d13daababde9e = $(`<div id="html_97b606a665d289a1a11d13daababde9e" style="width: 100.0%; height: 100.0%;"><b>SMK Tun Hussein Onn</b><br>Type: School<br>Status: No route in candidate network - review<br>Distance to nearest bus-stop-connected network node: 58.5 m</div>`)[0];
+                popup_6d4d288e5a9737734e52680f96f86fc7.setContent(html_97b606a665d289a1a11d13daababde9e);
+            
+        
+
+        circle_marker_cb28e3c4d60a38b30d899ff5b01cf56d.bindPopup(popup_6d4d288e5a9737734e52680f96f86fc7)
+        ;
+
+        
+    
+    
+            circle_marker_cb28e3c4d60a38b30d899ff5b01cf56d.bindTooltip(
+                `<div>
+                     School: SMK Tun Hussein Onn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b020ad1cfcdc2f9c59d11842b14eadb1 = L.polyline(
+                [[5.5218298, 100.47310691015366], [5.5199696, 100.4733016]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_a2448f92b2a80cfa882b18f54b2af2bf = L.circleMarker(
+                [5.5199696, 100.4733016],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_a2448f92b2a80cfa882b18f54b2af2bf.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_47749017a66ac5847cb5b474f1cf0b0a = L.circleMarker(
+                [5.5218298, 100.47310691015366],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_92708a7a50081359e81d63b89b0bab14 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4d65fe7c93c52b09b110a7d271bda1c8 = $(`<div id="html_4d65fe7c93c52b09b110a7d271bda1c8" style="width: 100.0%; height: 100.0%;"><b>MRSM Kepala Batas</b><br>Type: School<br>Status: No route in candidate network - review<br>Distance to nearest bus-stop-connected network node: 206.8 m</div>`)[0];
+                popup_92708a7a50081359e81d63b89b0bab14.setContent(html_4d65fe7c93c52b09b110a7d271bda1c8);
+            
+        
+
+        circle_marker_47749017a66ac5847cb5b474f1cf0b0a.bindPopup(popup_92708a7a50081359e81d63b89b0bab14)
+        ;
+
+        
+    
+    
+            circle_marker_47749017a66ac5847cb5b474f1cf0b0a.bindTooltip(
+                `<div>
+                     School: MRSM Kepala Batas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_075173c615b45a6f3b3af407034729e4 = L.polyline(
+                [[5.4039189499999996, 100.29793992352927], [5.4047704, 100.2978599]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_e2c79d68209b9f938599c2b29050c8ab = L.circleMarker(
+                [5.4047704, 100.2978599],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_e2c79d68209b9f938599c2b29050c8ab.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0eac8b5e496b9e335535e5efde8f70b1 = L.circleMarker(
+                [5.4039189499999996, 100.29793992352927],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_72c372b308a42061351af61313a4b9a5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_69b2dd6b64ebb0f148e5b7000b585fd6 = $(`<div id="html_69b2dd6b64ebb0f148e5b7000b585fd6" style="width: 100.0%; height: 100.0%;"><b>Sekolah Menengah Teknik Tunku Abdul Rahman Putra</b><br>Type: School<br>Status: No route in candidate network - review<br>Distance to nearest bus-stop-connected network node: 94.6 m</div>`)[0];
+                popup_72c372b308a42061351af61313a4b9a5.setContent(html_69b2dd6b64ebb0f148e5b7000b585fd6);
+            
+        
+
+        circle_marker_0eac8b5e496b9e335535e5efde8f70b1.bindPopup(popup_72c372b308a42061351af61313a4b9a5)
+        ;
+
+        
+    
+    
+            circle_marker_0eac8b5e496b9e335535e5efde8f70b1.bindTooltip(
+                `<div>
+                     School: Sekolah Menengah Teknik Tunku Abdul Rahman Putra
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0c0c438ef8256ed512d78f232bbc6f98 = L.polyline(
+                [[5.42280085, 100.3296949819507], [5.4222237, 100.3294435]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_7d9cd843948cfed5e1654be29fe97880 = L.circleMarker(
+                [5.4222237, 100.3294435],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_7d9cd843948cfed5e1654be29fe97880.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f4a9d239323e1b9d5a406f7e6aeab239 = L.circleMarker(
+                [5.42280085, 100.3296949819507],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_9031c2b514f30c1f80a2ef56ef8a0779 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_59de800aafad3804b8098dcb85460b2d = $(`<div id="html_59de800aafad3804b8098dcb85460b2d" style="width: 100.0%; height: 100.0%;"><b>Sekolah Menengah Kebangsaan Agama Perempuan Al Mashoor</b><br>Type: School<br>Status: No route in candidate network - review<br>Distance to nearest bus-stop-connected network node: 69.6 m</div>`)[0];
+                popup_9031c2b514f30c1f80a2ef56ef8a0779.setContent(html_59de800aafad3804b8098dcb85460b2d);
+            
+        
+
+        circle_marker_f4a9d239323e1b9d5a406f7e6aeab239.bindPopup(popup_9031c2b514f30c1f80a2ef56ef8a0779)
+        ;
+
+        
+    
+    
+            circle_marker_f4a9d239323e1b9d5a406f7e6aeab239.bindTooltip(
+                `<div>
+                     School: Sekolah Menengah Kebangsaan Agama Perempuan Al Mashoor
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a22f1e9817427246d0fb29f80f6cf999 = L.polyline(
+                [[5.3346505, 100.275817], [5.3342746, 100.2759207]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_448be16b424e0820781e2ce4ae44882e = L.circleMarker(
+                [5.3342746, 100.2759207],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_448be16b424e0820781e2ce4ae44882e.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b1cd611345352f65ba4709e624d9c5dc = L.circleMarker(
+                [5.3346505, 100.275817],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_59fd2343c1b8dc91e819f2806163435c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6114dd4749b5b0d1340323ca9e6ac416 = $(`<div id="html_6114dd4749b5b0d1340323ca9e6ac416" style="width: 100.0%; height: 100.0%;"><b>Clinic Bistari</b><br>Type: Clinic<br>Status: No route in candidate network - review<br>Distance to nearest bus-stop-connected network node: 43.1 m</div>`)[0];
+                popup_59fd2343c1b8dc91e819f2806163435c.setContent(html_6114dd4749b5b0d1340323ca9e6ac416);
+            
+        
+
+        circle_marker_b1cd611345352f65ba4709e624d9c5dc.bindPopup(popup_59fd2343c1b8dc91e819f2806163435c)
+        ;
+
+        
+    
+    
+            circle_marker_b1cd611345352f65ba4709e624d9c5dc.bindTooltip(
+                `<div>
+                     Clinic: Clinic Bistari
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_729a5b80d3af18aaa4d71f3fd237b2b3 = L.polyline(
+                [[5.37823725, 100.31429430280915], [5.3784844, 100.3141674]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_24b324a0c07f0284e393abcef4c07ec1 = L.circleMarker(
+                [5.3784844, 100.3141674],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_24b324a0c07f0284e393abcef4c07ec1.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_700db9e037f0ad5c3d63b63cbb2aaaab = L.circleMarker(
+                [5.37823725, 100.31429430280915],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_461b2003dd65fb9a82661a888f56a8e6 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_363c6d20b25f1f9adbdecbdf630d0326 = $(`<div id="html_363c6d20b25f1f9adbdecbdf630d0326" style="width: 100.0%; height: 100.0%;"><b>Udini Square</b><br>Type: Mall<br>Status: No route in candidate network - review<br>Distance to nearest bus-stop-connected network node: 30.7 m</div>`)[0];
+                popup_461b2003dd65fb9a82661a888f56a8e6.setContent(html_363c6d20b25f1f9adbdecbdf630d0326);
+            
+        
+
+        circle_marker_700db9e037f0ad5c3d63b63cbb2aaaab.bindPopup(popup_461b2003dd65fb9a82661a888f56a8e6)
+        ;
+
+        
+    
+    
+            circle_marker_700db9e037f0ad5c3d63b63cbb2aaaab.bindTooltip(
+                `<div>
+                     Mall: Udini Square
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_2eb20827f50b0f11208c68f512399e62 = L.polyline(
+                [[5.3201808, 100.47825505260637], [5.3199871, 100.4778303]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_203b97231e9371ba997a93e288832f8f = L.circleMarker(
+                [5.3199871, 100.4778303],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_203b97231e9371ba997a93e288832f8f.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9f486651d56bb59959a2ce989df93ecc = L.circleMarker(
+                [5.3201808, 100.47825505260637],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_7cf913e18ed5311b2387661e9b13a6b4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7cac47e5d3433978186804028d71a4c9 = $(`<div id="html_7cac47e5d3433978186804028d71a4c9" style="width: 100.0%; height: 100.0%;"><b>AEON MALL Bukit Mertajam</b><br>Type: Mall<br>Status: No route in candidate network - review<br>Distance to nearest bus-stop-connected network node: 51.7 m</div>`)[0];
+                popup_7cf913e18ed5311b2387661e9b13a6b4.setContent(html_7cac47e5d3433978186804028d71a4c9);
+            
+        
+
+        circle_marker_9f486651d56bb59959a2ce989df93ecc.bindPopup(popup_7cf913e18ed5311b2387661e9b13a6b4)
+        ;
+
+        
+    
+    
+            circle_marker_9f486651d56bb59959a2ce989df93ecc.bindTooltip(
+                `<div>
+                     Mall: AEON MALL Bukit Mertajam
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_865b0658d7ad5c7712c9d6089b0e8a72 = L.polyline(
+                [[5.3992335, 100.3981625734116], [5.3990203, 100.398675]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_cf3c1d7a882853361cb67d2862fa6c2e = L.circleMarker(
+                [5.3990203, 100.398675],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_cf3c1d7a882853361cb67d2862fa6c2e.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fb0175b0fb60e1aa9589582751c8a6f0 = L.circleMarker(
+                [5.3992335, 100.3981625734116],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_3a3885d9387a053351bde0ecd9b1d6d9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6429468053936a37ee7aebb378c0a073 = $(`<div id="html_6429468053936a37ee7aebb378c0a073" style="width: 100.0%; height: 100.0%;"><b>Sunway Carnival Mall</b><br>Type: Mall<br>Status: No route in candidate network - review<br>Distance to nearest bus-stop-connected network node: 61.5 m</div>`)[0];
+                popup_3a3885d9387a053351bde0ecd9b1d6d9.setContent(html_6429468053936a37ee7aebb378c0a073);
+            
+        
+
+        circle_marker_fb0175b0fb60e1aa9589582751c8a6f0.bindPopup(popup_3a3885d9387a053351bde0ecd9b1d6d9)
+        ;
+
+        
+    
+    
+            circle_marker_fb0175b0fb60e1aa9589582751c8a6f0.bindTooltip(
+                `<div>
+                     Mall: Sunway Carnival Mall
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b74439dfdc836903e0f24724ebfd204f = L.polyline(
+                [[5.4158656, 100.2834368], [5.4168886, 100.2830363]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_56e2e4ebc30dd13264883768e9dd7577 = L.circleMarker(
+                [5.4168886, 100.2830363],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_56e2e4ebc30dd13264883768e9dd7577.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6cf110c1f33f5a645a49de594958cf2a = L.circleMarker(
+                [5.4158656, 100.2834368],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_2f70fc6674b77833336ba3c661f77f22 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7b2a2741ff60a7cf138384f117ebcb04 = $(`<div id="html_7b2a2741ff60a7cf138384f117ebcb04" style="width: 100.0%; height: 100.0%;"><b>Penang Hill East Vipassana Meditation Center</b><br>Type: School<br>Status: Beyond 400 m<br>Distance to nearest bus-stop-connected network node: 121.5 m</div>`)[0];
+                popup_2f70fc6674b77833336ba3c661f77f22.setContent(html_7b2a2741ff60a7cf138384f117ebcb04);
+            
+        
+
+        circle_marker_6cf110c1f33f5a645a49de594958cf2a.bindPopup(popup_2f70fc6674b77833336ba3c661f77f22)
+        ;
+
+        
+    
+    
+            circle_marker_6cf110c1f33f5a645a49de594958cf2a.bindTooltip(
+                `<div>
+                     School: Penang Hill East Vipassana Meditation Center
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b7197d8d5329f942bdd6dd11f38ff4d6 = L.polyline(
+                [[5.4041611, 100.30543719715068], [5.4033344, 100.3050591]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_47b8dd9a12e09722d3f0a8375237dc17 = L.circleMarker(
+                [5.4033344, 100.3050591],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_47b8dd9a12e09722d3f0a8375237dc17.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cf80fd86f9c1a254356bd3a3ab042419 = L.circleMarker(
+                [5.4041611, 100.30543719715068],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_8b9faa62a28d447c8c6df07b4392d2f4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4eaaaf929567c0f103fa70ba2ddb2641 = $(`<div id="html_4eaaaf929567c0f103fa70ba2ddb2641" style="width: 100.0%; height: 100.0%;"><b>Sekolah Menengah Kebangsaan Penang Free</b><br>Type: School<br>Status: Within 400 m<br>Distance to nearest bus-stop-connected network node: 100.6 m</div>`)[0];
+                popup_8b9faa62a28d447c8c6df07b4392d2f4.setContent(html_4eaaaf929567c0f103fa70ba2ddb2641);
+            
+        
+
+        circle_marker_cf80fd86f9c1a254356bd3a3ab042419.bindPopup(popup_8b9faa62a28d447c8c6df07b4392d2f4)
+        ;
+
+        
+    
+    
+            circle_marker_cf80fd86f9c1a254356bd3a3ab042419.bindTooltip(
+                `<div>
+                     School: Sekolah Menengah Kebangsaan Penang Free
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_17becd6faaaa721c8128df43fa5d0c2a = L.polyline(
+                [[5.3406730499999995, 100.47354368203071], [5.3412075, 100.4728063]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_9f9b30c7fb45521339ae5efcfc3b21f7 = L.circleMarker(
+                [5.3412075, 100.4728063],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_9f9b30c7fb45521339ae5efcfc3b21f7.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_426118d38588dfe4af3305cfaeb37d84 = L.circleMarker(
+                [5.3406730499999995, 100.47354368203071],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_81050c7804347cf689b62eea31fe2715 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e1326f36fb96b568df1d46bc70e9babd = $(`<div id="html_e1326f36fb96b568df1d46bc70e9babd" style="width: 100.0%; height: 100.0%;"><b>SMK Jalan Damai</b><br>Type: School<br>Status: Within 400 m<br>Distance to nearest bus-stop-connected network node: 100.9 m</div>`)[0];
+                popup_81050c7804347cf689b62eea31fe2715.setContent(html_e1326f36fb96b568df1d46bc70e9babd);
+            
+        
+
+        circle_marker_426118d38588dfe4af3305cfaeb37d84.bindPopup(popup_81050c7804347cf689b62eea31fe2715)
+        ;
+
+        
+    
+    
+            circle_marker_426118d38588dfe4af3305cfaeb37d84.bindTooltip(
+                `<div>
+                     School: SMK Jalan Damai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f1d33b77322c38fc17a9ced2ab021fb1 = L.polyline(
+                [[5.491515, 100.46149159929647], [5.4912069, 100.4606019]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_6f595a564808b0b76741d0c96cc23fb6 = L.circleMarker(
+                [5.4912069, 100.4606019],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_6f595a564808b0b76741d0c96cc23fb6.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4fe676667eaf446d1e714c01b5c569cf = L.circleMarker(
+                [5.491515, 100.46149159929647],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_50dc0400cd381e79533d65bcc70f6778 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_fede41036dd8f934585bb7a81ef45420 = $(`<div id="html_fede41036dd8f934585bb7a81ef45420" style="width: 100.0%; height: 100.0%;"><b>SMK Pokok Sena</b><br>Type: School<br>Status: Beyond 400 m<br>Distance to nearest bus-stop-connected network node: 104.3 m</div>`)[0];
+                popup_50dc0400cd381e79533d65bcc70f6778.setContent(html_fede41036dd8f934585bb7a81ef45420);
+            
+        
+
+        circle_marker_4fe676667eaf446d1e714c01b5c569cf.bindPopup(popup_50dc0400cd381e79533d65bcc70f6778)
+        ;
+
+        
+    
+    
+            circle_marker_4fe676667eaf446d1e714c01b5c569cf.bindTooltip(
+                `<div>
+                     School: SMK Pokok Sena
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0dba71ebc06c0be37624b76ed773d424 = L.polyline(
+                [[5.2331329, 100.50478784116896], [5.2333075, 100.5037544]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            var circle_marker_49eaa4a5046a04e41a0e4d06185583ab = L.circleMarker(
+                [5.2333075, 100.5037544],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+            circle_marker_49eaa4a5046a04e41a0e4d06185583ab.bindTooltip(
+                `<div>
+                     Nearest bus-stop-connected network node
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_727c0e27ceb80c9dc5bd61240f04a056 = L.circleMarker(
+                [5.2331329, 100.50478784116896],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+        
+    
+        var popup_3d5594215f131c36ef3b7fee55aa3b3a = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_37ac72561c7e96dd25fa009e1944c063 = $(`<div id="html_37ac72561c7e96dd25fa009e1944c063" style="width: 100.0%; height: 100.0%;"><b>Sekolah Kebangsaan Bakap Indah</b><br>Type: School<br>Status: Beyond 400 m<br>Distance to nearest bus-stop-connected network node: 116.2 m</div>`)[0];
+                popup_3d5594215f131c36ef3b7fee55aa3b3a.setContent(html_37ac72561c7e96dd25fa009e1944c063);
+            
+        
+
+        circle_marker_727c0e27ceb80c9dc5bd61240f04a056.bindPopup(popup_3d5594215f131c36ef3b7fee55aa3b3a)
+        ;
+
+        
+    
+    
+            circle_marker_727c0e27ceb80c9dc5bd61240f04a056.bindTooltip(
+                `<div>
+                     School: Sekolah Kebangsaan Bakap Indah
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_3e71ec07f2d100aff80d9ea4649df9a5_layers = {
+                base_layers : {
+                    "Esri Street Map" : tile_layer_4b267c9b1f90bf9c58dabb421e68d69d,
+                    "Esri Satellite" : tile_layer_ecb08c796d9fe71c5804b4c6da6872fb,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_3e71ec07f2d100aff80d9ea4649df9a5 = L.control.layers(
+                layer_control_3e71ec07f2d100aff80d9ea4649df9a5_layers.base_layers,
+                layer_control_3e71ec07f2d100aff80d9ea4649df9a5_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_afa5bf5b6a78c18c672e6da70f2b2dcf);
+
+        
+</script>
+</html>
