@@ -38,15 +38,33 @@ TAI_COLOURS = {
 }
 
 
+def clean_web_text(value):
+    """Remove underscores and semicolons from text shown in the web app."""
+    if isinstance(value, str):
+        return value.replace("_", " ").replace(";", "")
+    return value
+
+
 def clean_web_table(frame):
-    """Clean text shown in a web table without changing source or export data."""
+    """Return a cleaned display copy without changing source or export data."""
     display = frame.copy()
-    display.columns = [str(column).replace("_", " ").replace(";", "") for column in display.columns]
-    for column in display.select_dtypes(include=["object", "string"]).columns:
-        display[column] = display[column].map(
-            lambda value: value.replace("_", " ").replace(";", "")
-            if isinstance(value, str) else value
-        )
+    display.columns = [clean_web_text(column) for column in display.columns]
+    for column in display.columns:
+        dtype = display[column].dtype
+        if (
+            dtype == object
+            or isinstance(dtype, pd.StringDtype)
+            or isinstance(dtype, pd.CategoricalDtype)
+        ):
+            display[column] = display[column].astype(object).map(clean_web_text)
+    if isinstance(display.index, pd.MultiIndex):
+        arrays = [
+            [clean_web_text(value) for value in display.index.get_level_values(level)]
+            for level in range(display.index.nlevels)
+        ]
+        display.index = pd.MultiIndex.from_arrays(arrays, names=display.index.names)
+    else:
+        display.index = display.index.map(clean_web_text)
     return display
 
 

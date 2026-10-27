@@ -16,7 +16,7 @@ from PIL import Image
 from shapely import contains_xy
 from shapely.geometry import Point
 
-from ui_helpers import make_area_label, read_geojson
+from ui_helpers import clean_web_text, make_area_label, read_geojson
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -335,6 +335,7 @@ def _rank_candidate_sites(area_name, candidate_ids, candidate_rows=()):
             "Key places gaining access": int(
                 ((~dest_before) & (dest_after <= WALK_LIMIT_M) & other_destinations).sum()
             ),
+            "Walking network gap (m)": float(gap),
             "Current estimated walking distance to a bus stop (m)": float(c.network_distance_m)+float(c.destination_snap_gap_m)+float(c.stop_snap_gap_m),
         })
     ranked=pd.DataFrame(rows).sort_values(
@@ -466,7 +467,9 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
             "fillOpacity": 0.72,
         }
 
-    areas_geo = all_areas.to_crs("EPSG:4326")
+    areas_geo = all_areas.to_crs("EPSG:4326").copy()
+    if "display_name" in areas_geo.columns:
+        areas_geo["display_name"] = areas_geo["display_name"].map(clean_web_text)
     folium.GeoJson(
         areas_geo.to_json(),
         name="Existing population coverage",
@@ -485,7 +488,7 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
         area_shape.to_json(),
         name="Selected area",
         style_function=lambda _: {"color": "#ef7a3a", "weight": 3, "fillOpacity": 0},
-        tooltip=f"Selected area: {all_areas.loc[all_areas['match_name'] == area_name, 'display_name'].iloc[0]}",
+        tooltip=f"Selected area: {clean_web_text(all_areas.loc[all_areas['match_name'] == area_name, 'display_name'].iloc[0])}",
     ).add_to(map_view)
 
     for stop in stops.itertuples(index=False):
@@ -493,7 +496,7 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
         if selected_geometry.covers(stop_point):
             folium.Marker(
                 [stop_point.y, stop_point.x],
-                tooltip=f"Existing bus stop: {stop.stop_name}",
+                tooltip=f"Existing bus stop: {clean_web_text(str(stop.stop_name))}",
                 icon=folium.Icon(
                     color="blue",
                     icon="bus",
@@ -531,7 +534,7 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
         place_lat = float(proposed["destination_lat"])
         place_lon = float(proposed["destination_lon"])
         place_type = str(proposed["destination_type"])
-        place_name = str(proposed["destination_name"])
+        place_name = clean_web_text(str(proposed["destination_name"]))
         is_residential_candidate = place_type == "Residential area"
         folium.Marker(
             [place_lat, place_lon],
@@ -611,7 +614,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     area_name = st.selectbox(
         "Choose a Low or Medium access area",
         area_names,
-        format_func=lambda name: labels.get(name, name),
+        format_func=lambda name: clean_web_text(labels.get(name, name)),
         help="Numbered mukims include a nearby bus-stop name to help locate them. The official mukim number remains in the label.",
     )
 
@@ -665,20 +668,26 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             st.subheader("Suggested locations to investigate")
             st.caption(
                 "Ranked by estimated new access for residents and key places. "
-                "Suggested sites need further review."
+                "The walking network gap is the distance from a suggested point "
+                "to the mapped walking network. It does not check road safety or land use."
             )
             shown = ranked_sites.head(5).copy()
             shown["Estimated residents gaining access"] = shown["Estimated residents gaining access"].round().astype(int)
+            shown["Walking network gap (m)"] = shown["Walking network gap (m)"].round().astype(int)
             shown["Current walk to bus stop (min)"] = (
                 shown["Current estimated walking distance to a bus stop (m)"]
                 / WALKING_SPEED_M_PER_MIN
             ).round(1)
             shown = shown.drop(columns=["Current estimated walking distance to a bus stop (m)"])
-            page_export = shown.drop(columns=["destination_id"], errors="ignore").copy()
+            page_export = shown.drop(
+                columns=["destination_id", "Walking network gap (m)"],
+                errors="ignore",
+            ).copy()
             st.dataframe(shown.drop(columns=["destination_id"]), hide_index=True, use_container_width=True)
             top = ranked_sites.iloc[0]
             st.info(
-                f"Suggested starting point: **{top['Place']}** ({top['Type']}). "
+                f"Suggested starting point: **{clean_web_text(str(top['Place']))}** "
+                f"({clean_web_text(str(top['Type']))}). "
                 f"An estimated {top['Estimated residents gaining access']:,.0f} residents "
                 f"and {int(top['Key places gaining access'])} other listed key places "
                 "may gain access within a short walk."
@@ -689,7 +698,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 "Choose proposed stop sites",
                 ranked_sites["destination_id"].tolist(),
                 default=[top["destination_id"]],
-                format_func=lambda key: choice_lookup.get(key, key),
+                format_func=lambda key: clean_web_text(choice_lookup.get(key, key)),
                 help="The highest-ranked suggestion is selected as a starting point. Add or remove any number of sites.",
             )
             candidates = all_candidate_sites[
@@ -978,7 +987,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         )
         return
     except (OSError, ValueError, KeyError, nx.NetworkXException) as error:
-        st.error(f"Could not calculate this scenario: {error}")
+        st.error(f"Could not calculate this scenario: {clean_web_text(str(error))}")
         return
 
     return page_export, page_export_name

@@ -1,16 +1,54 @@
+from copy import copy
 from pathlib import Path
 
 import folium
 import geopandas as gpd
 import pandas as pd
+from pandas.io.formats.style import Styler
 import streamlit as st
 import streamlit.components.v1 as components
-from scipy.stats import spearmanr
 from shapely.geometry import Point
 from linkbike_page import render as render_linkbike_page
 from recommendations import render as render_recommendations_page
 from scenario_simulation import render as render_scenario_page
-from ui_helpers import read_geojson
+from ui_helpers import clean_web_table, clean_web_text, read_geojson
+
+_original_dataframe = st.dataframe
+
+def _display_dataframe(data=None, *args, **kwargs):
+    if isinstance(data, pd.DataFrame):
+        data = clean_web_table(data)
+    elif isinstance(data, Styler):
+        data = copy(data)
+        data.data = clean_web_table(data.data)
+    return _original_dataframe(data, *args, **kwargs)
+
+st.dataframe = _display_dataframe
+
+
+def _spearman_rho(first, second):
+    """Calculate Spearman rho from ranked values without importing SciPy."""
+    pair = pd.concat(
+        [
+            pd.to_numeric(first, errors="coerce"),
+            pd.to_numeric(second, errors="coerce"),
+        ],
+        axis=1,
+    ).dropna()
+    if len(pair) < 2:
+        return float("nan")
+
+    ranks = pair.rank(method="average")
+    rank_a = ranks.iloc[:, 0]
+    rank_b = ranks.iloc[:, 1]
+    centred_a = rank_a - rank_a.mean()
+    centred_b = rank_b - rank_b.mean()
+    denominator = float(
+        centred_a.pow(2).sum() * centred_b.pow(2).sum()
+    ) ** 0.5
+    if denominator == 0:
+        return float("nan")
+    return float((centred_a * centred_b).sum() / denominator)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -197,7 +235,7 @@ def load_data():
 
 for required_file in (TAI_FILE, BOUNDARY_FILE, STOPS_FILE, SOCIOECONOMIC_FILE):
     if not required_file.exists():
-        st.error(f"Required project file not found: {required_file}")
+        st.error(f"Required project file not found: {clean_web_text(str(required_file))}")
         st.stop()
 
 tai, all_areas, all_stops = load_data()
@@ -353,7 +391,8 @@ def build_map(areas, stops, show_tai, show_stops=True):
         show=True,
     )
     folium.GeoJson(
-        areas.to_json(),
+        areas.assign(display_name=areas["display_name"].map(clean_web_text)).to_json()
+        if "display_name" in areas.columns else areas.to_json(),
         name="Area coverage",
         style_function=style_area,
         tooltip=folium.GeoJsonTooltip(
@@ -402,7 +441,7 @@ def build_map(areas, stops, show_tai, show_stops=True):
             fill=True,
             fill_color="#1976d2",
             fill_opacity=0.9,
-            tooltip=label,
+            tooltip=clean_web_text(label),
         ).add_to(stop_layer)
     stop_layer.add_to(map_view)
 
@@ -411,6 +450,18 @@ def build_map(areas, stops, show_tai, show_stops=True):
     bounds = areas.total_bounds
     map_view.fit_bounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]])
     return map_view
+
+
+def population_summary_card(column, title, value, detail):
+    column.markdown(
+        "<div style='min-height:112px;background:#fff;border:1px solid #e7e2ed;"
+        "border-radius:12px;padding:12px 16px;box-shadow:0 1px 3px rgba(30,20,45,.04)'>"
+        f"<div style='font-size:.98rem;color:#5f6368'>{title}</div>"
+        f"<div style='font-size:1.8rem;font-weight:500;line-height:1.2;color:#54228a'>{value}</div>"
+        f"<div style='font-size:.9rem;color:#68636d;margin-top:4px'>{detail}</div>"
+        "</div>",
+        unsafe_allow_html=True,
+    )
 
 
 def set_page_export(slot, export_result):
@@ -478,7 +529,7 @@ if page == "Coverage Analysis":
         area_choice = st.selectbox(
             "Area",
             area_options,
-            format_func=lambda name: "All areas" if name == "All areas" else area_names.get(name, name),
+            format_func=lambda name: clean_web_text("All areas" if name == "All areas" else area_names.get(name, name)),
         )
 
     selected_areas = select_areas(district_choice, area_choice)
@@ -568,15 +619,68 @@ elif page == "TAI Rankings":
     )
 
     no_score_count = int(tai["TAI"].isna().sum())
-    low_count = int((scored["TAI_category"] == "Low").sum())
-    high_count = int((scored["TAI_category"] == "High").sum())
     mean_tai = scored["TAI"].mean() if not scored.empty else 0
 
-    metric1, metric2, metric3, metric4 = st.columns(4)
+    metric1, metric2, metric3 = st.columns(3)
     metric1.metric("Areas with a score", f"{len(scored)} of {len(tai)}")
     metric2.metric("Average TAI", f"{mean_tai:.2f}")
-    metric3.metric("Low TAI areas", low_count)
-    metric4.metric("Areas without a score", no_score_count)
+    metric3.metric("Areas without a score", no_score_count)
+
+    population = pd.to_numeric(
+        tai.get("csv_population", pd.Series(index=tai.index, dtype=float)),
+        errors="coerce",
+    )
+    total_population = population.sum(min_count=1)
+    assessed_population = tai.dropna(
+        subset=["csv_population", "estimated_csv_population_covered"]
+    )
+    total_assessed_population = pd.to_numeric(
+        assessed_population["csv_population"], errors="coerce"
+    ).sum()
+    covered_population = pd.to_numeric(
+        assessed_population["estimated_csv_population_covered"], errors="coerce"
+    ).sum()
+    outside_population = max(total_assessed_population - covered_population, 0)
+    outside_share = (
+        100 * outside_population / total_assessed_population
+        if total_assessed_population > 0
+        else float("nan")
+    )
+
+    st.subheader("Population by TAI group")
+    st.caption(
+        "Each group counts everyone living in its mukims. The last card shows "
+        "estimated residents outside the modelled 400 m walking range."
+    )
+    group_cols = st.columns(4)
+    for column, category in zip(group_cols[:3], ["Low", "Medium", "High"]):
+        in_group = tai["TAI_category"].eq(category)
+        group_population = population.where(in_group).sum(min_count=1)
+        group_share = (
+            100 * group_population / total_population
+            if pd.notna(group_population)
+            and pd.notna(total_population)
+            and total_population > 0
+            else float("nan")
+        )
+        area_count = int(in_group.sum())
+        population_summary_card(
+            column,
+            f"{category} TAI mukims",
+            f"{group_population:,.0f}" if pd.notna(group_population) else "Not available",
+            f"{area_count} mukims · {group_share:.1f}% of population"
+            if pd.notna(group_share)
+            else f"{area_count} mukims",
+        )
+
+    population_summary_card(
+        group_cols[3],
+        "Residents beyond 400 m",
+        f"{outside_population:,.0f}" if total_assessed_population > 0 else "Not available",
+        f"{outside_share:.1f}% of population"
+        if pd.notna(outside_share)
+        else "Population estimate unavailable",
+    )
 
     st.subheader("TAI map")
     show_tai_stops = st.checkbox("Show bus stop markers", value=True)
@@ -631,52 +735,64 @@ elif page == "TAI Rankings":
             "Average walk to a bus stop (metres)": "mean_walk_distance_m_routable_population",
             "Destination access": "destination_access_score",
         }
-        available = {
-            label: column
-            for label, column in indicator_columns.items()
-            if column in scored.columns
-        }
         st.write(
             "Average walking distance from residents to the nearest bus stop, in metres. "
             "It is weighted by population and includes only places connected to the walking network. "
             "The TAI reverses this measure, so shorter distances give a better score."
         )
         st.write(
-            "Spearman correlation shows how the indicators vary together. It does not show that one causes another. "
-            "P-values below 0.001 are shown as < 0.001. Smaller values give stronger evidence of a relationship, "
-            "but do not prove cause and effect."
+            "Spearman rho shows whether two indicators tend to rise or fall together. "
+            "It does not show that one causes another."
         )
+        available = {
+            label: column
+            for label, column in indicator_columns.items()
+            if column in scored.columns
+        }
         rows = []
         items = list(available.items())
-        for i, (label_a, column_a) in enumerate(items):
-            for label_b, column_b in items[i + 1:]:
+        for index, (label_a, column_a) in enumerate(items):
+            for label_b, column_b in items[index + 1:]:
                 pair = scored[[column_a, column_b]].dropna()
-                rho, p_value = spearmanr(pair[column_a], pair[column_b])
                 rows.append({
                     "Indicator 1": label_a,
                     "Indicator 2": label_b,
-                    "Spearman rho": rho,
-                    "p-value": p_value,
+                    "Spearman rho": _spearman_rho(
+                        pair[column_a], pair[column_b]
+                    ),
                     "Areas compared": len(pair),
                 })
         correlation_table = pd.DataFrame(rows)
         st.dataframe(
-            correlation_table.style.format(
-                {
-                    "Spearman rho": "{:.3f}",
-                    "p-value": lambda value: "< 0.001" if abs(value) < 0.001 else f"{value:.3f}",
-                }
-            ),
+            correlation_table.style.format({"Spearman rho": "{:.3f}"}),
             hide_index=True,
             use_container_width=True,
         )
 
 
 elif page == "Clustering":
-    counts = (
-        scored["TAI_category"]
-        .value_counts()
-        .reindex(["Low", "Medium", "High"], fill_value=0)
+    profile_columns = {
+        "Bus stop density": "stop_density_score",
+        "Population coverage": "population_coverage_score",
+        "Walking distance": "walking_distance_score",
+        "Destination access": "destination_access_score",
+    }
+    counts = scored["TAI_category"].value_counts().reindex(
+        ["Low", "Medium", "High"], fill_value=0
+    )
+    available_profile = {
+        label: column
+        for label, column in profile_columns.items()
+        if column in scored.columns
+    }
+    profile = (
+        scored.groupby("TAI_category")[list(available_profile.values())]
+        .mean()
+        .reindex(["Low", "Medium", "High"])
+        .rename(columns={
+            column: label
+            for label, column in available_profile.items()
+        })
     )
 
     low_col, medium_col, high_col = st.columns(3)
@@ -689,30 +805,6 @@ elif page == "Clustering":
         "Scores range from 0 to 1. Higher scores indicate better relative "
         "accessibility. The walking-distance score is reversed, so shorter "
         "distances receive higher scores."
-    )
-
-    profile_columns = {
-        "Bus stop density": "stop_density_score",
-        "Population coverage": "population_coverage_score",
-        "Walking distance": "walking_distance_score",
-        "Destination access": "destination_access_score",
-    }
-    available_profile = {
-        label: column
-        for label, column in profile_columns.items()
-        if column in scored.columns
-    }
-
-    profile = (
-        scored.groupby("TAI_category")[
-            list(available_profile.values())
-        ]
-        .mean()
-        .reindex(["Low", "Medium", "High"])
-        .rename(columns={
-            column: label
-            for label, column in available_profile.items()
-        })
     )
 
     st.bar_chart(profile, y=list(available_profile.keys()))
@@ -786,10 +878,10 @@ elif page == "Socioeconomic Correlation":
         socio_complete = socioeconomic.dropna(
             subset=["income_median", "population_2024_persons", "TAI"]
         ).copy()
-        income_result = spearmanr(
+        income_rho = _spearman_rho(
             socio_complete["income_median"], socio_complete["TAI"]
         )
-        population_result = spearmanr(
+        population_rho = _spearman_rho(
             socio_complete["population_2024_persons"], socio_complete["TAI"]
         )
 
@@ -797,24 +889,30 @@ elif page == "Socioeconomic Correlation":
         metric1.metric("DUNs compared", len(socio_complete))
         metric2.metric(
             "Income and TAI (rho)",
-            f"{income_result.statistic:.3f}",
+            f"{income_rho:.3f}",
         )
         metric3.metric(
             "Population and TAI (rho)",
-            f"{population_result.statistic:.3f}",
+            f"{population_rho:.3f}",
         )
         chart_col1, chart_col2 = st.columns(2)
         with chart_col1:
             st.subheader("Median income and TAI")
+            income_chart_data = socio_complete.rename(
+                columns={"income_median": "Median income (RM)"}
+            )
             st.scatter_chart(
-                socio_complete, x="income_median", y="TAI",
+                income_chart_data, x="Median income (RM)", y="TAI",
                 x_label="2024 median household income (RM)",
                 y_label="DUN TAI", use_container_width=True,
             )
         with chart_col2:
             st.subheader("Population and TAI")
+            population_chart_data = socio_complete.rename(
+                columns={"population_2024_persons": "Population (2024)"}
+            )
             st.scatter_chart(
-                socio_complete, x="population_2024_persons", y="TAI",
+                population_chart_data, x="Population (2024)", y="TAI",
                 x_label="2024 population (people)",
                 y_label="DUN TAI", use_container_width=True,
             )

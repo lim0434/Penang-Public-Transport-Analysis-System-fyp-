@@ -10,6 +10,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from folium.plugins import Fullscreen, MarkerCluster
 from scipy.spatial import cKDTree
+from ui_helpers import clean_web_text
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -310,7 +311,7 @@ def _make_map(graph, stations, station_status, stops, best_for_station, show_all
             continue
         folium.Marker(
             [float(stop.stop_lat), float(stop.stop_lon)],
-            tooltip=escape(str(stop.stop_name)) + (
+            tooltip=escape(clean_web_text(str(stop.stop_name))) + (
                 f" · {stop.walking_distance_m:.0f} m walking distance"
                 if is_connected else " · no LinkBike station within threshold"
             ),
@@ -341,12 +342,12 @@ def _make_map(graph, stations, station_status, stops, best_for_station, show_all
             colour, icon = poi_styles.get(str(poi.destination_type), ("gray", "map-marker"))
             popup = (
                 f"<div style='width:250px;font-size:14px;line-height:1.5;padding:6px;'>"
-                f"<b>{escape(str(poi.destination_name))}</b><br>"
-                f"{escape(str(poi.destination_type))}</div>"
+                f"<b>{escape(clean_web_text(str(poi.destination_name)))}</b><br>"
+                f"{escape(clean_web_text(str(poi.destination_type)))}</div>"
             )
             folium.Marker(
                 [float(poi.destination_lat), float(poi.destination_lon)],
-                tooltip=f"{escape(str(poi.destination_type))}: {escape(str(poi.destination_name))}",
+                tooltip=f"{escape(clean_web_text(str(poi.destination_type)))}: {escape(clean_web_text(str(poi.destination_name)))}",
                 popup=folium.Popup(popup, min_width=280, max_width=360),
                 icon=folium.Icon(color=colour, icon=icon, prefix="fa"),
             ).add_to(poi_group)
@@ -360,11 +361,11 @@ def _make_map(graph, stations, station_status, stops, best_for_station, show_all
         )
         folium.Marker(
             [float(station.latitude), float(station.longitude)],
-            tooltip=escape(str(station.station_name)),
+            tooltip=escape(clean_web_text(str(station.station_name))),
             popup=folium.Popup(
                 f"<div style='width:260px;font-size:14px;line-height:1.5;padding:6px;'>"
-                f"<b>{escape(str(station.station_name))}</b><br>"
-                + (f"Nearest bus stop: {escape(str(station.nearby_stop))}<br>"
+                f"<b>{escape(clean_web_text(str(station.station_name)))}</b><br>"
+                + (f"Nearest bus stop: {escape(clean_web_text(str(station.nearby_stop)))}<br>"
                    f"{station.walking_distance_m:.0f} m walking distance"
                    if connected else "No bus stop within the selected walking distance")
                 + "</div>",
@@ -381,7 +382,7 @@ def _make_map(graph, stations, station_status, stops, best_for_station, show_all
             color="#f59e0b",
             weight=4,
             fill=False,
-            tooltip=f"Selected: {escape(str(selected_point['label']))}",
+            tooltip=f"Selected: {escape(clean_web_text(str(selected_point['label'])))}",
         ).add_to(map_view)
 
     Fullscreen(position="topright").add_to(map_view)
@@ -421,7 +422,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         station_data = pd.read_csv(STATIONS_FILE)
         stations = _normalise_stations(station_data)
     except (ValueError, pd.errors.ParserError, UnicodeDecodeError) as error:
-        st.error(str(error))
+        st.error(clean_web_text(str(error)))
         return
 
     threshold_m = st.selectbox(
@@ -436,13 +437,13 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             stations, _load_bus_stops(), int(threshold_m), None
         )
     except (OSError, ValueError, KeyError, nx.NetworkXException) as error:
-        st.error(f"Could not calculate LinkBike connections: {error}")
+        st.error(f"Could not calculate LinkBike connections: {clean_web_text(str(error))}")
         return
 
     try:
         poi_data = _load_pois()
     except (OSError, ValueError, pd.errors.ParserError) as error:
-        st.error(f"Could not load common destinations: {error}")
+        st.error(f"Could not load common destinations: {clean_web_text(str(error))}")
         return
 
     show_all_stops = st.checkbox(

@@ -13,7 +13,7 @@ from scenario_simulation import (
     _rank_candidate_sites,
     _residential_candidate_sites,
 )
-from ui_helpers import DISTRICT_LABELS
+from ui_helpers import DISTRICT_LABELS, clean_web_text
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -153,9 +153,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     priority = _priority_table(scored, destinations, display_names)
 
     st.caption(
-        "Use these results to decide where to investigate transport improvements. "
-        "A short walk means a modelled 400 m walking route, about five minutes."
+        "Priority areas are ordered from the lowest TAI upwards. "
+        "Residents outside a short walk and key places beyond 400 m show the access needs."
     )
+    st.caption("A short walk means a modelled 400 m walking route, about five minutes.")
 
     with st.container(border=True):
         st.subheader("Priority mukims")
@@ -199,9 +200,9 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 use_container_width=True,
             )
 
-    eligible_areas = scored.sort_values("TAI")
+    eligible_areas = scored[scored["TAI_category"] == "Low"].sort_values("TAI")
     if eligible_areas.empty:
-        st.warning("No mukims have a TAI score to use for recommendations.")
+        st.warning("No low-access mukims have a TAI score for recommendations.")
         return
     area_names = eligible_areas["match_name"].tolist()
     default_area = next(
@@ -209,10 +210,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         area_names[0],
     )
     selected_area = st.selectbox(
-        "Choose a mukim to find possible stop locations",
+        "Choose a low-access mukim to find possible stop locations",
         area_names,
         index=area_names.index(default_area),
-        format_func=lambda name: display_names.get(name, _area_label(name)),
+        format_func=lambda name: clean_web_text(display_names.get(name, _area_label(name))),
         key="recommendations_area",
     )
 
@@ -230,7 +231,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                     st.error(
                         "Windows blocked Rasterio, which is needed to estimate "
                         "population gains. Ask your administrator to allow the "
-                        f"Rasterio files. Details: {error}"
+                        f"Rasterio files. Details: {clean_web_text(str(error))}"
                     )
                     return
             st.session_state["recommendation_candidate_area"] = selected_area
@@ -249,20 +250,28 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 "Priority", "Place", "Type", "Current walk to bus stop (min)",
             ]].copy()
             page_export_name = "suggested_bus_stop_locations.csv"
+            display_columns = [
+                "Priority",
+                "Place",
+                "Type",
+                "Estimated residents gaining access",
+                "Key places gaining access",
+                "Current walk to bus stop (min)",
+            ]
             st.dataframe(
-                shown[[
-                    "Priority", "Place", "Type", "Current walk to bus stop (min)",
-                ]].style.format({
+                shown[display_columns].style.format({
+                    "Estimated residents gaining access": "{:,.0f}",
+                    "Key places gaining access": "{:,.0f}",
                     "Current walk to bus stop (min)": "{:.1f}",
                 }),
                 hide_index=True,
                 use_container_width=True,
             )
             st.caption(
-                "The list is a screening shortlist, ranked using estimated access "
-                "benefits for each candidate on its own. Use Scenario Simulation to "
-                "check a selected set together. Check road safety, land use and "
-                "operator needs before treating any location as suitable."
+                "The figures estimate residents and other key places that may gain "
+                "walking access from each site on its own. Sites are snapped to the "
+                "mapped walking network for simulation. Check road safety, land use "
+                "and operator needs before treating a site as suitable."
             )
         else:
             if result_area == selected_area and ranked.empty:
@@ -284,8 +293,8 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         with st.container(border=True):
             st.subheader("Latest tested scenario")
             st.caption(
-                f"{display_names.get(simulation['area'], _area_label(simulation['area']))}: "
-                f"{', '.join(simulation['sites'])}."
+                f"{clean_web_text(display_names.get(simulation['area'], _area_label(simulation['area'])))}: "
+                f"{', '.join(clean_web_text(site) for site in simulation['sites'])}."
             )
             metric_cols = st.columns(3)
             metric_cols[0].metric(
