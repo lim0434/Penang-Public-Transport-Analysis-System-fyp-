@@ -3,7 +3,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000427,Tingkat Kenari,5.31454,100.266,,,No LinkBike station within 400 m
 12000512,Surau Gertak Sanggul,5.2823,100.1942,,,No LinkBike station within 400 m
 12000616,Masjid Makbul Teluk Kumbar,5.29419,100.22805,,,No LinkBike station within 400 m
-12000847,KFC Jalan Mahsuri,5.32686,100.28667,Sunshine B. Baru,140.33986856674346,Within 400 m
+12000847,KFC Jalan Mahsuri,5.32686,100.28667,Sunshine B. Baru,140.34,Within 400 m
 12000879,Giant Bayan Baru,5.32071,100.28571,,,No LinkBike station within 400 m
 12000885,Sunshine Square,5.325499,100.2875,,,No LinkBike station within 400 m
 12001442,Terminal Bas Ekpress Sg Nibong,5.3429400000000005,100.30106,,,No LinkBike station within 400 m
@@ -43,7 +43,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002950,Pusat Penjaja Bandar Putra Bertam,5.518487599999999,100.4811202,,,No LinkBike station within 400 m
 12000059,Pejabat Pos Ayer Itam,5.4041,100.28008,,,No LinkBike station within 400 m
 12000151,Kek Lok Si Temple,5.40238,100.27728,,,No LinkBike station within 400 m
-12001066,Hotel Cititel,5.42143,100.3337,Campbell St,361.59627663016903,Within 400 m
+12001066,Hotel Cititel,5.42143,100.3337,Campbell St,361.6,Within 400 m
 12001928,SMK St. Xavier,5.42126,100.33701,,,No LinkBike station within 400 m
 12001215,Sunway Wellesley,5.368530000000001,100.45774,,,No LinkBike station within 400 m
 12001216,Pusat Perniagaan Permatang Rawa,5.36862,100.44489,,,No LinkBike station within 400 m
@@ -111,7 +111,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12003024,Dewan Budaya,5.356643,100.30398,,,No LinkBike station within 400 m
 12003026,Desasiswa Harapan,5.354758,100.3004,,,No LinkBike station within 400 m
 12000584,Masjid Jelutong,5.39272,100.31461,,,No LinkBike station within 400 m
-12000610,Kampung Kolam,5.41606,100.33669,Lebuh Acheh,167.95351335049827,Within 400 m
+12000610,Kampung Kolam,5.41606,100.33669,Lebuh Acheh,167.95,Within 400 m
 12001453,Restoran Kampung Ku,5.366709999999999,100.31078,,,No LinkBike station within 400 m
 12002314,Mutiara Vista,5.398549,100.320515,,,No LinkBike station within 400 m
 12000267,Jalan Besar,5.13523,100.46947,,,No LinkBike station within 400 m
@@ -148,7 +148,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001766,Teluk Bahang,5.45971,100.21782,,,No LinkBike station within 400 m
 12003014,Masjid Terapung,5.4676422,100.2772938,,,No LinkBike station within 400 m
 12000052,Wisma Persekutuan,5.419625,100.32334,,,No LinkBike station within 400 m
-12001060,Komtar Utara,5.41513,100.32899,Gama,197.393136099363,Within 400 m
+12001060,Komtar Utara,5.41513,100.32899,Gama,197.39,Within 400 m
 12000818,Ambank Tanjung Bungah,5.4646,100.28041,,,No LinkBike station within 400 m
 12000897,Hong Seng Estate,5.440930000000001,100.30298,,,No LinkBike station within 400 m
 12001671,Harmony Residence,5.46546,100.28178,,,No LinkBike station within 400 m
@@ -230,7 +230,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002082,Taman Gedung Heights II,5.317312,100.27995,,,No LinkBike station within 400 m
 12002316,Gedung Height IV,5.316179,100.282016,,,No LinkBike station within 400 m
 12000148,Taman Seri Indah,5.34345,100.22733,,,No LinkBike station within 400 m
-12001386,Lotus Tanjung Pinang III,5.45803,100.30851,Straits Quay,326.199312300316,Within 400 m
+12001386,Lotus Tanjung Pinang III,5.45803,100.30851,Straits Quay,326.2,Within 400 m
 12000304,USM (Jalan Bukit Gambir),5.356580999999999,100.29281,,,No LinkBike station within 400 m
 12000307,Petronas Jalan Bukit Gambir,5.362430000000001,100.29528,,,No LinkBike station within 400 m
 12000810,Perumahan Kastam,5.37447,100.30129,,,No LinkBike station within 400 m
@@ -254,7 +254,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000617,SK Seri Bayu,5.29434,100.23005,,,No LinkBike station within 400 m
 12001447,JPJ Batu Uban,5.35184,100.30481,,,No LinkBike station within 400 m
 12001776,Hotel Grand Lexis,5.28696,100.23383,,,No LinkBike station within 400 m
-12001837,Setia Welcome Center,5.32963,100.27883,Setia Spice,74.56274733653589,Within 400 m
+12001837,Setia Welcome Center,5.32963,100.27883,Setia Spice,74.56,Within 400 m
 12001842,Bukit Jambul Golf Club,5.33199,100.28419,,,No LinkBike station within 400 m
 12002063,Bay Garden,5.336976,100.308266,,,No LinkBike station within 400 m
 12000739,Dewan Bakau Tua,5.567819999999999,100.35953,,,No LinkBike station within 400 m
@@ -277,7 +277,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000075,SMK Sri Mutiara,5.41031,100.30745,,,No LinkBike station within 400 m
 12001378,Flat Padang Tembak,5.41046,100.29009,,,No LinkBike station within 400 m
 12001822,Wisma Yatim,5.40404,100.29161,,,No LinkBike station within 400 m
-12001920,Love Lane,5.418401,100.33614,Muntri,262.3233498384155,Within 400 m
+12001920,Love Lane,5.418401,100.33614,Muntri,262.32,Within 400 m
 12001556,Taman Pokok Sena Indah,5.47935,100.4575,,,No LinkBike station within 400 m
 12002201,Terminal Bas Bukit Mertajam,5.3657975,100.462624,,,No LinkBike station within 400 m
 12002363,Masjid Al Muhtadin,5.407346,100.453356,,,No LinkBike station within 400 m
@@ -287,7 +287,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002089,Bertam Putra 1,5.517612000000001,100.486015,,,No LinkBike station within 400 m
 12000635,Kampung Pisang,5.39829,100.28194,,,No LinkBike station within 400 m
 12001323,Jalan Pisang Embun,5.39853,100.28353,,,No LinkBike station within 400 m
-12002971,Pejabat Pos Besar P.Pinang 1,5.4180154,100.3436892,OCBC Bank,355.6016046465993,Within 400 m
+12002971,Pejabat Pos Besar P.Pinang 1,5.4180154,100.3436892,OCBC Bank,355.6,Within 400 m
 12000019,Taman Tun Sardon,5.371651,100.30281,,,No LinkBike station within 400 m
 12001214,Taman Bandar Ampang Jajar,5.41415,100.40546,,,No LinkBike station within 400 m
 12001217,Permatang Rawa,5.36889,100.45274,,,No LinkBike station within 400 m
@@ -326,7 +326,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001439,Masjid Jamek Sg Nibong,5.340112,100.29935,,,No LinkBike station within 400 m
 12001445,Taman Century,5.3477,100.30336,,,No LinkBike station within 400 m
 12001457,KTM Motor,5.3727800000000006,100.30903,,,No LinkBike station within 400 m
-12001915,Hotel Armenian,5.415494,100.335,Lebuh Acheh,236.54079935686343,Within 400 m
+12001915,Hotel Armenian,5.415494,100.335,Lebuh Acheh,236.54,Within 400 m
 12002993,Presgrave Corner,5.41122,100.330436,,,No LinkBike station within 400 m
 12000140,Pekan Kongsi,5.35078,100.23511,,,No LinkBike station within 400 m
 12000149,SK Kongsi,5.34619,100.23028,,,No LinkBike station within 400 m
@@ -369,7 +369,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000227,Mount Pleasure,5.47754,100.27243,,,No LinkBike station within 400 m
 12000231,Moon Light Café,5.47801,100.26288,,,No LinkBike station within 400 m
 12000234,Double Tree Resort,5.47825,100.26897,,,No LinkBike station within 400 m
-12000530,Jalan Gurdwara,5.4115,100.32819,Gama,379.79097910030634,Within 400 m
+12000530,Jalan Gurdwara,5.4115,100.32819,Gama,379.79,Within 400 m
 12001139,Kampung Batu Lima,5.280432,100.28036,,,No LinkBike station within 400 m
 12001141,Taman Gembira,5.28062,100.27474,,,No LinkBike station within 400 m
 12000718,Sri Pangkor Kondominium,5.42875,100.31974,,,No LinkBike station within 400 m
@@ -413,9 +413,9 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002305,Saujana Height,5.291580000000001,100.25035,,,No LinkBike station within 400 m
 12002307,Pekan Teluk Kumbar,5.28745,100.23263,,,No LinkBike station within 400 m
 12000455,Padang Brown,5.412893,100.317986,,,No LinkBike station within 400 m
-12000459,Penang Times Square,5.41332,100.3262,Gama,300.24024139141613,Within 400 m
+12000459,Penang Times Square,5.41332,100.3262,Gama,300.24,Within 400 m
 12001076,Kampung Dodol,5.40492,100.31538,,,No LinkBike station within 400 m
-12001919,Love Lane,5.41834,100.3364,Kapitan Keling,252.09599570608415,Within 400 m
+12001919,Love Lane,5.41834,100.3364,Kapitan Keling,252.1,Within 400 m
 12002002,Pasar Batu Lanchang II,5.39051,100.30661,,,No LinkBike station within 400 m
 12002278,Klinik Comfort,5.397133,100.314648,,,No LinkBike station within 400 m
 12002016,SJK (C) Li Tek,5.405869999999999,100.33352,,,No LinkBike station within 400 m
@@ -501,7 +501,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001807,Klinik Kesihatan Bayan Baru,5.321205,100.27917,,,No LinkBike station within 400 m
 12001955,Krystal Point Corporate Park,5.330701,100.298996,,,No LinkBike station within 400 m
 12002012,Lintang Kg. Masjid,5.288959999999999,100.22724,,,No LinkBike station within 400 m
-12002059,Queensbay Mall,5.331947,100.30791,Queensbay Mall,130.67899060785362,Within 400 m
+12002059,Queensbay Mall,5.331947,100.30791,Queensbay Mall,130.68,Within 400 m
 12000602,SJKC Chung Hwa Pusat,5.41634,100.37329,,,No LinkBike station within 400 m
 12000604,Masjid Kubang Buaya,5.41944,100.37469,,,No LinkBike station within 400 m
 12001116,Tali Air Permatang Bendahari,5.55865,100.3771,,,No LinkBike station within 400 m
@@ -515,11 +515,11 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001710,SMK ST Mark,5.44958,100.383,,,No LinkBike station within 400 m
 12001721,SK Taman Senangan,5.47172,100.38309,,,No LinkBike station within 400 m
 12001726,Masjid Jamek Daerah SPU,5.479248999999999,100.383484,,,No LinkBike station within 400 m
-12000007,Container Hotel,5.41415,100.34042,Armenian St.,325.4282485187211,Within 400 m
+12000007,Container Hotel,5.41415,100.34042,Armenian St.,325.43,Within 400 m
 12000966,PBA Padang Tembak,5.40882,100.29327,,,No LinkBike station within 400 m
 12001019,Surau Al Muttaqin,5.37176,100.27534,,,No LinkBike station within 400 m
 12001374,Nasi Kandar Salam,5.405191,100.28876,,,No LinkBike station within 400 m
-12001916,Restoran Kapitan,5.41602,100.33892,Kapitan Keling,175.6374924441905,Within 400 m
+12001916,Restoran Kapitan,5.41602,100.33892,Kapitan Keling,175.64,Within 400 m
 12001510,Desa Murni,5.4404900000000005,100.42953,,,No LinkBike station within 400 m
 12001511,Klinik Kesihatan Sungai Dua,5.44226,100.42986,,,No LinkBike station within 400 m
 12001553,Simpang Lahar Yooi,5.4691,100.45682,,,No LinkBike station within 400 m
@@ -567,7 +567,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001459,Recsam,5.37671,100.30803,,,No LinkBike station within 400 m
 12001785,Hentian Kampung Bukit,5.29662,100.23239,,,No LinkBike station within 400 m
 12001786,Kampung Matahari Naik,5.29946,100.23202,,,No LinkBike station within 400 m
-12001917,Little India,5.41647,100.33854,Kapitan Keling,169.9369027628666,Within 400 m
+12001917,Little India,5.41647,100.33854,Kapitan Keling,169.94,Within 400 m
 12002057,Church Street Pier,5.41664,100.34413,,,No LinkBike station within 400 m
 12002113,Terminal A Weld Quay,5.414174,100.3422281,,,No LinkBike station within 400 m
 12002615,Ideal One Resident,5.301474,100.266912,,,No LinkBike station within 400 m
@@ -596,7 +596,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001981,Batu Uban Highway,5.351251,100.30986,,,No LinkBike station within 400 m
 12002004,Kobe Precision Technology,5.302061,100.291214,,,No LinkBike station within 400 m
 12002006,K.K Chong Engineering,5.300322,100.286674,,,No LinkBike station within 400 m
-12002064,Gold Coast Kondominium,5.339738,100.30965,Summerton,218.7303095966394,Within 400 m
+12002064,Gold Coast Kondominium,5.339738,100.30965,Summerton,218.73,Within 400 m
 12002204,By The Sea,5.4691428,100.2443992,,,No LinkBike station within 400 m
 12002253,Moon Light Bay,5.47848702,100.2616271,,,No LinkBike station within 400 m
 12000478,Jalan Evergreen,5.4533,100.30272,,,No LinkBike station within 400 m
@@ -616,8 +616,8 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001134,Sekolah Memandu Damar Laut,5.27866,100.26476,,,No LinkBike station within 400 m
 12001151,Southbay Residence,5.283968,100.28633,,,No LinkBike station within 400 m
 12001158,SJK Tamil Bayan Lepas,5.29338,100.25681,,,No LinkBike station within 400 m
-12000358,SK Pykett Methodist,5.42197,100.32365,Burma SJK Union,279.1128628632433,Within 400 m
-12000721,Masjid Jamek Al Munawwar,5.4307300000000005,100.31622,Gurney Bay Hotel,341.8186632065237,Within 400 m
+12000358,SK Pykett Methodist,5.42197,100.32365,Burma SJK Union,279.11,Within 400 m
+12000721,Masjid Jamek Al Munawwar,5.4307300000000005,100.31622,Gurney Bay Hotel,341.82,Within 400 m
 12000723,Sleeping Buddha,5.4320900000000005,100.31404,,,No LinkBike station within 400 m
 12001644,Balai Bomba Bagan Jermal,5.44088,100.30719,,,No LinkBike station within 400 m
 12001648,Caltex Tanjung Tokong,5.44589,100.30502,,,No LinkBike station within 400 m
@@ -630,7 +630,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002251,Feringghi Villa,5.46523363,100.2410851,,,No LinkBike station within 400 m
 12002975,Hotel Angsana,5.461570099999999,100.2199492,,,No LinkBike station within 400 m
 12000808,Hotel Royal,5.422333999999999,100.3258,,,No LinkBike station within 400 m
-12000828,Masjid Simpang Enam,5.414540000000001,100.32774,Gama,127.95152246616068,Within 400 m
+12000828,Masjid Simpang Enam,5.414540000000001,100.32774,Gama,127.95,Within 400 m
 12000483,Jalan Gajah I,5.4623,100.30374,,,No LinkBike station within 400 m
 12000896,Chinese Cemetery,5.43729,100.30267,,,No LinkBike station within 400 m
 12001038,Masjid Permatang Tok Jaya,5.457417,100.40129,,,No LinkBike station within 400 m
@@ -692,11 +692,11 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001195,Taman Cantik,5.414630000000001,100.38273,,,No LinkBike station within 400 m
 12001208,Permatang Janggus,5.40447,100.41627,,,No LinkBike station within 400 m
 12001929,Protestant Cemetry,5.4228,100.33394,,,No LinkBike station within 400 m
-12001934,Padang Kota Lama,5.41994,100.34257,Lebuh Light,24.540576711989956,Within 400 m
-12001936,Dewan Sri Pinang,5.420669999999999,100.34076,City Hall （HQ）,198.4277382213143,Within 400 m
+12001934,Padang Kota Lama,5.41994,100.34257,Lebuh Light,24.54,Within 400 m
+12001936,Dewan Sri Pinang,5.420669999999999,100.34076,City Hall （HQ）,198.43,Within 400 m
 12002281,AADK Pekan Kongsi,5.35041,100.23451,,,No LinkBike station within 400 m
 12002283,Jalan Tun Sardon KM380,5.34466,100.24899,,,No LinkBike station within 400 m
-12002972,Swettenham Pier Cruise Terminal,5.4185041,100.3450813,Lebuh Light,353.6093739940587,Within 400 m
+12002972,Swettenham Pier Cruise Terminal,5.4185041,100.3450813,Lebuh Light,353.61,Within 400 m
 12002289,SJK (C) Kong Min,5.39503,100.27676,,,No LinkBike station within 400 m
 12001896,Komplek Masyarakat Penyayang,5.41817,100.30575,,,No LinkBike station within 400 m
 12000839,St. Christoper School,5.42288,100.30614,,,No LinkBike station within 400 m
@@ -715,7 +715,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001939,Wisma Ong Hye Guon Thong,5.409269999999999,100.33018,,,No LinkBike station within 400 m
 12001980,Shineville Park,5.39926,100.29572,,,No LinkBike station within 400 m
 12002023,SMK Georgetown,5.39906,100.29873,,,No LinkBike station within 400 m
-12002213,Komtar II,5.4150168,100.3308924,1st Avenue,280.5240862523573,Within 400 m
+12002213,Komtar II,5.4150168,100.3308924,1st Avenue,280.52,Within 400 m
 12001079,Astaka Padang Brown,5.41409,100.31632,,,No LinkBike station within 400 m
 12000287,Pejabat MPSP,5.35531,100.45097,,,No LinkBike station within 400 m
 12002517,Pusat Perniagaan Juru,5.318611,100.44724,,,No LinkBike station within 400 m
@@ -743,7 +743,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001117,Tali Air Permatang Bendahari,5.55866,100.37713,,,No LinkBike station within 400 m
 12001707,Bagan Ajam,5.44428,100.38211,,,No LinkBike station within 400 m
 12001021,Oriental Garden,5.3757,100.27586,,,No LinkBike station within 400 m
-12001061,Pasar Chowrasta,5.418131,100.331245,Campbell St,127.54847412804216,Within 400 m
+12001061,Pasar Chowrasta,5.418131,100.331245,Campbell St,127.55,Within 400 m
 12002114,Terminal B Weld Quay,5.4137915,100.3417782,,,No LinkBike station within 400 m
 12002991,Desa Mawar,5.3989764000000005,100.2895542,,,No LinkBike station within 400 m
 12001522,Taman Seri Murni,5.44643,100.43057,,,No LinkBike station within 400 m
@@ -797,7 +797,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001418,The Star Publication,5.298109999999999,100.26985,,,No LinkBike station within 400 m
 12002139,Terminal Bas Ekspres Sg Nibong,5.342838700000001,100.3003478,,,No LinkBike station within 400 m
 12002062,Bay Garden,5.33694,100.30833,,,No LinkBike station within 400 m
-12002066,Putra Place,5.339915,100.30946,Summerton,63.21832261302029,Within 400 m
+12002066,Putra Place,5.339915,100.30946,Summerton,63.22,Within 400 m
 12002111,Flat Macullum,5.4070800000000006,100.33167,,,No LinkBike station within 400 m
 12000353,Taman Tanah Aman,5.35289,100.43148,,,No LinkBike station within 400 m
 12000354,Masjid Balik Bukit,5.35411,100.42886,,,No LinkBike station within 400 m
@@ -828,7 +828,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002303,KWSP Queensbay,5.33692,100.30844,,,No LinkBike station within 400 m
 12002974,Terminal Bas Bayan Baru,5.326959,100.2803228,,,No LinkBike station within 400 m
 12001764,Hub Teluk Bahang,5.458819999999999,100.21611,,,No LinkBike station within 400 m
-12002209,Straits Quay Marina Mall,5.457885900000001,100.3126561,Straits Quay,357.1125971220452,Within 400 m
+12002209,Straits Quay Marina Mall,5.457885900000001,100.3126561,Straits Quay,357.11,Within 400 m
 12000367,Belissa Row,5.43251,100.31017,,,No LinkBike station within 400 m
 12000817,Kondominium Azuria,5.46375,100.28027,,,No LinkBike station within 400 m
 12001664,Mercure Penang Beach Hotel,5.46386,100.30121,,,No LinkBike station within 400 m
@@ -852,7 +852,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001757,Flat Hassan Abbas,5.45737,100.20986,,,No LinkBike station within 400 m
 12002249,Tanjong Tokong,5.45684938,100.3072617,,,No LinkBike station within 400 m
 12000900,Kompleks Institut Pendidikan,5.45006,100.30207,,,No LinkBike station within 400 m
-12001835,Transfer Road,5.420875,100.330605,Campbell St,371.1694236190335,Within 400 m
+12001835,Transfer Road,5.420875,100.330605,Campbell St,371.17,Within 400 m
 12002026,TAR Kolej II,5.45352,100.2863,,,No LinkBike station within 400 m
 12001043,SMK Permatang Tok Jaya,5.47319,100.40124,,,No LinkBike station within 400 m
 12002036,Flat Mak Mandin,5.41975,100.38697,,,No LinkBike station within 400 m
@@ -1021,8 +1021,8 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001427,Snake Temple,5.314244,100.28605,,,No LinkBike station within 400 m
 12001585,Sungai Pinang,5.40265,100.32297,,,No LinkBike station within 400 m
 12001780,SK Teluk Kumbar,5.29041,100.2326,,,No LinkBike station within 400 m
-12001937,Komtar,5.41378,100.33094,1st Avenue,116.50301229933699,Within 400 m
-12002056,Jejantas Terminal Feri,5.414516000000001,100.341866,OCBC Bank,375.13949901985563,Within 400 m
+12001937,Komtar,5.41378,100.33094,1st Avenue,116.5,Within 400 m
+12002056,Jejantas Terminal Feri,5.414516000000001,100.341866,OCBC Bank,375.14,Within 400 m
 12002211,(M1) Lapangan Terbang Antarabangsa Pulau Pinang,5.292606,100.2648269,,,No LinkBike station within 400 m
 12000135,TVETMARA Balik Pulau,5.33228,100.21707,,,No LinkBike station within 400 m
 12000352,Petronas Bukit Tengah,5.349819999999999,100.43389,,,No LinkBike station within 400 m
@@ -1065,13 +1065,13 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000309,SMK Bukit Gambir,5.37038,100.29667,,,No LinkBike station within 400 m
 12000426,Kem Sungai Ara 2,5.3137300000000005,100.26593,,,No LinkBike station within 400 m
 12000436,Masjid Al-huda Sungai Ara,5.32301,100.27192,,,No LinkBike station within 400 m
-12000850,I Avenue,5.32716,100.28524,Sunshine B. Baru,321.7211616209856,Within 400 m
+12000850,I Avenue,5.32716,100.28524,Sunshine B. Baru,321.72,Within 400 m
 12001133,Permatang Damar Laut 2,5.27841,100.27075,,,No LinkBike station within 400 m
 12001136,Hadapan Rumah Kedai,5.2799,100.27699,,,No LinkBike station within 400 m
 12001803,SMK Raja Tun uda,5.32036,100.28318,,,No LinkBike station within 400 m
 12002078,Klinik Menara,5.302219999999999,100.26071,,,No LinkBike station within 400 m
-12000719,Gurney Hotel,5.429469999999999,100.31879,Gurney Walk,232.51675871084834,Within 400 m
-12000727,Gurney Plaza,5.43594,100.30881,Kelawai Road,143.9616743066171,Within 400 m
+12000719,Gurney Hotel,5.429469999999999,100.31879,Gurney Walk,232.52,Within 400 m
+12000727,Gurney Plaza,5.43594,100.30881,Kelawai Road,143.96,Within 400 m
 12001654,Taman Batu Bukit,5.45289,100.30597,,,No LinkBike station within 400 m
 12001675,Hotel Flamingo,5.46612,100.2877,,,No LinkBike station within 400 m
 12001750,Escape,5.4494,100.21493,,,No LinkBike station within 400 m
@@ -1153,14 +1153,14 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002246,Jalan Sir Ibrahim I,5.395454,100.3087,,,No LinkBike station within 400 m
 12000438,Public Bank Jalan Relau,5.330747,100.27945,,,No LinkBike station within 400 m
 12002633,Balai Bomba Kampung Selamat,5.500551799999999,100.5219998,,,No LinkBike station within 400 m
-12002287,Hotel Cititel,5.42168,100.33383,Campbell St,378.1611509022994,Within 400 m
+12002287,Hotel Cititel,5.42168,100.33383,Campbell St,378.16,Within 400 m
 12001030,Permata Court Complex,5.392462,100.27584,,,No LinkBike station within 400 m
 12003132,Balai Polis Bandar Baru,5.395105,100.28905,,,No LinkBike station within 400 m
 12000838,Kolej Disted-Stamford,5.422867,100.3085,,,No LinkBike station within 400 m
 12001493,Kampung Dua Bukit,5.34278,100.29931,,,No LinkBike station within 400 m
 12002083,Taman Gedung Heights,5.317419999999999,100.28243,,,No LinkBike station within 400 m
 12000150,Pejabat Pos Balik Pulau,5.34925,100.23331,,,No LinkBike station within 400 m
-12000827,Masjid Simpang Enam,5.41438,100.32784,Gama,122.65152733864707,Within 400 m
+12000827,Masjid Simpang Enam,5.41438,100.32784,Gama,122.65,Within 400 m
 12000868,SMK Convent Green Lane,5.396780000000001,100.30341,,,No LinkBike station within 400 m
 12000871,McDonald Green Lane,5.40146,100.30395,,,No LinkBike station within 400 m
 12000873,SMK Penang Free,5.403490000000001,100.3037,,,No LinkBike station within 400 m
@@ -1187,7 +1187,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000414,Kampung Perlis,5.298158,100.261536,,,No LinkBike station within 400 m
 12000513,Klinik Desa Gertak Sanggul,5.28238,100.1976,,,No LinkBike station within 400 m
 12000613,SMK Seri Bayu,5.290398000000001,100.22214,,,No LinkBike station within 400 m
-12000848,Mayang Mall,5.32693,100.2843,Sunshine B. Baru,394.81561022846677,Within 400 m
+12000848,Mayang Mall,5.32693,100.2843,Sunshine B. Baru,394.82,Within 400 m
 12001779,Saujana Heights,5.28949,100.24884,,,No LinkBike station within 400 m
 12001845,Masjid Sungai Nibong Kecil,5.3326,100.28684,,,No LinkBike station within 400 m
 12002013,Taman Kumbar Permai,5.29084,100.22771,,,No LinkBike station within 400 m
@@ -1209,10 +1209,10 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000115,Taman Mesra Indah,5.43518,100.39709,,,No LinkBike station within 400 m
 12000903,Simpang Lorong Murni 6,5.43724,100.43298,,,No LinkBike station within 400 m
 12000049,Klinik Kesihatan Bandar Baru Air Itam,5.38963,100.2851,,,No LinkBike station within 400 m
-12000461,Gama Supermarket,5.413819,100.3281,Gama,58.72350647333377,Within 400 m
+12000461,Gama Supermarket,5.413819,100.3281,Gama,58.72,Within 400 m
 12001372,Flat 4E Farlim,5.3861300000000005,100.28323,,,No LinkBike station within 400 m
 12001819,SMK Air Itam,5.39532,100.28632,,,No LinkBike station within 400 m
-12001918,Masjid Kapitan Keling,5.417451,100.33745,Kapitan Keling,111.43453979087415,Within 400 m
+12001918,Masjid Kapitan Keling,5.417451,100.33745,Kapitan Keling,111.43,Within 400 m
 12001972,Perumahan PDRM,5.38801,100.27852,,,No LinkBike station within 400 m
 12001999,Lintang Angsana,5.3887,100.28208,,,No LinkBike station within 400 m
 12002099,Tingkat Paya Terubong 2 - 1,5.37092,100.2774,,,No LinkBike station within 400 m
@@ -1231,7 +1231,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12003000,Klinik Kesihatan Tasek Gelugor,5.4845511,100.4911088,,,No LinkBike station within 400 m
 12000065,Tadika St. Paul,5.405069999999999,100.28191,,,No LinkBike station within 400 m
 12000637,Kampung Pisang II,5.39923,100.27958,,,No LinkBike station within 400 m
-12001943,Balai Polis Lebuh Pantai,5.418646,100.34356,Lebuh Light,266.8988319977875,Within 400 m
+12001943,Balai Polis Lebuh Pantai,5.418646,100.34356,Lebuh Light,266.9,Within 400 m
 12001213,PPR Ampang Jajar,5.41352,100.40059,,,No LinkBike station within 400 m
 12001186,Permatang Janggus 2,5.4037,100.41655,,,No LinkBike station within 400 m
 12001187,Taman Arowana Emas,5.40839,100.41389,,,No LinkBike station within 400 m
@@ -1261,7 +1261,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001443,Tapak Pesta Sg Nibong,5.34478,100.30175,,,No LinkBike station within 400 m
 12001446,JPJ Batu Uban,5.35133,100.30429,,,No LinkBike station within 400 m
 12001783,Bandar Baru Teluk Kumbar,5.294015,100.23231,,,No LinkBike station within 400 m
-12001910,Lebuh Carnavon,5.41424,100.33328,Lebuh Acheh,325.8938140935393,Within 400 m
+12001910,Lebuh Carnavon,5.41424,100.33328,Lebuh Acheh,325.89,Within 400 m
 12002067,Jeti Pulau Jerejak,5.34299,100.31129,,,No LinkBike station within 400 m
 12001262,Taman Tiong Mas,5.275869999999999,100.47706,,,No LinkBike station within 400 m
 12001487,Taman Sri Aman,5.23365,100.49107,,,No LinkBike station within 400 m
@@ -1275,7 +1275,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000437,Kondominium Tunas Residensi,5.330318,100.27852,,,No LinkBike station within 400 m
 12000529,Persimpangan Jalan S.P Chelliah,5.407838,100.327675,,,No LinkBike station within 400 m
 12000580,Apartmen Desa Selatan,5.40331,100.32574,,,No LinkBike station within 400 m
-12001002,Kompleks Golden Triangle,5.331664,100.27662,Golden Triangle,74.95863415498685,Within 400 m
+12001002,Kompleks Golden Triangle,5.331664,100.27662,Golden Triangle,74.96,Within 400 m
 12001451,SK Sungai Gelugor,5.363169999999999,100.31125,,,No LinkBike station within 400 m
 12000537,Taman Hutchings,5.39763,100.30691,,,No LinkBike station within 400 m
 12002005,Kingdee Southeast Asia,5.299992,100.28868,,,No LinkBike station within 400 m
@@ -1298,7 +1298,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002077,Setia Triangle,5.30187,100.2603,,,No LinkBike station within 400 m
 12002079,Lengkok Kelicap,5.303669999999999,100.25817,,,No LinkBike station within 400 m
 12000357,Penang Plaza,5.42085,100.32521,,,No LinkBike station within 400 m
-12000720,Evergreen Hotel,5.4303,100.31715,Gurney Bay Hotel,246.46121974221617,Within 400 m
+12000720,Evergreen Hotel,5.4303,100.31715,Gurney Bay Hotel,246.46,Within 400 m
 12001758,Flat Hassan Abbas,5.45744,100.20961,,,No LinkBike station within 400 m
 12002224,Klinik Kesihatan Teluk Bahang,5.45601815,100.21481635,,,No LinkBike station within 400 m
 12000105,Jalan Bagan Jermal(Gurney),5.439603,100.30738,,,No LinkBike station within 400 m
@@ -1335,10 +1335,10 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001534,Masjid Alor Merah,5.45047,100.40553,,,No LinkBike station within 400 m
 12001772,Flat Taman Emas Sungai Batu,5.2864,100.23682,,,No LinkBike station within 400 m
 12002254,Apartmen Bayan Permai,5.29525,100.26251,,,No LinkBike station within 400 m
-12000462,Gama Supermarket,5.41384,100.32789,Gama,73.76924354496946,Within 400 m
+12000462,Gama Supermarket,5.41384,100.32789,Gama,73.77,Within 400 m
 12001643,Hospital Lam Wah Ee,5.3926300000000005,100.30407,,,No LinkBike station within 400 m
 12001960,(M2) Pasar Batu Lanchang I,5.38943,100.30688,,,No LinkBike station within 400 m
-12000611,Kampung Kolam,5.41614,100.33647,Lebuh Acheh,154.81618590523138,Within 400 m
+12000611,Kampung Kolam,5.41614,100.33647,Lebuh Acheh,154.82,Within 400 m
 12000203,Tropical Spice Garden,5.46341,100.22881,,,No LinkBike station within 400 m
 12000233,Double Tree Resort,5.47821,100.26893,,,No LinkBike station within 400 m
 12000239,Markas Staf Tentera Pulau Pinang,5.48085,100.25641,,,No LinkBike station within 400 m
@@ -1374,7 +1374,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000536,SMJK Heng Ee,5.40039,100.30877,,,No LinkBike station within 400 m
 12002244,Jalan Delima 4,5.3830800000000005,100.2996,,,No LinkBike station within 400 m
 12000572,Taman Cemerlang,5.39701,100.31896,,,No LinkBike station within 400 m
-12001000,Kompleks Golden Triangle,5.331601999999999,100.276886,Golden Triangle,342.42976907380216,Within 400 m
+12001000,Kompleks Golden Triangle,5.331601999999999,100.276886,Golden Triangle,342.43,Within 400 m
 12002632,PUSAT SERENTI KG. SELAMAT,5.5019935,100.5233999,,,No LinkBike station within 400 m
 12001196,Taman Bagan,5.41467,100.38437,,,No LinkBike station within 400 m
 12000624,Flat Kampung Melayu,5.399719999999999,100.28604,,,No LinkBike station within 400 m
@@ -1454,7 +1454,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002999,Taman Tasek Gelugor Utama IV,5.496603,100.49957,,,No LinkBike station within 400 m
 12000291,Jalan Bukit Bendera,5.40637,100.28088,,,No LinkBike station within 400 m
 12000627,Jalan Kampung Melayu,5.40359,100.28847,,,No LinkBike station within 400 m
-12001926,Muzium Pulau Pinang,5.42045,100.3391,BishopStreet RHB,341.00130209844855,Within 400 m
+12001926,Muzium Pulau Pinang,5.42045,100.3391,BishopStreet RHB,341.0,Within 400 m
 12001705,SJKC Chung Hwa 1,5.4138,100.37743,,,No LinkBike station within 400 m
 12002373,Pasar Malam Arowana,5.411667,100.409665,,,No LinkBike station within 400 m
 12000907,Plaza Utama,5.3666,100.45826,,,No LinkBike station within 400 m
@@ -1533,12 +1533,12 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000306,The Palazzia,5.35975,100.29332,,,No LinkBike station within 400 m
 12000411,SK Bayan Lepas,5.29714,100.26089,,,No LinkBike station within 400 m
 12000431,SMK Sungai Ara,5.3194,100.27066,,,No LinkBike station within 400 m
-12000852,SPICE Canopy,5.32785,100.27905,Setia Spice,275.1708322823289,Within 400 m
+12000852,SPICE Canopy,5.32785,100.27905,Setia Spice,275.17,Within 400 m
 12001135,Hadapan Desa Jelita,5.27911,100.27113,,,No LinkBike station within 400 m
 12001145,Kampung Permatang Damar Laut,5.28152,100.25922,,,No LinkBike station within 400 m
 12001149,Kampung Binjai,5.28381,100.25671,,,No LinkBike station within 400 m
 12000356,TM Point,5.41825,100.32823,,,No LinkBike station within 400 m
-12000726,Gurney Paragon,5.43463,100.31057,Kelawai Road,329.72781807241614,Within 400 m
+12000726,Gurney Paragon,5.43463,100.31057,Kelawai Road,329.73,Within 400 m
 12001658,Lotus Tanjung Pinang II,5.4594,100.30772,,,No LinkBike station within 400 m
 12001672,Astaka Hillside,5.46555,100.29173,,,No LinkBike station within 400 m
 12001676,Grand Ocean Condominium,5.4661800000000005,100.27969,,,No LinkBike station within 400 m
@@ -1574,8 +1574,8 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001641,(M3) Flat Bata Merah,5.39265,100.30711,,,No LinkBike station within 400 m
 12000005,Pejabat Pos Macallum,5.406042,100.33189,,,No LinkBike station within 400 m
 12001947,Kompleks Makanan Ocean View,5.40073,100.32986,,,No LinkBike station within 400 m
-12001990,Pangsapuri Ocean View I,5.39961,100.32716,Karpal Singh,377.2118292084921,Within 400 m
-12002076,(M1) Persiaran Kapal Singh,5.39849,100.33054,Karpal Singh,198.5146589645686,Within 400 m
+12001990,Pangsapuri Ocean View I,5.39961,100.32716,Karpal Singh,377.21,Within 400 m
+12002076,(M1) Persiaran Kapal Singh,5.39849,100.33054,Karpal Singh,198.51,Within 400 m
 12000226,Mount Pleasure,5.47745,100.2731,,,No LinkBike station within 400 m
 12000228,Hotel Rasa Sayang,5.47755,100.2538,,,No LinkBike station within 400 m
 12001968,PSDC,5.320034,100.29091,,,No LinkBike station within 400 m
@@ -1670,7 +1670,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000420,Taman Nuri I,5.30467,100.26292,,,No LinkBike station within 400 m
 12000612,Flat Kg. Suluk,5.288736,100.22212,,,No LinkBike station within 400 m
 12000851,Olive Tree Hotel,5.32736,100.28051,,,No LinkBike station within 400 m
-12001840,SJK (C) Min Sin,5.331169,100.281425,Setia Spice,388.4598239278872,Within 400 m
+12001840,SJK (C) Min Sin,5.331169,100.281425,Setia Spice,388.46,Within 400 m
 12000751,Pulau Mertajam,5.57361,100.36615,,,No LinkBike station within 400 m
 12001058,Balai Polis Penaga,5.524894000000001,100.38132,,,No LinkBike station within 400 m
 12001709,SMK Dato 'Onn,5.44791,100.38261,,,No LinkBike station within 400 m
@@ -1680,15 +1680,15 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001115,SMK Tok Labu,5.55065,100.37732,,,No LinkBike station within 400 m
 12001120,Sungai Kedak,5.567819999999999,100.37632,,,No LinkBike station within 400 m
 12001708,SK Bagan Ajam,5.44707,100.38253,,,No LinkBike station within 400 m
-12000456,Penang Times Square,5.4131540000000005,100.32621,Gama,291.3323802800709,Within 400 m
+12000456,Penang Times Square,5.4131540000000005,100.32621,Gama,291.33,Within 400 m
 12000458,Stadium Bandaraya,5.41324,100.31458,,,No LinkBike station within 400 m
-12001064,Penang Road,5.41925,100.33199,Campbell St,88.41066387205963,Within 400 m
+12001064,Penang Road,5.41925,100.33199,Campbell St,88.41,Within 400 m
 12001818,Desa Intan - 7D,5.39329,100.28532,,,No LinkBike station within 400 m
 12001820,Fortune Court,5.39805,100.28878,,,No LinkBike station within 400 m
-12001922,Banana Boutique,5.419522,100.33361,Campbell St,266.613852356276,Within 400 m
+12001922,Banana Boutique,5.419522,100.33361,Campbell St,266.61,Within 400 m
 12002102,(M2) Tingkat Paya Terubong4,5.36975,100.27547,,,No LinkBike station within 400 m
 12002112,Kampung Makam,5.41227,100.32089,,,No LinkBike station within 400 m
-12002116,Terminal Komtar,5.4141808,100.3303132,1st Avenue,190.38495028147517,Within 400 m
+12002116,Terminal Komtar,5.4141808,100.3303132,1st Avenue,190.38,Within 400 m
 12002119,IPD Seberang Perai Utara,5.5140447,100.4395871,,,No LinkBike station within 400 m
 12002087,Bertam Putra 3,5.51699,100.49075,,,No LinkBike station within 400 m
 12002573,Kampung Pokok Jenerih I,5.521623,100.502889,,,No LinkBike station within 400 m
@@ -1699,7 +1699,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000293,Stesen Bukit Bendera,5.40786,100.27749,,,No LinkBike station within 400 m
 12000625,SK Sri Aman,5.39993,100.28603,,,No LinkBike station within 400 m
 12001037,Ambank Paya Terubong,5.39975,100.27792,,,No LinkBike station within 400 m
-12001935,Bank Negara Malaysia,5.42049,100.34087,City Hall （HQ）,185.0260652205859,Within 400 m
+12001935,Bank Negara Malaysia,5.42049,100.34087,City Hall （HQ）,185.03,Within 400 m
 12000023,Anggerik Villa,5.36856,100.30825,,,No LinkBike station within 400 m
 12000286,Jalan Besi I,5.3949,100.30194,,,No LinkBike station within 400 m
 12000314,SK Bukit Gelugor,5.37725,100.30232,,,No LinkBike station within 400 m
@@ -1739,7 +1739,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001462,Flat PPR Jalan Sungai,5.407030000000001,100.3247,,,No LinkBike station within 400 m
 12001903,Apartmen Taman Sri Pinang,5.406219999999999,100.32298,,,No LinkBike station within 400 m
 12002207,Sekolah Memandu Batu Uban,5.3524151,100.30504659999998,,,No LinkBike station within 400 m
-12002318,Container Hotel,5.4142,100.34045,Armenian St.,328.5863141020919,Within 400 m
+12002318,Container Hotel,5.4142,100.34045,Armenian St.,328.59,Within 400 m
 12004628,Sungai Tiram II,5.3016146,100.2749268,,,No LinkBike station within 400 m
 12000003,Flat Lebuh Noordin,5.41115,100.33395,,,No LinkBike station within 400 m
 12000141,Hub Pekan Genting,5.33336,100.21667,,,No LinkBike station within 400 m
@@ -1763,17 +1763,17 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12003020,Stor Pusat Kimia Universiti,5.356237999999999,100.30054,,,No LinkBike station within 400 m
 12003028,Desasiswa Aman Damai,5.354976000000001,100.297,,,No LinkBike station within 400 m
 12000582,(M3) Pejabat Pos Jelutong,5.38662,100.31258,,,No LinkBike station within 400 m
-12001004,SK Seri Relau,5.333880000000001,100.27581,Golden Triangle,285.08562933768803,Within 400 m
+12001004,SK Seri Relau,5.333880000000001,100.27581,Golden Triangle,285.09,Within 400 m
 12001454,BSN Gelugor,5.36943,100.31026,,,No LinkBike station within 400 m
-12001911,Lebuh Carnarvon,5.41477,100.33432,Lebuh Acheh,189.22354522709367,Within 400 m
+12001911,Lebuh Carnarvon,5.41477,100.33432,Lebuh Acheh,189.22,Within 400 m
 12001941,Pasar Lebuh Cecil,5.40688,100.32832,,,No LinkBike station within 400 m
 12002500,Petronas Nibong Tebal,5.1590569,100.4759619,,,No LinkBike station within 400 m
-12002988,(M1) Hub Lebuh Carnarvon,5.4126216,100.3319975,1st Avenue,267.43906060746434,Within 400 m
+12002988,(M1) Hub Lebuh Carnarvon,5.4126216,100.3319975,1st Avenue,267.44,Within 400 m
 12002029,TAR Kolej I,5.4539800000000005,100.28435,,,No LinkBike station within 400 m
 12002031,Lorong Lembah Permai 3,5.45452,100.28829,,,No LinkBike station within 400 m
 12000565,Bukit Dumbar,5.38595,100.31157,,,No LinkBike station within 400 m
 12002009,Microlead,5.291417,100.28672,,,No LinkBike station within 400 m
-12002060,Hadapan Queensbay Mall,5.332325,100.30773,Queensbay Mall,99.78163951974857,Within 400 m
+12002060,Hadapan Queensbay Mall,5.332325,100.30773,Queensbay Mall,99.78,Within 400 m
 12002994,Taman Tun Hussein Onn,5.3861454,100.4057448,,,No LinkBike station within 400 m
 12000080,Sekolah Ikthisas Tentera Udara,5.45865,100.28951,,,No LinkBike station within 400 m
 12000362,Sokka Gakai,5.42736,100.31622,,,No LinkBike station within 400 m
@@ -1784,11 +1784,11 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000214,Balai Polis Batu Feringghi,5.47115,100.24608,,,No LinkBike station within 400 m
 12000238,Basket Ball Court,5.4803,100.2605,,,No LinkBike station within 400 m
 12001138,SK Permatang Damar Laut,5.280032,100.27171,,,No LinkBike station within 400 m
-12001838,Amari SPICE,5.33071,100.28059,Setia Spice,252.0144015336919,Within 400 m
+12001838,Amari SPICE,5.33071,100.28059,Setia Spice,252.01,Within 400 m
 12001661,Chinese Swimming Club,5.46261,100.30429,,,No LinkBike station within 400 m
 12001763,Hub Teluk Bahang,5.45841,100.21576,,,No LinkBike station within 400 m
 12001765,Taman Negara,5.45899,100.20662,,,No LinkBike station within 400 m
-12003016,1926 Heritage Hotel,5.424169,100.320533,Burma SJK Union,287.1974509738032,Within 400 m
+12003016,1926 Heritage Hotel,5.424169,100.320533,Burma SJK Union,287.2,Within 400 m
 12000482,Jalan Gajah II,5.46006,100.30282,,,No LinkBike station within 400 m
 12000816,Pangsapuri Azuria,5.46253,100.27991,,,No LinkBike station within 400 m
 12002239,Lembah Permai,5.457399,100.288952,,,No LinkBike station within 400 m
@@ -1826,12 +1826,12 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002306,Teluk Kumbar Height,5.28865,100.2473,,,No LinkBike station within 400 m
 12000453,Pasar Jalan Kuantan,5.412776999999999,100.32437,,,No LinkBike station within 400 m
 12001072,Harmony View,5.400284,100.31487,,,No LinkBike station within 400 m
-12001397,Sri Bahari,5.42089,100.33248,Campbell St,274.1466454887209,Within 400 m
+12001397,Sri Bahari,5.42089,100.33248,Campbell St,274.15,Within 400 m
 12001399,Pejabat Maritim,5.42175,100.33142,,,No LinkBike station within 400 m
-12001921,H.S. Sam Book Store,5.41933,100.33411,Campbell St,351.9630505121467,Within 400 m
+12001921,H.S. Sam Book Store,5.41933,100.33411,Campbell St,351.96,Within 400 m
 12000012,Apartmen Sri Saujana,5.407129,100.33343,,,No LinkBike station within 400 m
-12000474,Komtar Timur,5.414579,100.33229,1st Avenue,184.04559486486104,Within 400 m
-12001946,Pangsapuri Ocean View,5.39816,100.32812,Karpal Singh,219.9347268798009,Within 400 m
+12000474,Komtar Timur,5.414579,100.33229,1st Avenue,184.05,Within 400 m
+12001946,Pangsapuri Ocean View,5.39816,100.32812,Karpal Singh,219.93,Within 400 m
 12001948,Summer Place,5.40109,100.33093,,,No LinkBike station within 400 m
 12001649,Starbucks Tanjung Tokong,5.44693,100.30534,,,No LinkBike station within 400 m
 12001930,ISO Tech,5.323867,100.29717,,,No LinkBike station within 400 m
@@ -1867,7 +1867,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12000146,IPD Barat Daya,5.34166,100.2254,,,No LinkBike station within 400 m
 12001987,Flat Macallum,5.40704,100.33189,,,No LinkBike station within 400 m
 12000830,Pusat Kegiatan Guru Kelawei,5.41622,100.32396,,,No LinkBike station within 400 m
-12001385,Hadapan Straits Quay Marina Mall,5.45791,100.31246,Straits Quay,362.3878426544701,Within 400 m
+12001385,Hadapan Straits Quay Marina Mall,5.45791,100.31246,Straits Quay,362.39,Within 400 m
 12000298,(M2) Pangsapuri Golf View,5.340762000000001,100.29247,,,No LinkBike station within 400 m
 12001130,Taman Desa Wangsa,5.2778,100.27061,,,No LinkBike station within 400 m
 12002308,Jejantas SK Batu Maung,5.280986,100.282144,,,No LinkBike station within 400 m
@@ -1884,10 +1884,10 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12001395,Jalan Siram II,5.41204,100.37836,,,No LinkBike station within 400 m
 12000107,Bengkel MPSP Mak Mandin,5.42037,100.3968,,,No LinkBike station within 400 m
 12001042,SMK Permatang Tok Jaya,5.472158,100.40104,,,No LinkBike station within 400 m
-12000859,Gereja St. George,5.419436,100.339455,BishopStreet RHB,384.6049415594342,Within 400 m
+12000859,Gereja St. George,5.419436,100.339455,BishopStreet RHB,384.6,Within 400 m
 12002947,Pangsapuri Taman Pelangi,5.3453204,100.425329,,,No LinkBike station within 400 m
 12000619,SMK Seri Bayu,5.29035,100.2222,,,No LinkBike station within 400 m
 12000621,Sekolah Agama Al-Itqan,5.29391,100.22448,,,No LinkBike station within 400 m
 12002293,(M3) Anjung Indah II,5.3494,100.25218,,,No LinkBike station within 400 m
-12001075,Kampung Dodol,5.404419,100.31553,86 (Card Only),397.0448741760054,Within 400 m
+12001075,Kampung Dodol,5.404419,100.31553,86 (Card Only),397.04,Within 400 m
 12001089,Stadium Bandaraya,5.41135,100.31609,,,No LinkBike station within 400 m
