@@ -1,0 +1,32 @@
+station_id,station_name,latitude,longitude,station_type,analysis_include,review_note,source_url,source_checked
+1,Sunshine B. Baru,5.326807,100.286586,pit,true,,https://www.linkbike.my/,2026-10-20
+2,Lebuh Light,5.420024,100.342431,pit,true,,https://www.linkbike.my/,2026-10-20
+3,City Hall （HQ）,5.421503,100.341438,pit,true,,https://www.linkbike.my/,2026-10-20
+4,Youth Park,5.433222,100.297174,pit,true,,https://www.linkbike.my/,2026-10-20
+5,OCBC Bank,5.416992,100.341682,pit,true,,https://www.linkbike.my/,2026-10-20
+6,Kapitan Keling,5.416912,100.337790,pit,true,,https://www.linkbike.my/,2026-10-20
+7,Armenian St.,5.414814,100.338605,pit,true,,https://www.linkbike.my/,2026-10-20
+8,BishopStreet RHB,5.418979,100.341127,pit,true,,https://www.linkbike.my/,2026-10-20
+9,Gurney Bay Hotel,5.431806,100.318107,pit,true,,https://www.linkbike.my/,2026-10-20
+10,Straits Quay,5.458998,100.310629,pit,true,,https://www.linkbike.my/,2026-10-20
+11,Burma SJK Union,5.422977,100.322287,pit,true,,https://www.linkbike.my/,2026-10-20
+12,Muntri,5.420035,100.335688,pit,true,,https://www.linkbike.my/,2026-10-20
+13,Lebuh Acheh,5.415542,100.335536,pit,true,,https://www.linkbike.my/,2026-10-20
+14,Setia Spice,5.329492,100.278983,pit,true,,https://www.linkbike.my/,2026-10-20
+15,Gurney Walk,5.430850,100.319291,pit,true,,https://www.linkbike.my/,2026-10-20
+16,Arena Curve,5.327065,80.280467,pit,false,Published longitude places this point outside Penang; needs verification.,https://www.linkbike.my/,2026-10-20
+17,Campbell St,5.419051,100.331894,pit,true,,https://www.linkbike.my/,2026-10-20
+18,Golden Triangle,5.331585,100.276633,pit,true,,https://www.linkbike.my/,2026-10-20
+19,1st Avenue,5.413801,100.331062,pit,true,,https://www.linkbike.my/,2026-10-20
+20,Gama,5.413912,100.328366,pit,true,,https://www.linkbike.my/,2026-10-20
+21,Kelawai Road,5.436358,100.308780,pit,true,,https://www.linkbike.my/,2026-10-20
+22,Gurney Paragon,5.437109,100.311708,pit,true,,https://www.linkbike.my/,2026-10-20
+23,Summerton,5.339543,100.309437,pit,true,,https://www.linkbike.my/,2026-10-20
+24,Karpal Singh,5.397343,100.329307,pit,true,,https://www.linkbike.my/,2026-10-20
+25,Queensbay Mall,5.332312,100.307479,pit,true,,https://www.linkbike.my/,2026-10-20
+26,86 (Card Only),5.403186,100.317927,pit,true,Card-only access; confirm suitability for this study.,https://www.linkbike.my/,2026-10-20
+27,Lavender Fd Ct,5.333085,100.269543,pit,true,,https://www.linkbike.my/,2026-10-20
+28,Intel08(Private),5.327081,100.304711,pit,false,Marked private in the published station name.,https://www.linkbike.my/,2026-10-20
+29,Intel09(Private),5.329200,100.305260,pit,false,Marked private in the published station name.,https://www.linkbike.my/,2026-10-20
+80,LinkBike Mobile1,5.441680,100.341065,pit,false,Mobile entry rather than a fixed station.,https://www.linkbike.my/,2026-10-20
+1023,HQ Office Test,5.421696,100.341065,pit,false,Test entry.,https://www.linkbike.my/,2026-10-20
