@@ -5,13 +5,20 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import streamlit as st
-from shapely.geometry import Point
 
 from scenario_simulation import (
     WALKING_SPEED_M_PER_MIN,
     WALK_LIMIT_M,
+    _load_population_cells,
     _rank_candidate_sites,
     _residential_candidate_sites,
+)
+from linkbike_page import (
+    NETWORK_FILE as LINKBIKE_NETWORK_FILE,
+    STATIONS_FILE as LINKBIKE_STATIONS_FILE,
+    _four_zone_coverage,
+    _load_bus_stops,
+    _normalise_stations,
 )
 from ui_helpers import DISTRICT_LABELS, clean_web_text
 
@@ -91,6 +98,18 @@ def _priority_table(scored, destinations, display_names):
     return low
 
 
+def _priority_style(value, maximum):
+    value = float(value)
+    maximum = max(float(maximum), 1.0)
+    if maximum <= 1 or value <= maximum / 3:
+        colour = "#f8d7da"
+    elif value <= 2 * maximum / 3:
+        colour = "#fff3cd"
+    else:
+        colour = "#d1e7dd"
+    return f"background-color: {colour}; color: #222"
+
+
 def _ranked_candidates(area_name, destinations):
     key_sites = destinations[
         (destinations["mukim"] == area_name)
@@ -108,17 +127,10 @@ def _ranked_candidates(area_name, destinations):
     return ranked, candidates
 
 
-def _linkbike_summary(all_areas, all_stops=None):
+def _linkbike_summary(all_stops=None):
     if not LINKBIKE_GAP_FILE.exists():
         return None
     gaps = pd.read_csv(LINKBIKE_GAP_FILE)
-    town = all_areas[
-        all_areas["match_name"].astype(str).str.endswith("GEORGE TOWN")
-    ].to_crs("EPSG:4326")
-    if town.empty:
-        return None
-
-    # Use coordinates in the LinkBike CSV. Fall back to bus-stop data for an older file.
     if {"stop_lon", "stop_lat"}.issubset(gaps.columns):
         local = gaps.copy()
         status_column = "status" if "status" in local.columns else "Connection status"
@@ -132,20 +144,53 @@ def _linkbike_summary(all_areas, all_stops=None):
         status_column = "Connection status"
     else:
         return None
-
-    geometry = town.geometry.unary_union
-    lon = pd.to_numeric(local["stop_lon"], errors="coerce")
-    lat = pd.to_numeric(local["stop_lat"], errors="coerce")
-    in_town = [
-        geometry.covers(Point(float(x), float(y))) if pd.notna(x) and pd.notna(y) else False
-        for x, y in zip(lon, lat)
-    ]
-    local = local.loc[in_town]
+    local = local.dropna(subset=["stop_lon", "stop_lat"])
     if local.empty:
         return None
     no_bike = local[local[status_column].astype(str).str.startswith("No LinkBike station")]
     return len(local), len(no_bike)
 
+
+@st.cache_data(show_spinner="Checking LinkBike coverage by mukim...")
+def _linkbike_resident_coverage(area_names, threshold_m, station_mtime, stop_mtime, network_mtime):
+    """Return estimated LinkBike-only residents by mukim using the shared walking analysis."""
+    _ = (station_mtime, stop_mtime, network_mtime)
+    stations = _normalise_stations(pd.read_csv(LINKBIKE_STATIONS_FILE))
+    bus_stops = _load_bus_stops()
+    population_rows = []
+    for area_name in area_names:
+        longitude, latitude, residents, _, _ = _load_population_cells(area_name)
+        if len(residents):
+            population_rows.append(pd.DataFrame({
+                "area": area_name,
+                "longitude": longitude,
+                "latitude": latitude,
+                "residents": residents,
+            }))
+    if not population_rows:
+        return {}
+    population_json = pd.concat(population_rows, ignore_index=True).to_json(
+        orient="records", double_precision=6
+    )
+    _, area_stats = _four_zone_coverage(
+        stations[["station_name", "latitude", "longitude"]].to_json(orient="records"),
+        bus_stops[["stop_id", "stop_lat", "stop_lon", "nearest_node"]].to_json(orient="records"),
+        population_json,
+        int(threshold_m),
+        network_mtime,
+    )
+    return {
+        area_name: {
+            "residents": float(values.get("LinkBike only", 0.0)),
+            "share_percent": (
+                100 * float(values.get("LinkBike only", 0.0))
+                / float(values.get("Mukim population", 0.0))
+                if float(values.get("Mukim population", 0.0)) > 0
+                else 0.0
+            ),
+        }
+        for area_name, values in area_stats.items()
+    }
 
 def render(tai, all_areas, all_stops, scored, socioeconomic):
     destinations = _load_destinations()
@@ -153,13 +198,19 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     priority = _priority_table(scored, destinations, display_names)
 
     st.caption(
-        "Priority areas are ordered from the lowest TAI upwards. "
-        "Residents outside a short walk and key places beyond 400 m show the access needs."
+        "Priority mukims are areas suggested for closer review, ordered from the lowest TAI upwards. "
+        "This is a planning order, not a confirmed decision to build."
     )
-    st.caption("A short walk means a modelled 400 m walking route, about five minutes.")
+    st.caption("A short walk means a modelled 400 m walking route, about five minutes on foot.")
 
     with st.container(border=True):
         st.subheader("Priority mukims")
+        st.caption(
+            "A mukim is a local area. Priority is its order for review, starting with the lowest TAI. "
+            "TAI score is the combined access result. Residents within short walk (%) is the estimated "
+            "share near a bus stop. Residents outside a short walk and Key places beyond 400 m count "
+            "estimated residents and listed places with a longer walk."
+        )
         priority_columns = [
             "Priority",
             "Area",
@@ -173,6 +224,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             "TAI": "TAI score",
             "population_coverage_percent": "Residents within short walk (%)",
         })
+        maximum_area_priority = max(int(priority["Priority"].max()), 1)
         page_export = shown_priority.copy()
         page_export_name = "priority_mukims.csv"
         st.dataframe(
@@ -180,7 +232,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 "TAI score": "{:.2f}",
                 "Residents within short walk (%)": "{:.2f}",
                 "Residents outside a short walk": "{:,.0f}",
-            }),
+            }).apply(
+                lambda row: [_priority_style(row["Priority"], maximum_area_priority)] * len(row),
+                axis=1,
+            ),
             hide_index=True,
             use_container_width=True,
         )
@@ -195,7 +250,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                     "TAI score": "{:.2f}",
                     "Residents within short walk (%)": "{:.2f}",
                     "Residents outside a short walk": "{:,.0f}",
-                }),
+                }).apply(
+                    lambda row: [_priority_style(row["Priority"], maximum_area_priority)] * len(row),
+                    axis=1,
+                ),
                 hide_index=True,
                 use_container_width=True,
             )
@@ -209,19 +267,20 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         (name for name in priority["match_name"].tolist() if name in area_names),
         area_names[0],
     )
-    selected_area = st.selectbox(
-        "Choose a low-access mukim to find possible stop locations",
-        area_names,
-        index=area_names.index(default_area),
-        format_func=lambda name: clean_web_text(display_names.get(name, _area_label(name))),
-        key="recommendations_area",
-    )
-
     with st.container(border=True):
-        st.subheader("Proposed bus-stop locations")
+        st.subheader("Suggested bus-stop locations")
+        selected_area = st.selectbox(
+            "Choose a low-access mukim",
+            area_names,
+            index=area_names.index(default_area),
+            format_func=lambda name: clean_web_text(display_names.get(name, _area_label(name))),
+            key="recommendations_area",
+        )
         st.caption(
-            "These are possible locations generated by Scenario Simulation for "
-            "further investigation. They are not confirmed sites."
+            "Select an area to see model-ranked places for a possible new stop. The current-walk column is the "
+            "estimated walking time from that suggested place to the nearest existing bus stop. The model uses "
+            "a 400 m walking route, about five minutes, as the short-walk range. Sites still need local checks "
+            "for road safety, land use and space."
         )
         if st.button("Find possible locations", type="primary"):
             with st.spinner("Finding and ranking possible locations..."):
@@ -258,6 +317,11 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 "Key places gaining access",
                 "Current walk to bus stop (min)",
             ]
+            st.caption(
+                "Each row is one possible site. Estimated residents gaining access and Key places gaining access "
+                "show what may newly be within a 400 m walk. Type says whether the candidate is a residential area "
+                "or a listed key place."
+            )
             st.dataframe(
                 shown[display_columns].style.format({
                     "Estimated residents gaining access": "{:,.0f}",
@@ -266,6 +330,13 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 }),
                 hide_index=True,
                 use_container_width=True,
+            )
+            top_site = shown.iloc[0]
+            st.markdown(
+                f"**Bus stop idea:** Check a stop near {clean_web_text(str(top_site['Place']))} "
+                f"in {clean_web_text(display_names.get(selected_area, _area_label(selected_area)))}. "
+                f"It may help {float(top_site['Estimated residents gaining access']):,.0f} residents "
+                f"and {int(top_site['Key places gaining access'])} key places."
             )
             st.caption(
                 "The figures estimate residents and other key places that may gain "
@@ -319,12 +390,17 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 "Key-place type": list(simulation["place_gains_by_type"].keys()),
                 "Newly within a short walk": list(simulation["place_gains_by_type"].values()),
             })
+            st.caption("This table counts newly reachable places by type after the selected stops are added.")
             st.dataframe(gains, hide_index=True, use_container_width=True)
 
     with st.container(border=True):
         st.subheader("Key places far from a bus stop")
         st.caption(
-            "The table shows the 8 places with the longest walks and places with no route in the map data. "
+            "Key places are schools, hospitals, clinics and malls in the data. Current walk is the estimated walking "
+            "time from each place to its nearest existing bus stop. The short-walk range is 400 m by the walking network, "
+            "about five minutes. Review status says whether the place is beyond that range or has no route in the map data. "
+            "The table shows the "
+            "8 places with the longest walks and places with no route in the map data. "
             "Open the full list to see all places beyond 400 m."
         )
         beyond = destinations[destinations["status"] == "Beyond 400 m"].copy()
@@ -383,18 +459,73 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 height=420,
             )
 
-    linkbike_summary = _linkbike_summary(all_areas, all_stops)
+    linkbike_summary = _linkbike_summary(all_stops)
     if linkbike_summary:
-        total_gt_stops, no_nearby_bike = linkbike_summary
+        total_stops, no_nearby_bike = linkbike_summary
         st.subheader("LinkBike check")
-        st.markdown(
-            f"<div style='font-size:1.1rem;line-height:1.5'>"
-            f"{no_nearby_bike} of {total_gt_stops} RapidPenang stops in George Town "
-            "have no LinkBike station recorded within 400 m. These locations may be "
-            "useful to investigate for bus and bike connections."
-            "</div>",
-            unsafe_allow_html=True,
+        st.caption(
+            f"{no_nearby_bike:,} of {total_stops:,} bus stops have no LinkBike station "
+            "within a 400 m walk."
         )
+        try:
+            area_names = tuple(all_areas["match_name"].dropna().astype(str).unique())
+            resident_coverage = _linkbike_resident_coverage(
+                area_names,
+                400,
+                LINKBIKE_STATIONS_FILE.stat().st_mtime_ns,
+                (DATA / "stops_penang.csv").stat().st_mtime_ns,
+                LINKBIKE_NETWORK_FILE.stat().st_mtime_ns,
+            )
+            if resident_coverage:
+                area_col, rank_col = st.columns(2)
+                with area_col:
+                    chosen_area = st.selectbox(
+                        "Area",
+                        ["All Penang", *sorted(resident_coverage)],
+                        format_func=lambda name: (
+                            name if name == "All Penang"
+                            else clean_web_text(display_names.get(name, _area_label(name)))
+                        ),
+                        key="recommendations_linkbike_area",
+                    )
+                with rank_col:
+                    rank_by = st.selectbox(
+                        "Rank by",
+                        ["Most residents", "Highest share"],
+                        key="recommendations_linkbike_rank",
+                    )
+                st.caption(
+                    "Most residents ranks by the estimated number. Highest share ranks by the "
+                    "percentage of that mukim’s residents. Both show residents near LinkBike "
+                    "but not a bus stop within 400 m."
+                )
+                metric_key = "residents" if rank_by == "Most residents" else "share_percent"
+                candidates = [
+                    (name, values)
+                    for name, values in resident_coverage.items()
+                    if values["residents"] > 0
+                    and (chosen_area == "All Penang" or name == chosen_area)
+                ]
+                candidates.sort(
+                    key=lambda item: (item[1][metric_key], item[1]["residents"]),
+                    reverse=True,
+                )
+                candidates = candidates[:3] if chosen_area == "All Penang" else candidates[:1]
+                if candidates:
+                    for name, values in candidates:
+                        area_name = clean_web_text(display_names.get(name, _area_label(name)))
+                        st.markdown(
+                            f"**{area_name}:** LinkBike may add access for about "
+                            f"{values['residents']:,.0f} residents "
+                            f"({values['share_percent']:.1f}% of the mukim)."
+                        )
+                else:
+                    st.info("No extra residents are estimated near LinkBike only in this area at 400 m.")
+        except (OSError, ValueError, KeyError, ImportError) as error:
+            st.caption(
+                f"LinkBike resident estimate is unavailable: {clean_web_text(str(error))}"
+            )
+        st.caption("This is an estimate of nearby access, not confirmed bus-bike trips.")
 
     return page_export, page_export_name
 

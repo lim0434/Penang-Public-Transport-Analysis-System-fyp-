@@ -1,4 +1,5 @@
 from copy import copy
+import inspect
 from pathlib import Path
 
 import folium
@@ -13,15 +14,97 @@ from recommendations import render as render_recommendations_page
 from scenario_simulation import render as render_scenario_page
 from ui_helpers import clean_web_table, clean_web_text, read_geojson
 
-_original_dataframe = st.dataframe
+_original_dataframe = st._main.dataframe
+
 
 def _display_dataframe(data=None, *args, **kwargs):
+    is_styled = isinstance(data, Styler)
     if isinstance(data, pd.DataFrame):
         data = clean_web_table(data)
-    elif isinstance(data, Styler):
+    elif is_styled:
         data = copy(data)
         data.data = clean_web_table(data.data)
+
+    table = data.data if is_styled else data
+    if isinstance(table, pd.DataFrame):
+        caller = inspect.currentframe().f_back
+        source_name = Path(caller.f_code.co_filename).stem
+        widget_key = f"table_filter_{source_name}_{caller.f_lineno}"
+        column_options = ["No filter", *[str(column) for column in table.columns]]
+        selected_column = st.selectbox(
+            "Filter by column",
+            column_options,
+            key=f"{widget_key}_column",
+        )
+
+        total_rows = len(table)
+        filtered = table
+        if selected_column != "No filter":
+            selected_series = table[selected_column]
+            is_numeric = pd.api.types.is_numeric_dtype(selected_series)
+            if is_numeric and selected_series.nunique(dropna=True) > 10:
+                numbers = pd.to_numeric(selected_series, errors="coerce")
+                range_count = min(5, int(numbers.nunique(dropna=True)))
+                binned_numbers = pd.qcut(numbers, q=range_count, duplicates="drop")
+                intervals = list(binned_numbers.cat.categories)
+                range_options = [("all", None), *[("range", interval) for interval in intervals]]
+
+                def _format_range(interval):
+                    def _format_bound(value):
+                        if pd.api.types.is_integer_dtype(selected_series):
+                            return f"{int(round(value)):,}"
+                        return f"{value:,.2f}".rstrip("0").rstrip(".")
+
+                    return f"{_format_bound(interval.left)}–{_format_bound(interval.right)}"
+
+                selected_range = st.selectbox(
+                    "Select a number range",
+                    range_options,
+                    format_func=lambda option: (
+                        "All ranges" if option[0] == "all" else _format_range(option[1])
+                    ),
+                    key=f"{widget_key}_range",
+                )
+                if selected_range[0] == "range":
+                    filtered = table.loc[
+                        binned_numbers.eq(selected_range[1]).fillna(False)
+                    ]
+            else:
+                values = selected_series.dropna().drop_duplicates().tolist()
+                values.sort(key=lambda value: str(value).casefold())
+                value_options = [("all", None)]
+                value_options.extend(("value", value) for value in values)
+                if selected_series.isna().any():
+                    value_options.append(("blank", None))
+
+                selected_value = st.selectbox(
+                    "Select a value",
+                    value_options,
+                    format_func=lambda option: (
+                        "All values"
+                        if option[0] == "all"
+                        else "Blank"
+                        if option[0] == "blank"
+                        else str(option[1])
+                    ),
+                    key=f"{widget_key}_value",
+                )
+                if selected_value[0] == "value":
+                    filtered = table.loc[
+                        selected_series.eq(selected_value[1]).fillna(False)
+                    ]
+                elif selected_value[0] == "blank":
+                    filtered = table.loc[selected_series.isna()]
+
+            if len(filtered) != total_rows:
+                if is_styled:
+                    data.data = filtered
+                else:
+                    data = filtered
+                st.caption(f"Showing {len(filtered)} of {total_rows} rows")
+
     return _original_dataframe(data, *args, **kwargs)
+
 
 st.dataframe = _display_dataframe
 
@@ -143,8 +226,11 @@ st.markdown(
     }
     div[data-testid="stMarkdownContainer"] p,
     div[data-testid="stMarkdownContainer"] li {font-size: 1rem; line-height: 1.5;}
-    div[data-testid="stCaptionContainer"] {font-size: .9rem;}
-    [data-testid="stMetricLabel"] {font-size: .95rem;}
+    [data-testid="stCaptionContainer"] p {
+        font-size: 1.02rem !important;
+        line-height: 1.45;
+    }
+    [data-testid="stMetricLabel"] {font-size: 1rem;}
     .block-container h2 {font-size: 1.55rem;}
     .block-container h3 {font-size: 1.25rem;}
     .eyebrow {
@@ -496,6 +582,64 @@ with head_col:
 export_slot = export_col.empty()
 st.write("")
 
+page_guides = {
+    "Coverage Analysis": (
+        "This page estimates how many residents live within a short walk of a bus stop. "
+        "The study uses a 400 m walking route, roughly five minutes on foot. "
+        "The table helps compare areas and spot places that may need closer review. "
+        "Population figures are estimates, not a count of individual people."
+    ),
+    "TAI Rankings": (
+        "TAI means Transport Accessibility Index. It combines four access scores with equal "
+        "weight. Each score runs from 0 to 1, and a higher score means better access in this "
+        "comparison. The ranking helps planners see which areas may need attention and why."
+    ),
+    "Clustering": (
+        "Clustering groups mukims with similar scores across the four TAI measures. The bar "
+        "chart and score table show the average profile of each group. Higher scores mean "
+        "better relative access. For walking distance, a shorter walk gets a higher score. The area table "
+        "shows which group each mukim belongs to. This helps reveal shared access patterns "
+        "and supports area-wide planning. The groups are a summary of this dataset, not fixed "
+        "official ratings."
+    ),
+    "Socioeconomic Correlation": (
+        "DUN means a state constituency. Each dot represents one DUN. ‘Median income’ is the "
+        "middle household income value, and rho shows whether income or population tends to "
+        "rise or fall with TAI. Rho near 1 means they tend to rise together, near -1 means one "
+        "tends to rise as the other falls, and near 0 means little pattern. This page helps "
+        "check whether access differences may align with social or population differences. "
+        "A pattern does not prove that one factor causes another."
+    ),
+    "LinkBike Connections": (
+        "This page checks whether LinkBike stations and RapidPenang bus stops are near each "
+        "other by a walking route. The selected distance is the maximum route length used to "
+        "call them ‘near’. The tables list bus stops or bike stations without a nearby match. "
+        "The four-zone map groups residents as Bus only, LinkBike only, Both, or Neither within "
+        "the selected distance. ‘Added by LinkBike’ counts estimated residents near a bike "
+        "station but not a bus stop. This helps show where bike-sharing may add access. It does "
+        "not count trips or prove that people transfer between services."
+    ),
+    "Scenario Simulation": (
+        "This page tests ‘what if a bus stop were added here?’ Suggested places are ranked by "
+        "estimated residents and key places that may gain access. ‘Before’ uses current stops. "
+        "‘After’ recalculates access with the selected example stops added. The TAI score "
+        "summarises the same four access measures. The contribution table shows each selected "
+        "stop’s extra benefit after allowing for overlap with the other selected stops. This "
+        "helps compare options before further site checks. Suggested sites are examples, not "
+        "confirmed suitable locations."
+    ),
+    "Recommendations": (
+        "This page brings earlier results together. Priority mukims are ordered from lower TAI "
+        "scores. The bus-stop suggestions show places the model estimates could help residents "
+        "or key places gain walking access. The LinkBike check estimates where bike stations "
+        "may add access beyond bus stops. The tables show the evidence behind each suggestion, "
+        "so planners can decide what to investigate first. Suggestions need local checks before "
+        "they are treated as actual projects."
+    ),
+}
+with st.expander("What this page shows and why it is useful"):
+    st.write(page_guides.get(page, "This page presents transport access results for planning review."))
+
 
 if page == "Coverage Analysis":
     district_options = ["All districts"] + [
@@ -583,6 +727,11 @@ if page == "Coverage Analysis":
         components.html(map_view.get_root().render(), height=620, scrolling=False)
 
     with st.expander("View selected area coverage data"):
+        st.caption(
+            "Stops per km² means the number of bus stops in each square kilometre. Within 5 min (%) "
+            "is the share of the area’s estimated residents with a bus stop within a 400 m walking route. "
+            "People within 5 min is the estimated number of those residents."
+        )
         columns = [
             "display_name",
             "bus_stops",
@@ -623,8 +772,17 @@ elif page == "TAI Rankings":
 
     metric1, metric2, metric3 = st.columns(3)
     metric1.metric("Areas with a score", f"{len(scored)} of {len(tai)}")
-    metric2.metric("Average TAI", f"{mean_tai:.2f}")
+    metric2.metric(
+        "Average TAI",
+        f"{mean_tai:.2f}",
+        help="The mean TAI across mukims with a score. It is an index out of 1, not a percentage of people.",
+    )
     metric3.metric("Areas without a score", no_score_count)
+    st.caption(
+        f"Average TAI is {mean_tai:.2f} out of 1. Higher scores mean stronger relative access. "
+        "For this data, 0.33 is towards the lower end of the scale. The system groups mukims with similar access "
+        "results and labels each group Low, Medium or High. These labels do not come from fixed TAI score ranges."
+    )
 
     population = pd.to_numeric(
         tai.get("csv_population", pd.Series(index=tai.index, dtype=float)),
@@ -693,6 +851,14 @@ elif page == "TAI Rankings":
     components.html(tai_map.get_root().render(), height=600, scrolling=False)
 
     st.subheader("Area rankings")
+    st.caption(
+        "TAI rank is the area’s position, with 1 being the highest score. TAI is the combined score. "
+        "TAI category is its Low, Medium or High group. Stop density score rates stops for the area’s "
+        "size. Population coverage score rates the share of residents within 400 m. Walking distance "
+        "score rates how short residents’ walks are. Destination access score rates access to schools, "
+        "hospitals, clinics and malls. The raw counts and percentages show the values behind those scores. "
+        "All four scores run from 0 to 1, and higher is better."
+    )
     ranked = scored.sort_values("TAI", ascending=False)
     columns = [
         "TAI_rank",
@@ -729,6 +895,11 @@ elif page == "TAI Rankings":
     set_page_export(export_slot, (ranked[columns].copy(), "tai_rankings.csv"))
 
     with st.expander("How the TAI indicators relate"):
+        st.write(
+            "Calculation: TAI = (stop density score + population coverage score + walking distance score "
+            "+ destination access score) ÷ 4. Each part is put on a 0–1 scale first. The four parts "
+            "have equal weight. For walking distance, shorter walks receive higher scores."
+        )
         indicator_columns = {
             "Bus stop density": "bus_stops_per_km2",
             "Population coverage": "population_coverage_percent",
@@ -743,6 +914,10 @@ elif page == "TAI Rankings":
         st.write(
             "Spearman rho shows whether two indicators tend to rise or fall together. "
             "It does not show that one causes another."
+        )
+        st.caption(
+            "Indicator 1 and Indicator 2 name the pair being compared. Spearman rho ranges "
+            "from -1 to 1. Areas compared is the number of mukims with data for both indicators."
         )
         available = {
             label: column
@@ -802,14 +977,20 @@ elif page == "Clustering":
 
     st.subheader("Average indicator profile")
     st.caption(
-        "Scores range from 0 to 1. Higher scores indicate better relative "
-        "accessibility. The walking-distance score is reversed, so shorter "
-        "distances receive higher scores."
+        "Each group is compared across four average scores, from 0 to 1. Higher scores mean more bus stops per "
+        "square kilometre, more residents within a 400 m walk of a stop, shorter walks to bus stops, and better "
+        "access to schools, hospitals, clinics and malls per bus stop. The scores compare mukims in this study."
     )
 
     st.bar_chart(profile, y=list(available_profile.keys()))
 
     st.subheader("Average indicator scores")
+    st.caption(
+        "Each row is a group and each column is its average score. Bus stop density means stops per square "
+        "kilometre. Resident coverage means the percentage of residents estimated to live within a 400 m walk of a bus stop. Walking distance "
+        "gives a higher score for shorter walks. Destination access reflects access to schools, hospitals, clinics "
+        "and malls per bus stop. Higher scores mean better relative access."
+    )
     st.dataframe(
         profile.style.format("{:.2f}"),
         hide_index=False,
@@ -835,6 +1016,7 @@ elif page == "Clustering":
     )
 
     st.subheader("Area results")
+    st.caption("TAI is the area’s combined access score. The category shows its relative group: Low, Medium or High.")
     cluster_results = scored.sort_values(["TAI_category", "TAI"]).copy()
     cluster_results["Area"] = cluster_results["match_name"].map(area_display_names).fillna(
         cluster_results["match_name"]
@@ -895,6 +1077,13 @@ elif page == "Socioeconomic Correlation":
             "Population and TAI (rho)",
             f"{population_rho:.3f}",
         )
+        st.caption(
+            f"Income and TAI (rho {income_rho:.3f}): DUNs with higher income tend to have higher TAI. "
+            f"Population and TAI (rho {population_rho:.3f}): DUNs with more people tend to have lower TAI. "
+            "The income pattern is moderate and positive. The population pattern is weak and negative. "
+            "Neither result is automatically good or bad. The patterns do not show cause and effect, "
+            "but they can help planners check where access may differ between communities."
+        )
         chart_col1, chart_col2 = st.columns(2)
         with chart_col1:
             st.subheader("Median income and TAI")
@@ -916,8 +1105,17 @@ elif page == "Socioeconomic Correlation":
                 x_label="2024 population (people)",
                 y_label="DUN TAI", use_container_width=True,
             )
+        st.caption(
+            "Each dot is one DUN. Dots rising from left to right mean higher values tend to go with higher TAI. "
+            "Dots falling from left to right mean higher values tend to go with lower TAI."
+        )
 
         st.subheader("DUN results")
+        st.caption(
+            "Median income is the middle household income in RM. Population is the 2024 estimate. TAI is the combined access score, "
+            "TAI rank orders the DUNs, Bus stops is the stop count, and Population within 400 m "
+            "is the estimated share living within the set walking range."
+        )
         table_columns = [
             "dun", "income_median", "population_2024_persons", "TAI",
             "TAI_rank", "bus_stops", "population_coverage_percent",
@@ -959,4 +1157,9 @@ elif page == "Scenario Simulation":
 elif page == "Recommendations":
     export_result = render_recommendations_page(tai, all_areas, all_stops, scored, socioeconomic)
     set_page_export(export_slot, export_result)
+
+
+
+
+
 

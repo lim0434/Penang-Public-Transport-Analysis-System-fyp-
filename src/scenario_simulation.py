@@ -592,6 +592,13 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
 
 def render(tai, all_areas, all_stops, scored, socioeconomic):
     st.caption("Test how proposed bus stops could improve access within about a 5-minute walk.")
+    with st.expander("How suggested stop places are chosen"):
+        st.write(
+            "The system looks for listed schools, hospitals, clinics and malls beyond a 400 m walk from a current bus stop. "
+            "It also finds residential clusters with people outside that range. Candidate places are ranked by the estimated "
+            "number of residents and other key places that could come within 400 m if a stop were added. These are examples "
+            "for testing, not confirmed stop sites."
+        )
 
     coverage = pd.read_csv(COVERAGE_FILE)
     area_options = coverage.merge(
@@ -665,11 +672,11 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             candidates = all_candidate_sites.copy()
             st.warning("No candidate stop locations could be ranked for this area.")
         else:
-            st.subheader("Suggested locations to investigate")
+            st.subheader("Suggested places to check")
             st.caption(
-                "Ranked by estimated new access for residents and key places. "
-                "The walking network gap is the distance from a suggested point "
-                "to the mapped walking network. It does not check road safety or land use."
+                "Key places means the schools, hospitals, clinics and malls in the data. Rows are ranked by estimated new access for residents and key places. "
+                "These places have not been checked on site for road safety, land use "
+                "or space for a bus stop."
             )
             shown = ranked_sites.head(5).copy()
             shown["Estimated residents gaining access"] = shown["Estimated residents gaining access"].round().astype(int)
@@ -683,6 +690,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 columns=["destination_id", "Walking network gap (m)"],
                 errors="ignore",
             ).copy()
+            st.caption(
+                "Estimated residents and key places gaining access are model estimates for each site on its own. "
+                "Current walk is the estimated time from the place to the nearest existing bus stop."
+            )
             st.dataframe(shown.drop(columns=["destination_id"]), hide_index=True, use_container_width=True)
             top = ranked_sites.iloc[0]
             st.info(
@@ -924,6 +935,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 delta=f"−{new_destinations} newly within range",
             )
             st.subheader("Residents within a short walk")
+            st.caption(
+                "Estimated residents living within a 400 m walking route of a bus stop. Before uses current stops. "
+                "After includes the selected proposed stops. The difference is the estimated number newly within range."
+            )
             st.bar_chart(
                 pd.DataFrame(
                     {"Estimated residents": [base_population, scenario_population]},

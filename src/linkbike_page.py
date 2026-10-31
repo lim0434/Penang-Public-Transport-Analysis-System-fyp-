@@ -3,6 +3,8 @@ from html import escape
 from pathlib import Path
 
 import folium
+import geopandas as gpd
+import json
 import networkx as nx
 import numpy as np
 import pandas as pd
@@ -10,7 +12,9 @@ import streamlit as st
 import streamlit.components.v1 as components
 from folium.plugins import Fullscreen, MarkerCluster
 from scipy.spatial import cKDTree
+from folium.plugins import GroupedLayerControl
 from ui_helpers import clean_web_text
+from scenario_simulation import _load_population_cells
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -413,8 +417,276 @@ def _make_map(graph, stations, station_status, stops, best_for_station, show_all
     return map_view
 
 
+ZONE_COLOURS = {
+    "Bus only": "#6f72d8",
+    "LinkBike only": "#16a779",
+    "Both": "#40368f",
+    "Neither": "#e7e7f2",
+}
+
+
+@st.cache_data(show_spinner="Building the Penang coverage map...")
+def _four_zone_coverage(stations_json, stops_json, population_json, threshold_m, network_mtime):
+    """Estimate resident access zones from the walking network and population grid."""
+    _ = network_mtime
+    stations = pd.DataFrame(json.loads(stations_json))
+    stops = pd.DataFrame(json.loads(stops_json))
+    graph, node_ids, node_xy, tree, mean_latitude = _load_walking_network()
+    station_nodes, station_snap_gaps = _snap_coordinates(
+        stations, "latitude", "longitude", node_ids, node_xy, tree, mean_latitude
+    )
+    source_stop_nodes = []
+    source_stop_gaps = []
+    valid_stops = stops.dropna(subset=["nearest_node", "stop_lat", "stop_lon"]).copy()
+    for stop in valid_stops.itertuples(index=False):
+        node = str(stop.nearest_node)
+        if node not in graph:
+            continue
+        source_stop_nodes.append(node)
+        source_stop_gaps.append(
+            _distance_metres(
+                float(stop.stop_lat), float(stop.stop_lon),
+                float(graph.nodes[node]["y"]), float(graph.nodes[node]["x"]),
+            )
+        )
+
+    def distances_from_sources(name, source_nodes, source_gaps):
+        source_costs = {}
+        for node, gap in zip(source_nodes, source_gaps):
+            source_costs[node] = min(source_costs.get(node, math.inf), float(gap))
+        if not source_costs:
+            return {}
+        virtual_node = f"__four_zone_{name}__"
+        graph.add_node(virtual_node)
+        for node, gap in source_costs.items():
+            graph.add_edge(virtual_node, node, length=gap)
+        try:
+            lengths = nx.single_source_dijkstra_path_length(
+                graph, virtual_node, cutoff=float(threshold_m), weight="length"
+            )
+        finally:
+            graph.remove_node(virtual_node)
+        lengths.pop(virtual_node, None)
+        return lengths
+
+    bus_lengths = distances_from_sources("bus", source_stop_nodes, source_stop_gaps)
+    bike_lengths = distances_from_sources("bike", station_nodes, station_snap_gaps)
+
+    population = pd.DataFrame(json.loads(population_json))
+    if population.empty:
+        raise ValueError("No population cells are available for the coverage comparison.")
+    pop_lon = population["longitude"].to_numpy(float)
+    pop_lat = population["latitude"].to_numpy(float)
+    pop_points = np.column_stack(
+        (pop_lon * math.cos(math.radians(mean_latitude)), pop_lat)
+    )
+    _, pop_nearest = tree.query(pop_points)
+    pop_nodes = [node_ids[int(index)] for index in pop_nearest]
+    pop_node_lon = node_xy[pop_nearest, 0]
+    pop_node_lat = node_xy[pop_nearest, 1]
+    pop_lat1 = np.radians(pop_lat)
+    pop_lat2 = np.radians(pop_node_lat)
+    pop_delta_lat = pop_lat2 - pop_lat1
+    pop_delta_lon = np.radians(pop_node_lon - pop_lon)
+    pop_haversine = (
+        np.sin(pop_delta_lat / 2) ** 2
+        + np.cos(pop_lat1) * np.cos(pop_lat2) * np.sin(pop_delta_lon / 2) ** 2
+    )
+    pop_snap_m = 6_371_000 * 2 * np.arcsin(np.sqrt(np.clip(pop_haversine, 0, 1)))
+    pop_bus_m = np.array([bus_lengths.get(node, math.inf) for node in pop_nodes]) + pop_snap_m
+    pop_bike_m = np.array([bike_lengths.get(node, math.inf) for node in pop_nodes]) + pop_snap_m
+    population["bus_access"] = pop_bus_m <= float(threshold_m)
+    population["bike_access"] = pop_bike_m <= float(threshold_m)
+    population["zone"] = np.select(
+        [population["bus_access"] & population["bike_access"], population["bus_access"], population["bike_access"]],
+        ["Both", "Bus only", "LinkBike only"],
+        default="Neither",
+    )
+    zone_stats = population.groupby("zone")["residents"].sum().to_dict()
+    by_area_zone = population.groupby(["area", "zone"])["residents"].sum().unstack(fill_value=0)
+    area_stats = {}
+    for area_name, row in by_area_zone.iterrows():
+        bus_only = float(row.get("Bus only", 0.0))
+        linkbike_only = float(row.get("LinkBike only", 0.0))
+        both = float(row.get("Both", 0.0))
+        neither = float(row.get("Neither", 0.0))
+        area_stats[str(area_name)] = {
+            "Bus only": bus_only,
+            "LinkBike only": linkbike_only,
+            "Both": both,
+            "Neither": neither,
+            "Mukim population": bus_only + linkbike_only + both + neither,
+        }
+    for zone in ("Bus only", "LinkBike only", "Both", "Neither"):
+        zone_stats.setdefault(zone, 0.0)
+    return zone_stats, area_stats
+
+
+def _make_four_zone_map(all_areas, area_stats):
+    map_view = folium.Map(location=[5.35, 100.35], zoom_start=8, tiles=None, control_scale=True)
+    street = folium.TileLayer(
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+        attr="Esri", name="Street map", show=True,
+    ).add_to(map_view)
+    satellite = folium.TileLayer(
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        attr="Esri, Maxar, Earthstar Geographics, and the GIS User Community",
+        name="Satellite", show=False,
+    ).add_to(map_view)
+    coverage_layers = []
+    layer_details = [
+        ("Bus only", "Bus only", True),
+        ("LinkBike only", "LinkBike only", False),
+        ("Both", "Both", False),
+        ("Neither", "Neither", False),
+    ]
+    colours = ["#f2f0f7", "#cbc9e2", "#9e9ac8", "#6a51a3", "#3f007d"]
+    simplified_areas = all_areas.to_crs("EPSG:32647").copy()
+    simplified_areas.geometry = simplified_areas.geometry.simplify(50, preserve_topology=True)
+    simplified_areas = simplified_areas.to_crs("EPSG:4326")
+    for title, value_key, show in layer_details:
+        areas = simplified_areas.copy()
+        areas["display_name"] = areas.get("display_name", areas["match_name"])
+        areas["estimated_residents"] = areas["match_name"].map(
+            lambda name: area_stats.get(str(name), {}).get(value_key, 0.0)
+        )
+        areas["resident_share_percent"] = areas.apply(
+            lambda row: (
+                100 * row["estimated_residents"]
+                / area_stats.get(str(row["match_name"]), {}).get("Mukim population", 0.0)
+                if area_stats.get(str(row["match_name"]), {}).get("Mukim population", 0.0) > 0
+                else 0.0
+            ),
+            axis=1,
+        )
+        max_value = max(float(areas["estimated_residents"].max()), 1.0)
+        geojson = json.loads(
+            areas[["display_name", "estimated_residents", "resident_share_percent", "geometry"]]
+            .to_json(drop_id=True)
+        )
+        layer = folium.FeatureGroup(name=title, overlay=True, control=False, show=show)
+
+        def style_feature(feature, max_value=max_value):
+            value = float(feature["properties"].get("estimated_residents", 0.0))
+            if value <= 0:
+                return {"fillColor": "#d9d9d9", "color": "#ffffff", "weight": 1, "fillOpacity": 0.8}
+            band = max(1, min(int((value / max_value) * (len(colours) - 1)), len(colours) - 1))
+            return {"fillColor": colours[band], "color": "#ffffff", "weight": 1, "fillOpacity": 0.8}
+
+        folium.GeoJson(
+            geojson,
+            name=title,
+            style_function=style_feature,
+            tooltip=folium.GeoJsonTooltip(
+                fields=["display_name", "estimated_residents", "resident_share_percent"],
+                aliases=["Mukim", "Estimated residents", "Share of mukim residents (%)"],
+                localize=True,
+                sticky=False,
+            ),
+            popup=folium.GeoJsonPopup(
+                fields=["display_name", "estimated_residents", "resident_share_percent"],
+                aliases=["Mukim", "Estimated residents", "Share of mukim residents (%)"],
+                localize=True,
+            ),
+        ).add_to(layer)
+        layer.add_to(map_view)
+        coverage_layers.append(layer)
+    legend = (
+        "<div style='position:fixed;bottom:22px;left:14px;z-index:9999;"
+        "background:white;padding:9px 11px;border:1px solid #ccc;border-radius:7px;"
+        "font:12px Arial;box-shadow:0 1px 5px #999'>Residents in selected layer<br>"
+        "<span style='color:#d9d9d9'>■</span> none&nbsp;&nbsp;"
+        "<span style='color:#cbc9e2'>■</span> fewer&nbsp;&nbsp;"
+        "<span style='color:#3f007d'>■</span> more</div>"
+    )
+    map_view.get_root().html.add_child(folium.Element(legend))
+    GroupedLayerControl(
+        groups={"Map style": [street, satellite], "Residents by mukim": coverage_layers},
+        exclusive_groups=True,
+        collapsed=False,
+    ).add_to(map_view)
+    bounds = all_areas.to_crs("EPSG:4326").total_bounds
+    map_view.fit_bounds([[float(bounds[1]), float(bounds[0])], [float(bounds[3]), float(bounds[2])]], padding=(14, 14))
+    return map_view
+
+
+def _render_four_zone_analysis(stations, bus_stops, all_areas, threshold_m):
+    st.divider()
+    st.subheader("Walking access by mukim")
+    st.caption(
+        f"Choose a layer to see estimated residents within {threshold_m} m on foot: "
+        "bus only, LinkBike only, both, or neither. Darker mukims have more residents in that group."
+    )
+    st.caption("This shows walking access to stations. It does not show bike trips or confirm bus-bike transfers.")
+    stations_json = stations[["station_name", "latitude", "longitude"]].to_json(orient="records")
+    stop_columns = ["stop_id", "stop_lat", "stop_lon", "nearest_node"]
+    stops_json = bus_stops[stop_columns].to_json(orient="records")
+    network_mtime = NETWORK_FILE.stat().st_mtime_ns
+    with st.spinner("Estimating residents near bus stops and LinkBike stations..."):
+        population_rows = []
+        try:
+            for area_name in all_areas["match_name"].dropna().astype(str).unique():
+                pop_lon, pop_lat, residents, _, _ = _load_population_cells(area_name)
+                if len(residents):
+                    population_rows.append(
+                        pd.DataFrame({
+                            "area": area_name,
+                            "longitude": pop_lon,
+                            "latitude": pop_lat,
+                            "residents": residents,
+                        })
+                    )
+        except (OSError, ValueError, KeyError, ImportError) as error:
+            st.warning(f"Population comparison could not be calculated: {clean_web_text(str(error))}")
+            return
+        if not population_rows:
+            st.warning("Population estimates are not available, so the comparison cannot be shown.")
+            return
+        population_json = pd.concat(population_rows, ignore_index=True).to_json(
+            orient="records", double_precision=6
+        )
+    zone_stats, area_stats = _four_zone_coverage(
+        stations_json, stops_json, population_json,
+        int(threshold_m), network_mtime
+    )
+    components.html(
+        _make_four_zone_map(all_areas, area_stats).get_root().render(),
+        height=560, scrolling=False,
+    )
+    bus_residents = (
+        zone_stats["Bus only"] + zone_stats["Both"]
+    )
+    combined_residents = bus_residents + zone_stats["LinkBike only"]
+    added_residents = zone_stats["LinkBike only"]
+    total_residents = sum(zone_stats.values())
+    before_col, after_col, added_col = st.columns(3)
+    before_col.metric(
+        "Bus access",
+        f"{bus_residents:,.0f}",
+        f"{(100 * bus_residents / total_residents) if total_residents else 0:.1f}% of residents",
+    )
+    after_col.metric(
+        "Residents near bus or LinkBike",
+        f"{combined_residents:,.0f}",
+        f"{(100 * combined_residents / total_residents) if total_residents else 0:.1f}% of residents",
+    )
+    added_col.metric(
+        "Added by LinkBike",
+        f"{added_residents:,.0f}",
+        "estimated",
+    )
+    st.caption(
+        "This counts residents near a bus stop, a LinkBike station, or both. "
+        "Added by LinkBike counts residents near a LinkBike station but not a bus stop. "
+        "These are estimates, not actual trips."
+    )
+
+
 def render(tai, all_areas, all_stops, scored, socioeconomic):
-    st.caption("LinkBike and RapidPenang walking connections across Penang")
+    st.caption(
+        "LinkBike is Penang’s shared-bike service. A station is a place where a shared bicycle can be picked up or returned. "
+        "This page uses the recorded station locations to check how close they are to RapidPenang bus stops by foot."
+    )
     try:
         if not STATIONS_FILE.exists():
             st.error(f"LinkBike station data was not found: {STATIONS_FILE}")
@@ -433,8 +705,9 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     )
     st.caption("The selected distance defines a potential connection.")
     try:
+        bus_stops = _load_bus_stops()
         graph, stations, station_status, stop_status, best_for_station = _analyse(
-            stations, _load_bus_stops(), int(threshold_m), None
+            stations, bus_stops, int(threshold_m), None
         )
     except (OSError, ValueError, KeyError, nx.NetworkXException) as error:
         st.error(f"Could not calculate LinkBike connections: {clean_web_text(str(error))}")
@@ -511,7 +784,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
 
     with detail_col:
         st.subheader("Bus stops without a nearby LinkBike connection")
-        st.caption("Select a row to show it on the map.")
+        st.caption(
+            "These bus stops have no LinkBike station within the selected walking distance. "
+            "Select a row to show it on the map. This can help identify places to review for a connection."
+        )
         gaps = stop_gap_rows[["stop_name"]].rename(columns={"stop_name": "Bus stop"})
         if gaps.empty:
             st.success("Every RapidPenang bus stop has a LinkBike station within the selected distance.")
@@ -531,7 +807,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     if station_gaps.empty:
         st.success("Every LinkBike station has a bus stop within the selected walking distance.")
     else:
-        st.caption("Select a row to show it on the map.")
+        st.caption(
+            "These LinkBike stations have no bus stop within the selected walking distance. "
+            "Select a row to show it on the map. This can help identify places to review for a connection."
+        )
         st.dataframe(
             station_gaps,
             hide_index=True,
@@ -540,6 +819,8 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             selection_mode="single-row",
             key=station_table_key,
         )
+
+    _render_four_zone_analysis(stations, bus_stops, all_areas, int(threshold_m))
 
     export_output = stop_status[[
         "stop_id", "stop_name", "stop_lat", "stop_lon",
