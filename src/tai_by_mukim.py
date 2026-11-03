@@ -6,11 +6,20 @@ import geopandas as gpd
 import networkx as nx
 import numpy as np
 import pandas as pd
-from scipy.stats import spearmanr
+from database import read_dataframe, read_geojson, write_dataframe
+
+
+def spearman_rho(first, second):
+    pair = pd.concat([pd.to_numeric(first, errors="coerce"), pd.to_numeric(second, errors="coerce")], axis=1).dropna()
+    if len(pair) < 2:
+        return float("nan")
+    ranks = pair.rank(method="average")
+    centred = ranks - ranks.mean()
+    denominator = float(centred.iloc[:, 0].pow(2).sum() * centred.iloc[:, 1].pow(2).sum()) ** 0.5
+    return float((centred.iloc[:, 0] * centred.iloc[:, 1]).sum() / denominator) if denominator else float("nan")
 from shapely.geometry import Point
 from shapely.ops import transform as geometry_transform
 from sklearn.cluster import KMeans
-from sklearn.metrics import silhouette_score
 
 
 ROOT = Path(r"D:\fyp")
@@ -103,7 +112,7 @@ def minmax_score(values, reverse=False):
 print("Loading mukim boundaries and saved accessibility results...")
 
 # Load and prepare the mukim boundaries.
-mukims = gpd.read_file(BOUNDARY_FILE)
+mukims = read_geojson(BOUNDARY_FILE)
 
 if mukims.crs is None:
     raise ValueError("Mukim boundary file has no CRS.")
@@ -119,9 +128,9 @@ if mukims["match_name"].duplicated().any():
 mukims["area_km2"] = mukims.geometry.apply(area_km2)
 
 # Load the saved stop and population accessibility results.
-stops = pd.read_csv(STOPS_FILE, dtype={"stop_id": str})
-stop_access = pd.read_csv(STOP_ACCESS_FILE, dtype={"stop_id": str})
-population_access = pd.read_csv(POPULATION_ACCESS_FILE)
+stops = read_dataframe(STOPS_FILE, dtype={"stop_id": str})
+stop_access = read_dataframe(STOP_ACCESS_FILE, dtype={"stop_id": str})
+population_access = read_dataframe(POPULATION_ACCESS_FILE)
 
 # Assign each bus stop to the boundary area containing it.
 mukim_geometries = list(zip(mukims["match_name"], mukims.geometry))
@@ -278,25 +287,6 @@ tai["TAI_rank"] = tai["TAI"].rank(
 complete = tai[score_columns].notna().all(axis=1)
 cluster_input = tai.loc[complete, score_columns]
 
-# Compare possible cluster counts.
-print("\nChecking possible cluster counts:")
-
-for test_k in range(2, 7):
-    test_model = KMeans(
-        n_clusters=test_k,
-        random_state=42,
-        n_init=20,
-    )
-
-    test_labels = test_model.fit_predict(cluster_input)
-    silhouette = silhouette_score(cluster_input, test_labels)
-
-    print(
-        f"k={test_k}: "
-        f"inertia={test_model.inertia_:.3f}; "
-        f"silhouette={silhouette:.3f}"
-    )
-
 # Use three clusters for the Low, Medium and High groups.
 cluster_count = 3
 
@@ -390,21 +380,13 @@ print(cluster_profile.to_string())
 print("\nSpearman correlations between indicators:")
 
 for first, second in combinations(correlation_indicators, 2):
-    result = spearmanr(
-        correlation_data[first],
-        correlation_data[second],
-    )
-
-    print(
-        f"{first} vs {second}: "
-        f"rho={result.statistic:.3f}, "
-        f"p-value={result.pvalue:.4f}"
-    )
+    rho = spearman_rho(correlation_data[first], correlation_data[second])
+    print(f"{first} vs {second}: rho={rho:.3f}")
 
 # Save the TAI results.
-tai.to_csv(OUTPUT_FILE, index=False)
+write_dataframe(OUTPUT_FILE, tai)
 
-print(f"\nSaved: {OUTPUT_FILE}")
+print(f"\nSaved to PostgreSQL: {OUTPUT_FILE}")
 print(f"Areas with a TAI score: {tai['TAI'].notna().sum()} of {len(tai)}")
 print(f"Areas without a score: {tai['TAI'].isna().sum()}")
 

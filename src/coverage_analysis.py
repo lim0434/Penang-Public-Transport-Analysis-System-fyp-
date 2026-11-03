@@ -21,7 +21,7 @@ COVERAGE_FILE = (
 
 
 def render(tai, all_areas, all_stops, scored, socioeconomic):
-    coverage = pd.read_csv(COVERAGE_FILE)
+    coverage = read_dataframe(COVERAGE_FILE)
     district_options = ["All districts"] + [
         f"{prefix} — {label}"
         for prefix, label in DISTRICT_LABELS.items()

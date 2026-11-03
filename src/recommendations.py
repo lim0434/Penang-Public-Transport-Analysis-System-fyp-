@@ -21,6 +21,7 @@ from linkbike_page import (
     _normalise_stations,
 )
 from ui_helpers import DISTRICT_LABELS, clean_web_text
+from database import dataset_exists, dataset_version, read_dataframe
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,7 +44,7 @@ def _area_label(match_name):
 
 @st.cache_data(show_spinner=False)
 def _load_destinations():
-    destinations = pd.read_csv(DESTINATIONS_FILE)
+    destinations = read_dataframe(DESTINATIONS_FILE)
     distance_columns = [
         "network_distance_m",
         "destination_snap_gap_m",
@@ -128,9 +129,9 @@ def _ranked_candidates(area_name, destinations):
 
 
 def _linkbike_summary(all_stops=None):
-    if not LINKBIKE_GAP_FILE.exists():
+    if not dataset_exists(LINKBIKE_GAP_FILE):
         return None
-    gaps = pd.read_csv(LINKBIKE_GAP_FILE)
+    gaps = read_dataframe(LINKBIKE_GAP_FILE)
     if {"stop_lon", "stop_lat"}.issubset(gaps.columns):
         local = gaps.copy()
         status_column = "status" if "status" in local.columns else "Connection status"
@@ -155,7 +156,7 @@ def _linkbike_summary(all_stops=None):
 def _linkbike_resident_coverage(area_names, threshold_m, station_mtime, stop_mtime, network_mtime):
     """Return estimated LinkBike-only residents by mukim using the shared walking analysis."""
     _ = (station_mtime, stop_mtime, network_mtime)
-    stations = _normalise_stations(pd.read_csv(LINKBIKE_STATIONS_FILE))
+    stations = _normalise_stations(read_dataframe(LINKBIKE_STATIONS_FILE))
     bus_stops = _load_bus_stops()
     population_rows = []
     for area_name in area_names:
@@ -472,9 +473,9 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             resident_coverage = _linkbike_resident_coverage(
                 area_names,
                 400,
-                LINKBIKE_STATIONS_FILE.stat().st_mtime_ns,
-                (DATA / "stops_penang.csv").stat().st_mtime_ns,
-                LINKBIKE_NETWORK_FILE.stat().st_mtime_ns,
+                dataset_version(LINKBIKE_STATIONS_FILE),
+                dataset_version(DATA / "stops_penang.csv"),
+                dataset_version(LINKBIKE_NETWORK_FILE),
             )
             if resident_coverage:
                 area_col, rank_col = st.columns(2)

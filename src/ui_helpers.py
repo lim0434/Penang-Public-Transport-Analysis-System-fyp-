@@ -6,6 +6,7 @@ import geopandas as gpd
 import pandas as pd
 import streamlit as st
 from shapely.geometry import Point
+from database import read_dataframe, read_geojson as read_geojson_from_db
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -69,12 +70,8 @@ def clean_web_table(frame):
 
 
 def read_geojson(path):
-    """Read a GeoJSON FeatureCollection without a GDAL-backed file engine."""
-    with Path(path).open("r", encoding="utf-8") as source:
-        document = json.load(source)
-
-    crs = document.get("crs", {}).get("properties", {}).get("name", "EPSG:4326")
-    return gpd.GeoDataFrame.from_features(document["features"], crs=crs)
+    """Read a GeoJSON boundary stored in PostgreSQL."""
+    return read_geojson_from_db(path)
 
 
 def make_area_label(row):
@@ -98,7 +95,7 @@ def make_area_label(row):
 
 @st.cache_data
 def load_data():
-    tai = pd.read_csv(TAI_FILE)
+    tai = read_dataframe(TAI_FILE)
     tai["TAI_category"] = tai["TAI_category"].fillna("No score")
 
     areas = read_geojson(BOUNDARY_FILE)
@@ -111,7 +108,7 @@ def load_data():
     )
     areas["TAI_category"] = areas["TAI_category"].fillna("No score")
 
-    stops = pd.read_csv(STOPS_FILE)
+    stops = read_dataframe(STOPS_FILE)
     return tai, areas, stops
 
 

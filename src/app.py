@@ -13,6 +13,7 @@ from linkbike_page import render as render_linkbike_page
 from recommendations import render as render_recommendations_page
 from scenario_simulation import render as render_scenario_page
 from ui_helpers import clean_web_table, clean_web_text, read_geojson
+from database import dataset_exists, dataset_version, read_dataframe
 
 _original_dataframe = st._main.dataframe
 
@@ -267,8 +268,9 @@ def make_area_label(row):
 
 
 @st.cache_data
-def load_data():
-    tai = pd.read_csv(TAI_FILE)
+def load_data(tai_version):
+    _ = tai_version
+    tai = read_dataframe(TAI_FILE)
     tai["TAI_category"] = tai["TAI_category"].fillna("No score")
 
     areas = read_geojson(BOUNDARY_FILE)
@@ -281,7 +283,7 @@ def load_data():
     )
     areas["TAI_category"] = areas["TAI_category"].fillna("No score")
 
-    stops = pd.read_csv(STOPS_FILE)
+    stops = read_dataframe(STOPS_FILE)
     areas["display_name"] = areas["match_name"].map(
         lambda name: str(name).split(" ", 1)[-1].title()
     )
@@ -319,13 +321,19 @@ def load_data():
     return tai, areas, stops
 
 
-for required_file in (TAI_FILE, BOUNDARY_FILE, STOPS_FILE, SOCIOECONOMIC_FILE):
-    if not required_file.exists():
-        st.error(f"Required project file not found: {clean_web_text(str(required_file))}")
-        st.stop()
+try:
+    for required_file in (TAI_FILE, BOUNDARY_FILE, STOPS_FILE, SOCIOECONOMIC_FILE):
+        if not dataset_exists(required_file):
+            st.error(f"This data has not been moved to PostgreSQL yet: {clean_web_text(str(required_file))}")
+            st.info("Set your PostgreSQL password in D:\\fyp\\.env, then run src/migrate_to_postgres.py.")
+            st.stop()
+except RuntimeError as exc:
+    st.error(str(exc))
+    st.info("Add your PostgreSQL password to D:\\fyp\\.env, then refresh this page.")
+    st.stop()
 
-tai, all_areas, all_stops = load_data()
-socioeconomic = pd.read_csv(SOCIOECONOMIC_FILE)
+tai, all_areas, all_stops = load_data(dataset_version(TAI_FILE))
+socioeconomic = read_dataframe(SOCIOECONOMIC_FILE)
 scored = tai[tai["TAI"].notna()].copy()
 area_display_names = all_areas.set_index("match_name")["display_name"].to_dict()
 

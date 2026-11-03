@@ -13,6 +13,13 @@ import streamlit as st
 import streamlit.components.v1 as components
 from scipy.spatial import cKDTree
 from PIL import Image
+from io import BytesIO
+from database import read_asset_bytes, read_dataframe, read_graphml
+from io import BytesIO
+from io import BytesIO
+from io import BytesIO
+from io import BytesIO
+from io import BytesIO
 from shapely import contains_xy
 from shapely.geometry import Point
 
@@ -43,7 +50,7 @@ def _distance_m(lon1, lat1, lon2, lat2):
 
 @st.cache_resource(show_spinner="Preparing the walking network and current bus stops...")
 def _load_network_context():
-    graph = nx.read_graphml(DATA / "walking_network_candidate.graphml")
+    graph = read_graphml(DATA / "walking_network_candidate.graphml")
     graph = graph.to_undirected()
     if graph.is_multigraph():
         edge_iter = graph.edges(keys=True, data=True)
@@ -61,7 +68,7 @@ def _load_network_context():
     mean_lat = float(node_xy[:, 1].mean())
     tree = cKDTree(np.column_stack((node_xy[:, 0] * math.cos(math.radians(mean_lat)), node_xy[:, 1])))
 
-    stops = pd.read_csv(STOPS_FILE)
+    stops = read_dataframe(STOPS_FILE)
     stop_sources = []
     for stop in stops.itertuples(index=False):
         node, offset = _snap_to_network(stop.stop_lon, stop.stop_lat, node_ids, node_xy, tree, mean_lat)
@@ -108,11 +115,11 @@ def _distances_from_sources(graph, sources):
 
 @st.cache_data(show_spinner="Loading population cells for this area...")
 def _load_population_cells(area_name):
-    census = pd.read_csv(COVERAGE_FILE).set_index("match_name")
+    census = read_dataframe(COVERAGE_FILE).set_index("match_name")
     census_population = float(census.loc[area_name, "csv_population"])
 
     if area_name == "DTL MUKIM 15":
-        ghs = pd.read_csv(GHS_FALLBACK_FILE)
+        ghs = read_dataframe(GHS_FALLBACK_FILE)
         return (
             ghs["cell_longitude"].to_numpy(float),
             ghs["cell_latitude"].to_numpy(float),
@@ -133,7 +140,7 @@ def _load_population_cells(area_name):
     previous_pixel_limit = Image.MAX_IMAGE_PIXELS
     Image.MAX_IMAGE_PIXELS = None
     try:
-        with Image.open(POPULATION_RASTER) as raster:
+        with Image.open(BytesIO(read_asset_bytes(POPULATION_RASTER))) as raster:
             pixel_width, pixel_height, _ = raster.tag_v2[33550]
             _, _, _, origin_x, origin_y, _ = raster.tag_v2[33922]
             min_x, min_y, max_x, max_y = geometry.bounds
@@ -279,7 +286,7 @@ def _rank_candidate_sites(area_name, candidate_ids, candidate_rows=()):
     if candidate_rows:
         candidates = pd.DataFrame(candidate_rows)
     else:
-        candidates = pd.read_csv(DESTINATIONS_FILE)
+        candidates = read_dataframe(DESTINATIONS_FILE)
     candidates = candidates[
         (candidates["mukim"] == area_name)
         & candidates["destination_id"].isin(candidate_ids)
@@ -299,7 +306,7 @@ def _rank_candidate_sites(area_name, candidate_ids, candidate_rows=()):
         for node, offset in zip(pop_nodes, pop_offsets)
     ])
 
-    dest = pd.read_csv(DESTINATIONS_FILE)
+    dest = read_dataframe(DESTINATIONS_FILE)
     dest = dest[dest["mukim"] == area_name]
     dlon = pd.to_numeric(dest["destination_lon"], errors="coerce").to_numpy(float)
     dlat = pd.to_numeric(dest["destination_lat"], errors="coerce").to_numpy(float)
@@ -380,7 +387,7 @@ def _candidate_destination_counts(graph, candidates, places, node_ids, node_xy, 
 
 def _scenario_tai_score(area_name, added_stop_count, coverage_percent, mean_walk_m, added_place_counts):
     """Recalculate the selected mukim's TAI on the original Penang score scale."""
-    tai = pd.read_csv(TAI_FILE)
+    tai = read_dataframe(TAI_FILE)
     row = tai.loc[tai["match_name"] == area_name]
     if row.empty or added_stop_count < 1:
         return float("nan")
@@ -600,7 +607,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             "for testing, not confirmed stop sites."
         )
 
-    coverage = pd.read_csv(COVERAGE_FILE)
+    coverage = read_dataframe(COVERAGE_FILE)
     area_options = coverage.merge(
         tai[["match_name", "TAI_category", "TAI", "TAI_rank"]],
         on="match_name", how="left", validate="one_to_one",
@@ -625,7 +632,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         help="Numbered mukims include a nearby bus-stop name to help locate them. The official mukim number remains in the label.",
     )
 
-    destinations = pd.read_csv(DESTINATIONS_FILE)
+    destinations = read_dataframe(DESTINATIONS_FILE)
     distance_parts = [
         "network_distance_m",
         "destination_snap_gap_m",

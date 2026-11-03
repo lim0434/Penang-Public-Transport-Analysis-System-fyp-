@@ -1,5 +1,7 @@
 from pathlib import Path
 import pandas as pd
+from database import read_asset_dataframe
+from database import read_asset_dataframe
 
 # GTFS folder
 GTFS_DIR = Path(r"D:\fyp\data\raw\gtfs")
@@ -23,11 +25,7 @@ for file in files:
 
     print(f"\n--- {file} ---")
 
-    if not file_path.exists():
-        print("FILE NOT FOUND")
-        continue
-
-    df = pd.read_csv(file_path)
+    df = read_asset_dataframe(file_path)
 
     print(f"Rows: {len(df):,}")
     print(f"Columns: {len(df.columns)}")
@@ -58,13 +56,13 @@ print("GTFS RELATIONSHIP VALIDATION")
 print("=" * 60)
 
 # Load data
-agency = pd.read_csv(GTFS_DIR / "agency.txt")
-calendar = pd.read_csv(GTFS_DIR / "calendar.txt")
-routes = pd.read_csv(GTFS_DIR / "routes.txt")
-trips = pd.read_csv(GTFS_DIR / "trips.txt")
-stop_times = pd.read_csv(GTFS_DIR / "stop_times.txt")
-stops = pd.read_csv(GTFS_DIR / "stops.txt")
-shapes = pd.read_csv(GTFS_DIR / "shapes.txt")
+agency = read_asset_dataframe(GTFS_DIR / "agency.txt")
+calendar = read_asset_dataframe(GTFS_DIR / "calendar.txt")
+routes = read_asset_dataframe(GTFS_DIR / "routes.txt")
+trips = read_asset_dataframe(GTFS_DIR / "trips.txt")
+stop_times = read_asset_dataframe(GTFS_DIR / "stop_times.txt")
+stops = read_asset_dataframe(GTFS_DIR / "stops.txt")
+shapes = read_asset_dataframe(GTFS_DIR / "shapes.txt")
 
 
 # 1. route_id

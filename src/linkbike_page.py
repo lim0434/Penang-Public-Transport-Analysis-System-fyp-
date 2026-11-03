@@ -14,6 +14,7 @@ from folium.plugins import Fullscreen, MarkerCluster
 from scipy.spatial import cKDTree
 from folium.plugins import GroupedLayerControl
 from ui_helpers import clean_web_text
+from database import dataset_exists, dataset_version, read_asset_bytes, read_dataframe, read_graphml, write_dataframe
 from scenario_simulation import _load_population_cells
 
 
@@ -42,7 +43,7 @@ def _remember_map_row(widget_key, kind):
 
 @st.cache_data
 def _load_pois():
-    pois = pd.read_csv(POIS_FILE)
+    pois = read_dataframe(POIS_FILE)
     required = ["destination_type", "destination_name", "destination_lat", "destination_lon"]
     missing = [column for column in required if column not in pois.columns]
     if missing:
@@ -58,8 +59,8 @@ def _load_pois():
 
 @st.cache_data
 def _load_bus_stops():
-    stops = pd.read_csv(STOPS_FILE, dtype={"stop_id": str})
-    mapping = pd.read_csv(
+    stops = read_dataframe(STOPS_FILE, dtype={"stop_id": str})
+    mapping = read_dataframe(
         STOP_MAPPING_FILE,
         dtype={"stop_id": str, "nearest_node": str},
     )
@@ -73,7 +74,7 @@ def _load_bus_stops():
 
 @st.cache_resource
 def _load_walking_network():
-    graph = nx.read_graphml(NETWORK_FILE).to_undirected()
+    graph = read_graphml(NETWORK_FILE).to_undirected()
     for _, _, edge_data in graph.edges(data=True):
         edge_data["length"] = float(edge_data["length"])
 
@@ -621,7 +622,7 @@ def _render_four_zone_analysis(stations, bus_stops, all_areas, threshold_m):
     stations_json = stations[["station_name", "latitude", "longitude"]].to_json(orient="records")
     stop_columns = ["stop_id", "stop_lat", "stop_lon", "nearest_node"]
     stops_json = bus_stops[stop_columns].to_json(orient="records")
-    network_mtime = NETWORK_FILE.stat().st_mtime_ns
+    network_mtime = dataset_version(NETWORK_FILE)
     with st.spinner("Estimating residents near bus stops and LinkBike stations..."):
         population_rows = []
         try:
@@ -688,10 +689,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         "This page uses the recorded station locations to check how close they are to RapidPenang bus stops by foot."
     )
     try:
-        if not STATIONS_FILE.exists():
+        if not dataset_exists(STATIONS_FILE):
             st.error(f"LinkBike station data was not found: {STATIONS_FILE}")
             return
-        station_data = pd.read_csv(STATIONS_FILE)
+        station_data = read_dataframe(STATIONS_FILE)
         stations = _normalise_stations(station_data)
     except (ValueError, pd.errors.ParserError, UnicodeDecodeError) as error:
         st.error(clean_web_text(str(error)))
@@ -828,7 +829,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     ]].copy()
     export_output["walking_distance_m"] = export_output["walking_distance_m"].round(2)
     LINKBIKE_RESULTS_FILE.parent.mkdir(parents=True, exist_ok=True)
-    export_output.to_csv(LINKBIKE_RESULTS_FILE, index=False)
+    write_dataframe(LINKBIKE_RESULTS_FILE, export_output)
     return export_output, f"linkbike_connections_{threshold_m}m.csv"
 
 
