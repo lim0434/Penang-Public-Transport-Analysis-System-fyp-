@@ -14,7 +14,7 @@ station_id,station_name,latitude,longitude,station_type,analysis_include,review_
 13,Lebuh Acheh,5.415542,100.335536,pit,true,,https://www.linkbike.my/,2026-10-20
 14,Setia Spice,5.329492,100.278983,pit,true,,https://www.linkbike.my/,2026-10-20
 15,Gurney Walk,5.430850,100.319291,pit,true,,https://www.linkbike.my/,2026-10-20
-16,Arena Curve,5.327065,80.280467,pit,false,Published longitude places this point outside Penang; needs verification.,https://www.linkbike.my/,2026-10-20
+16,Arena Curve,5.327065,100.280467,pit,true,Longitude corrected after checking the Arena Curve location.,https://www.linkbike.my/,2026-10-28
 17,Campbell St,5.419051,100.331894,pit,true,,https://www.linkbike.my/,2026-10-20
 18,Golden Triangle,5.331585,100.276633,pit,true,,https://www.linkbike.my/,2026-10-20
 19,1st Avenue,5.413801,100.331062,pit,true,,https://www.linkbike.my/,2026-10-20

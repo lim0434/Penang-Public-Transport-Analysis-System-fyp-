@@ -5,6 +5,7 @@ import folium
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
+from database import dataset_exists, read_dataframe
 from folium.plugins import Fullscreen
 
 CONNECTIVITY_FILE = (
@@ -100,11 +101,11 @@ def _destination_card(row):
 
 
 def render(tai, all_areas, all_stops, scored, socioeconomic):
-    if not CONNECTIVITY_FILE.exists():
+    if not dataset_exists(CONNECTIVITY_FILE):
         st.error(f"Connectivity results not found: {CONNECTIVITY_FILE}")
         st.stop()
 
-    data = pd.read_csv(CONNECTIVITY_FILE)
+    data = read_dataframe(CONNECTIVITY_FILE)
     data["destination_name"] = data["destination_name"].fillna("Unnamed destination")
     data["snap_needs_review"] = data["snap_needs_review"].fillna(False).astype(bool)
     distance_parts = [

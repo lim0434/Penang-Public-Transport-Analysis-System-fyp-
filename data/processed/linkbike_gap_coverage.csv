@@ -826,7 +826,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002003,MOX,5.292808,100.285736,,,No LinkBike station within 400 m
 12002050,Pentamaster,5.295761,100.28863,,,No LinkBike station within 400 m
 12002303,KWSP Queensbay,5.33692,100.30844,,,No LinkBike station within 400 m
-12002974,Terminal Bas Bayan Baru,5.326959,100.2803228,,,No LinkBike station within 400 m
+12002974,Terminal Bas Bayan Baru,5.326959,100.2803228,Arena Curve,34.52,Within 400 m
 12001764,Hub Teluk Bahang,5.458819999999999,100.21611,,,No LinkBike station within 400 m
 12002209,Straits Quay Marina Mall,5.457885900000001,100.3126561,Straits Quay,357.11,Within 400 m
 12000367,Belissa Row,5.43251,100.31017,,,No LinkBike station within 400 m
@@ -1669,7 +1669,7 @@ stop_id,stop_name,stop_lat,stop_lon,nearest_linkbike_station,walking_distance_m,
 12002104,Taman Bandar Perda,5.2918,100.22913,,,No LinkBike station within 400 m
 12000420,Taman Nuri I,5.30467,100.26292,,,No LinkBike station within 400 m
 12000612,Flat Kg. Suluk,5.288736,100.22212,,,No LinkBike station within 400 m
-12000851,Olive Tree Hotel,5.32736,100.28051,,,No LinkBike station within 400 m
+12000851,Olive Tree Hotel,5.32736,100.28051,Arena Curve,340.78,Within 400 m
 12001840,SJK (C) Min Sin,5.331169,100.281425,Setia Spice,388.46,Within 400 m
 12000751,Pulau Mertajam,5.57361,100.36615,,,No LinkBike station within 400 m
 12001058,Balai Polis Penaga,5.524894000000001,100.38132,,,No LinkBike station within 400 m

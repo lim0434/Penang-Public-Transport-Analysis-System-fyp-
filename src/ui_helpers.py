@@ -6,6 +6,7 @@ import geopandas as gpd
 import pandas as pd
 import streamlit as st
 from shapely.geometry import Point
+from database import read_dataframe, read_geojson as read_geojson_from_db
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,25 +39,39 @@ TAI_COLOURS = {
 }
 
 
+def clean_web_text(value):
+    """Remove underscores and semicolons from text shown in the web app."""
+    if isinstance(value, str):
+        return value.replace("_", " ").replace(";", "")
+    return value
+
+
 def clean_web_table(frame):
-    """Clean text shown in a web table without changing source or export data."""
+    """Return a cleaned display copy without changing source or export data."""
     display = frame.copy()
-    display.columns = [str(column).replace("_", " ").replace(";", "") for column in display.columns]
-    for column in display.select_dtypes(include=["object", "string"]).columns:
-        display[column] = display[column].map(
-            lambda value: value.replace("_", " ").replace(";", "")
-            if isinstance(value, str) else value
-        )
+    display.columns = [clean_web_text(column) for column in display.columns]
+    for column in display.columns:
+        dtype = display[column].dtype
+        if (
+            dtype == object
+            or isinstance(dtype, pd.StringDtype)
+            or isinstance(dtype, pd.CategoricalDtype)
+        ):
+            display[column] = display[column].astype(object).map(clean_web_text)
+    if isinstance(display.index, pd.MultiIndex):
+        arrays = [
+            [clean_web_text(value) for value in display.index.get_level_values(level)]
+            for level in range(display.index.nlevels)
+        ]
+        display.index = pd.MultiIndex.from_arrays(arrays, names=display.index.names)
+    else:
+        display.index = display.index.map(clean_web_text)
     return display
 
 
 def read_geojson(path):
-    """Read a GeoJSON FeatureCollection without a GDAL-backed file engine."""
-    with Path(path).open("r", encoding="utf-8") as source:
-        document = json.load(source)
-
-    crs = document.get("crs", {}).get("properties", {}).get("name", "EPSG:4326")
-    return gpd.GeoDataFrame.from_features(document["features"], crs=crs)
+    """Read a GeoJSON boundary stored in PostgreSQL."""
+    return read_geojson_from_db(path)
 
 
 def make_area_label(row):
@@ -80,7 +95,7 @@ def make_area_label(row):
 
 @st.cache_data
 def load_data():
-    tai = pd.read_csv(TAI_FILE)
+    tai = read_dataframe(TAI_FILE)
     tai["TAI_category"] = tai["TAI_category"].fillna("No score")
 
     areas = read_geojson(BOUNDARY_FILE)
@@ -93,7 +108,7 @@ def load_data():
     )
     areas["TAI_category"] = areas["TAI_category"].fillna("No score")
 
-    stops = pd.read_csv(STOPS_FILE)
+    stops = read_dataframe(STOPS_FILE)
     return tai, areas, stops
 
 

@@ -13,10 +13,17 @@ import streamlit as st
 import streamlit.components.v1 as components
 from scipy.spatial import cKDTree
 from PIL import Image
+from io import BytesIO
+from database import read_asset_bytes, read_dataframe, read_graphml
+from io import BytesIO
+from io import BytesIO
+from io import BytesIO
+from io import BytesIO
+from io import BytesIO
 from shapely import contains_xy
 from shapely.geometry import Point
 
-from ui_helpers import make_area_label, read_geojson
+from ui_helpers import clean_web_text, make_area_label, read_geojson
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,7 +50,7 @@ def _distance_m(lon1, lat1, lon2, lat2):
 
 @st.cache_resource(show_spinner="Preparing the walking network and current bus stops...")
 def _load_network_context():
-    graph = nx.read_graphml(DATA / "walking_network_candidate.graphml")
+    graph = read_graphml(DATA / "walking_network_candidate.graphml")
     graph = graph.to_undirected()
     if graph.is_multigraph():
         edge_iter = graph.edges(keys=True, data=True)
@@ -61,7 +68,7 @@ def _load_network_context():
     mean_lat = float(node_xy[:, 1].mean())
     tree = cKDTree(np.column_stack((node_xy[:, 0] * math.cos(math.radians(mean_lat)), node_xy[:, 1])))
 
-    stops = pd.read_csv(STOPS_FILE)
+    stops = read_dataframe(STOPS_FILE)
     stop_sources = []
     for stop in stops.itertuples(index=False):
         node, offset = _snap_to_network(stop.stop_lon, stop.stop_lat, node_ids, node_xy, tree, mean_lat)
@@ -108,11 +115,11 @@ def _distances_from_sources(graph, sources):
 
 @st.cache_data(show_spinner="Loading population cells for this area...")
 def _load_population_cells(area_name):
-    census = pd.read_csv(COVERAGE_FILE).set_index("match_name")
+    census = read_dataframe(COVERAGE_FILE).set_index("match_name")
     census_population = float(census.loc[area_name, "csv_population"])
 
     if area_name == "DTL MUKIM 15":
-        ghs = pd.read_csv(GHS_FALLBACK_FILE)
+        ghs = read_dataframe(GHS_FALLBACK_FILE)
         return (
             ghs["cell_longitude"].to_numpy(float),
             ghs["cell_latitude"].to_numpy(float),
@@ -133,7 +140,7 @@ def _load_population_cells(area_name):
     previous_pixel_limit = Image.MAX_IMAGE_PIXELS
     Image.MAX_IMAGE_PIXELS = None
     try:
-        with Image.open(POPULATION_RASTER) as raster:
+        with Image.open(BytesIO(read_asset_bytes(POPULATION_RASTER))) as raster:
             pixel_width, pixel_height, _ = raster.tag_v2[33550]
             _, _, _, origin_x, origin_y, _ = raster.tag_v2[33922]
             min_x, min_y, max_x, max_y = geometry.bounds
@@ -279,7 +286,7 @@ def _rank_candidate_sites(area_name, candidate_ids, candidate_rows=()):
     if candidate_rows:
         candidates = pd.DataFrame(candidate_rows)
     else:
-        candidates = pd.read_csv(DESTINATIONS_FILE)
+        candidates = read_dataframe(DESTINATIONS_FILE)
     candidates = candidates[
         (candidates["mukim"] == area_name)
         & candidates["destination_id"].isin(candidate_ids)
@@ -299,7 +306,7 @@ def _rank_candidate_sites(area_name, candidate_ids, candidate_rows=()):
         for node, offset in zip(pop_nodes, pop_offsets)
     ])
 
-    dest = pd.read_csv(DESTINATIONS_FILE)
+    dest = read_dataframe(DESTINATIONS_FILE)
     dest = dest[dest["mukim"] == area_name]
     dlon = pd.to_numeric(dest["destination_lon"], errors="coerce").to_numpy(float)
     dlat = pd.to_numeric(dest["destination_lat"], errors="coerce").to_numpy(float)
@@ -335,6 +342,7 @@ def _rank_candidate_sites(area_name, candidate_ids, candidate_rows=()):
             "Key places gaining access": int(
                 ((~dest_before) & (dest_after <= WALK_LIMIT_M) & other_destinations).sum()
             ),
+            "Walking network gap (m)": float(gap),
             "Current estimated walking distance to a bus stop (m)": float(c.network_distance_m)+float(c.destination_snap_gap_m)+float(c.stop_snap_gap_m),
         })
     ranked=pd.DataFrame(rows).sort_values(
@@ -379,7 +387,7 @@ def _candidate_destination_counts(graph, candidates, places, node_ids, node_xy, 
 
 def _scenario_tai_score(area_name, added_stop_count, coverage_percent, mean_walk_m, added_place_counts):
     """Recalculate the selected mukim's TAI on the original Penang score scale."""
-    tai = pd.read_csv(TAI_FILE)
+    tai = read_dataframe(TAI_FILE)
     row = tai.loc[tai["match_name"] == area_name]
     if row.empty or added_stop_count < 1:
         return float("nan")
@@ -466,7 +474,9 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
             "fillOpacity": 0.72,
         }
 
-    areas_geo = all_areas.to_crs("EPSG:4326")
+    areas_geo = all_areas.to_crs("EPSG:4326").copy()
+    if "display_name" in areas_geo.columns:
+        areas_geo["display_name"] = areas_geo["display_name"].map(clean_web_text)
     folium.GeoJson(
         areas_geo.to_json(),
         name="Existing population coverage",
@@ -485,7 +495,7 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
         area_shape.to_json(),
         name="Selected area",
         style_function=lambda _: {"color": "#ef7a3a", "weight": 3, "fillOpacity": 0},
-        tooltip=f"Selected area: {all_areas.loc[all_areas['match_name'] == area_name, 'display_name'].iloc[0]}",
+        tooltip=f"Selected area: {clean_web_text(all_areas.loc[all_areas['match_name'] == area_name, 'display_name'].iloc[0])}",
     ).add_to(map_view)
 
     for stop in stops.itertuples(index=False):
@@ -493,7 +503,7 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
         if selected_geometry.covers(stop_point):
             folium.Marker(
                 [stop_point.y, stop_point.x],
-                tooltip=f"Existing bus stop: {stop.stop_name}",
+                tooltip=f"Existing bus stop: {clean_web_text(str(stop.stop_name))}",
                 icon=folium.Icon(
                     color="blue",
                     icon="bus",
@@ -531,7 +541,7 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
         place_lat = float(proposed["destination_lat"])
         place_lon = float(proposed["destination_lon"])
         place_type = str(proposed["destination_type"])
-        place_name = str(proposed["destination_name"])
+        place_name = clean_web_text(str(proposed["destination_name"]))
         is_residential_candidate = place_type == "Residential area"
         folium.Marker(
             [place_lat, place_lon],
@@ -589,8 +599,15 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
 
 def render(tai, all_areas, all_stops, scored, socioeconomic):
     st.caption("Test how proposed bus stops could improve access within about a 5-minute walk.")
+    with st.expander("How suggested stop places are chosen"):
+        st.write(
+            "The system looks for listed schools, hospitals, clinics and malls beyond a 400 m walk from a current bus stop. "
+            "It also finds residential clusters with people outside that range. Candidate places are ranked by the estimated "
+            "number of residents and other key places that could come within 400 m if a stop were added. These are examples "
+            "for testing, not confirmed stop sites."
+        )
 
-    coverage = pd.read_csv(COVERAGE_FILE)
+    coverage = read_dataframe(COVERAGE_FILE)
     area_options = coverage.merge(
         tai[["match_name", "TAI_category", "TAI", "TAI_rank"]],
         on="match_name", how="left", validate="one_to_one",
@@ -611,11 +628,11 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     area_name = st.selectbox(
         "Choose a Low or Medium access area",
         area_names,
-        format_func=lambda name: labels.get(name, name),
+        format_func=lambda name: clean_web_text(labels.get(name, name)),
         help="Numbered mukims include a nearby bus-stop name to help locate them. The official mukim number remains in the label.",
     )
 
-    destinations = pd.read_csv(DESTINATIONS_FILE)
+    destinations = read_dataframe(DESTINATIONS_FILE)
     distance_parts = [
         "network_distance_m",
         "destination_snap_gap_m",
@@ -662,23 +679,33 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             candidates = all_candidate_sites.copy()
             st.warning("No candidate stop locations could be ranked for this area.")
         else:
-            st.subheader("Suggested locations to investigate")
+            st.subheader("Suggested places to check")
             st.caption(
-                "Ranked by estimated new access for residents and key places. "
-                "Suggested sites need further review."
+                "Key places means the schools, hospitals, clinics and malls in the data. Rows are ranked by estimated new access for residents and key places. "
+                "These places have not been checked on site for road safety, land use "
+                "or space for a bus stop."
             )
             shown = ranked_sites.head(5).copy()
             shown["Estimated residents gaining access"] = shown["Estimated residents gaining access"].round().astype(int)
+            shown["Walking network gap (m)"] = shown["Walking network gap (m)"].round().astype(int)
             shown["Current walk to bus stop (min)"] = (
                 shown["Current estimated walking distance to a bus stop (m)"]
                 / WALKING_SPEED_M_PER_MIN
             ).round(1)
             shown = shown.drop(columns=["Current estimated walking distance to a bus stop (m)"])
-            page_export = shown.drop(columns=["destination_id"], errors="ignore").copy()
+            page_export = shown.drop(
+                columns=["destination_id", "Walking network gap (m)"],
+                errors="ignore",
+            ).copy()
+            st.caption(
+                "Estimated residents and key places gaining access are model estimates for each site on its own. "
+                "Current walk is the estimated time from the place to the nearest existing bus stop."
+            )
             st.dataframe(shown.drop(columns=["destination_id"]), hide_index=True, use_container_width=True)
             top = ranked_sites.iloc[0]
             st.info(
-                f"Suggested starting point: **{top['Place']}** ({top['Type']}). "
+                f"Suggested starting point: **{clean_web_text(str(top['Place']))}** "
+                f"({clean_web_text(str(top['Type']))}). "
                 f"An estimated {top['Estimated residents gaining access']:,.0f} residents "
                 f"and {int(top['Key places gaining access'])} other listed key places "
                 "may gain access within a short walk."
@@ -689,7 +716,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 "Choose proposed stop sites",
                 ranked_sites["destination_id"].tolist(),
                 default=[top["destination_id"]],
-                format_func=lambda key: choice_lookup.get(key, key),
+                format_func=lambda key: clean_web_text(choice_lookup.get(key, key)),
                 help="The highest-ranked suggestion is selected as a starting point. Add or remove any number of sites.",
             )
             candidates = all_candidate_sites[
@@ -915,6 +942,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 delta=f"−{new_destinations} newly within range",
             )
             st.subheader("Residents within a short walk")
+            st.caption(
+                "Estimated residents living within a 400 m walking route of a bus stop. Before uses current stops. "
+                "After includes the selected proposed stops. The difference is the estimated number newly within range."
+            )
             st.bar_chart(
                 pd.DataFrame(
                     {"Estimated residents": [base_population, scenario_population]},
@@ -978,7 +1009,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         )
         return
     except (OSError, ValueError, KeyError, nx.NetworkXException) as error:
-        st.error(f"Could not calculate this scenario: {error}")
+        st.error(f"Could not calculate this scenario: {clean_web_text(str(error))}")
         return
 
     return page_export, page_export_name
