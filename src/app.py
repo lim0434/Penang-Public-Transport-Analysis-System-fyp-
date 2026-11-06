@@ -14,11 +14,14 @@ from recommendations import render as render_recommendations_page
 from scenario_simulation import render as render_scenario_page
 from ui_helpers import clean_web_table, clean_web_text, read_geojson
 from database import dataset_exists, dataset_version, read_dataframe
+from clustering import show_silhouette_results
 
 _original_dataframe = st._main.dataframe
 
 
 def _display_dataframe(data=None, *args, **kwargs):
+    show_filter = kwargs.pop("show_filter", True)
+    filter_column = kwargs.pop("filter_column", None)
     is_styled = isinstance(data, Styler)
     if isinstance(data, pd.DataFrame):
         data = clean_web_table(data)
@@ -28,84 +31,104 @@ def _display_dataframe(data=None, *args, **kwargs):
 
     table = data.data if is_styled else data
     if isinstance(table, pd.DataFrame):
-        caller = inspect.currentframe().f_back
-        source_name = Path(caller.f_code.co_filename).stem
-        widget_key = f"table_filter_{source_name}_{caller.f_lineno}"
-        column_options = ["No filter", *[str(column) for column in table.columns]]
-        selected_column = st.selectbox(
-            "Filter by column",
-            column_options,
-            key=f"{widget_key}_column",
-        )
-
         total_rows = len(table)
         filtered = table
-        if selected_column != "No filter":
-            selected_series = table[selected_column]
-            is_numeric = pd.api.types.is_numeric_dtype(selected_series)
-            if is_numeric and selected_series.nunique(dropna=True) > 10:
-                numbers = pd.to_numeric(selected_series, errors="coerce")
-                range_count = min(5, int(numbers.nunique(dropna=True)))
-                binned_numbers = pd.qcut(numbers, q=range_count, duplicates="drop")
-                intervals = list(binned_numbers.cat.categories)
-                range_options = [("all", None), *[("range", interval) for interval in intervals]]
+        table_key = kwargs.get("key")
 
-                def _format_range(interval):
-                    def _format_bound(value):
-                        if pd.api.types.is_integer_dtype(selected_series):
-                            return f"{int(round(value)):,}"
-                        return f"{value:,.2f}".rstrip("0").rstrip(".")
+        if show_filter and filter_column in table.columns:
+            source_name = Path(inspect.currentframe().f_back.f_code.co_filename).stem
+            caller_line = inspect.currentframe().f_back.f_lineno
+            values = table[filter_column].dropna().astype(str).drop_duplicates().tolist()
+            values.sort(key=lambda value: value.casefold())
+            options = ["All places", *values]
+            selected_place = st.selectbox(
+                f"Filter {str(filter_column).lower()}",
+                options,
+                key=(f"{table_key}_place_filter" if table_key else f"table_filter_{source_name}_{caller_line}_place"),
+            )
+            if selected_place != "All places":
+                filtered = table.loc[
+                    table[filter_column].astype(str).eq(selected_place)
+                ]
+        elif show_filter:
+            caller = inspect.currentframe().f_back
+            source_name = Path(caller.f_code.co_filename).stem
+            widget_key = f"table_filter_{source_name}_{caller.f_lineno}"
+            column_options = ["No filter", *[str(column) for column in table.columns]]
+            selected_column = st.selectbox(
+                "Filter by column",
+                column_options,
+                key=f"{widget_key}_column",
+            )
 
-                    return f"{_format_bound(interval.left)}–{_format_bound(interval.right)}"
+            if selected_column != "No filter":
+                selected_series = table[selected_column]
+                is_numeric = pd.api.types.is_numeric_dtype(selected_series)
+                if is_numeric and selected_series.nunique(dropna=True) > 10:
+                    numbers = pd.to_numeric(selected_series, errors="coerce")
+                    range_count = min(5, int(numbers.nunique(dropna=True)))
+                    binned_numbers = pd.qcut(numbers, q=range_count, duplicates="drop")
+                    intervals = list(binned_numbers.cat.categories)
+                    range_options = [("all", None), *[("range", interval) for interval in intervals]]
 
-                selected_range = st.selectbox(
-                    "Select a number range",
-                    range_options,
-                    format_func=lambda option: (
-                        "All ranges" if option[0] == "all" else _format_range(option[1])
-                    ),
-                    key=f"{widget_key}_range",
-                )
-                if selected_range[0] == "range":
-                    filtered = table.loc[
-                        binned_numbers.eq(selected_range[1]).fillna(False)
-                    ]
-            else:
-                values = selected_series.dropna().drop_duplicates().tolist()
-                values.sort(key=lambda value: str(value).casefold())
-                value_options = [("all", None)]
-                value_options.extend(("value", value) for value in values)
-                if selected_series.isna().any():
-                    value_options.append(("blank", None))
+                    def _format_range(interval):
+                        def _format_bound(value):
+                            if pd.api.types.is_integer_dtype(selected_series):
+                                return f"{int(round(value)):,}"
+                            return f"{value:,.2f}".rstrip("0").rstrip(".")
 
-                selected_value = st.selectbox(
-                    "Select a value",
-                    value_options,
-                    format_func=lambda option: (
-                        "All values"
-                        if option[0] == "all"
-                        else "Blank"
-                        if option[0] == "blank"
-                        else str(option[1])
-                    ),
-                    key=f"{widget_key}_value",
-                )
-                if selected_value[0] == "value":
-                    filtered = table.loc[
-                        selected_series.eq(selected_value[1]).fillna(False)
-                    ]
-                elif selected_value[0] == "blank":
-                    filtered = table.loc[selected_series.isna()]
+                        return f"{_format_bound(interval.left)}–{_format_bound(interval.right)}"
 
-            if len(filtered) != total_rows:
-                if is_styled:
-                    data.data = filtered
+                    selected_range = st.selectbox(
+                        "Select a number range",
+                        range_options,
+                        format_func=lambda option: (
+                            "All ranges" if option[0] == "all" else _format_range(option[1])
+                        ),
+                        key=f"{widget_key}_range",
+                    )
+                    if selected_range[0] == "range":
+                        filtered = table.loc[
+                            binned_numbers.eq(selected_range[1]).fillna(False)
+                        ]
                 else:
-                    data = filtered
-                st.caption(f"Showing {len(filtered)} of {total_rows} rows")
+                    values = selected_series.dropna().drop_duplicates().tolist()
+                    values.sort(key=lambda value: str(value).casefold())
+                    value_options = [("all", None)]
+                    value_options.extend(("value", value) for value in values)
+                    if selected_series.isna().any():
+                        value_options.append(("blank", None))
+
+                    selected_value = st.selectbox(
+                        "Select a value",
+                        value_options,
+                        format_func=lambda option: (
+                            "All values"
+                            if option[0] == "all"
+                            else "Blank"
+                            if option[0] == "blank"
+                            else str(option[1])
+                        ),
+                        key=f"{widget_key}_value",
+                    )
+                    if selected_value[0] == "value":
+                        filtered = table.loc[
+                            selected_series.eq(selected_value[1]).fillna(False)
+                        ]
+                    elif selected_value[0] == "blank":
+                        filtered = table.loc[selected_series.isna()]
+
+        if len(filtered) != total_rows:
+            if is_styled:
+                data.data = filtered
+            else:
+                data = filtered
+            st.caption(f"Showing {len(filtered)} of {total_rows} rows")
+
+        if table_key:
+            st.session_state[f"{table_key}_visible_rows"] = list(filtered.index)
 
     return _original_dataframe(data, *args, **kwargs)
-
 
 st.dataframe = _display_dataframe
 
@@ -1003,6 +1026,7 @@ elif page == "Clustering":
         profile.style.format("{:.2f}"),
         hide_index=False,
         use_container_width=True,
+        show_filter=False,
     )
 
     st.subheader("Cluster map")
@@ -1038,13 +1062,7 @@ elif page == "Clustering":
     )
     set_page_export(export_slot, (cluster_export, "accessibility_clusters.csv"))
 
-    with st.expander("Why use three clusters?"):
-        st.write(
-            "The silhouette score was highest for two clusters (0.469). "
-            "Three clusters scored 0.425, while four scored 0.445. "
-            "Three clusters were kept to provide clear Low, Medium and High "
-            "groups for the DSS. The categories are relative and exploratory."
-        )
+    show_silhouette_results(scored)
 
 
 elif page == "Socioeconomic Correlation":

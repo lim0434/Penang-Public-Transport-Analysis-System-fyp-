@@ -2,11 +2,12 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 from ui_helpers import build_map
+from clustering_metrics import calculate_silhouette_scores
 
 
 def render(tai, all_areas, all_stops, scored, socioeconomic):
     st.write(
-        "K-means groups the 96 areas with complete TAI data using four "
+        "K-means groups the 97 areas with complete TAI data using four "
         "normalised accessibility indicators. The groups show relative "
         "patterns across this study area."
     )
@@ -60,6 +61,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             profile.round(3),
             hide_index=False,
             use_container_width=True,
+            show_filter=False,
         )
 
     st.subheader("Cluster map")
@@ -89,10 +91,42 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         use_container_width=True,
     )
 
+    scores = calculate_silhouette_scores(scored)
     with st.expander("Why use three clusters?"):
-        st.write(
-            "The silhouette score was highest for two clusters (0.469). "
-            "Three clusters scored 0.425, while four scored 0.445. "
-            "Three clusters were kept to provide clear Low, Medium and High "
-            "groups for the DSS. The categories are relative and exploratory."
+        if not scores:
+            st.write("There is not enough complete area data to calculate these scores.")
+        else:
+            score_text = ", ".join(
+                f"{count} groups: {score:.3f}"
+                for count, score in sorted(scores.items())
+            )
+            best_count = max(scores, key=scores.get)
+            st.write(f"Calculated from the current mukim scores: {score_text}.")
+            st.write(
+                f"{best_count} groups had the highest score, meaning clearer separation "
+                "for these data. The page uses three groups to show Low, Medium and High. "
+                "If another count scored higher, three groups remain a reporting choice."
+            )
+
+def show_silhouette_results(scored):
+    """Show freshly calculated K-means silhouette scores on the clustering page."""
+    from clustering_metrics import calculate_silhouette_scores
+
+    scores = calculate_silhouette_scores(scored)
+    with st.expander("Why use three clusters?"):
+        if not scores:
+            st.write("There is not enough complete area data to calculate these scores.")
+            return
+
+        score_text = ", ".join(
+            f"{count} groups: {score:.3f}"
+            for count, score in sorted(scores.items())
         )
+        best_count = max(scores, key=scores.get)
+        st.write(f"Calculated from the current mukim scores: {score_text}.")
+        st.write(
+            f"{best_count} groups had the highest score, meaning clearer separation "
+            "for these data. The page uses three groups to show Low, Medium and High. "
+            "If another count scored higher, three groups remain a reporting choice."
+        )
+
