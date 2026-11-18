@@ -679,6 +679,11 @@ def _render_four_zone_analysis(stations, bus_stops, all_areas, threshold_m):
         "Added by LinkBike",
         f"{added_residents:,.0f}",
         "estimated",
+        help=(
+            "Estimated residents within the selected walking distance of a LinkBike station "
+            "but not within that distance of a RapidPenang bus stop. This is a potential "
+            "additional access estimate, not a count of trips or transfers."
+        ),
     )
     st.caption(
         "This counts residents near a bus stop, a LinkBike station, or both. "

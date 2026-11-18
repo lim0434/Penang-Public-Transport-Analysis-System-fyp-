@@ -592,7 +592,7 @@ def _map_for_area(area_name, all_areas, stops, candidates=None, snapped_location
         "<div><i style='display:inline-block;width:10px;height:10px;background:#246b3b;border-radius:50%;margin-right:7px'></i>Residential suggestion</div>"
         "</div></div>"
     ))
-    bounds = areas_geo.total_bounds
+    bounds = selected_geometry.bounds
     map_view.fit_bounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]], padding=(18, 18))
     return map_view
 
@@ -631,7 +631,6 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         format_func=lambda name: clean_web_text(labels.get(name, name)),
         help="Numbered mukims include a nearby bus-stop name to help locate them. The official mukim number remains in the label.",
     )
-
     destinations = read_dataframe(DESTINATIONS_FILE)
     distance_parts = [
         "network_distance_m",
@@ -701,7 +700,12 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 "Estimated residents and key places gaining access are model estimates for each site on its own. "
                 "Current walk is the estimated time from the place to the nearest existing bus stop."
             )
-            st.dataframe(shown.drop(columns=["destination_id"]), hide_index=True, use_container_width=True)
+            st.dataframe(
+                shown.drop(columns=["destination_id"]),
+                hide_index=True,
+                use_container_width=True,
+                show_filter=False,
+            )
             top = ranked_sites.iloc[0]
             st.info(
                 f"Suggested starting point: **{clean_web_text(str(top['Place']))}** "
@@ -710,8 +714,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 f"and {int(top['Key places gaining access'])} other listed key places "
                 "may gain access within a short walk."
             )
-            all_candidate_sites["choice_label"] = all_candidate_sites["destination_type"].astype(str) + " — " + all_candidate_sites["destination_name"].astype(str)
-            choice_lookup = all_candidate_sites.set_index("destination_id")["choice_label"].to_dict()
+            choice_lookup = {
+                row.destination_id: f"{row.destination_type} - {row.destination_name}"
+                for row in all_candidate_sites.itertuples(index=False)
+            }
             selected_ids = st.multiselect(
                 "Choose proposed stop sites",
                 ranked_sites["destination_id"].tolist(),
@@ -739,6 +745,10 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     map_view = _map_for_area(
         area_name, all_areas, all_stops, candidates,
         snapped_locations=preview_snapped_locations,
+    )
+    st.caption(
+        "The map is focused on the selected mukim. Key-place or residential markers appear "
+        "for the proposed sites selected above."
     )
     with map_placeholder.container():
         components.html(map_view.get_root().render(), height=580, scrolling=False)
@@ -976,6 +986,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 pd.DataFrame(site_impacts),
                 hide_index=True,
                 use_container_width=True,
+                show_filter=False,
             )
             gained_mask = (~base_covered) & new_covered
             gained_cells = pd.DataFrame({

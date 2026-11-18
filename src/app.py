@@ -527,7 +527,6 @@ def build_map(areas, stops, show_tai, show_stops=True):
             <div><i style='display:inline-block;width:12px;height:12px;background:#d7191c;border-radius:3px;margin-right:7px'></i>Low access</div>
             <div><i style='display:inline-block;width:12px;height:12px;background:#fdae61;border-radius:3px;margin-right:7px'></i>Medium access</div>
             <div><i style='display:inline-block;width:12px;height:12px;background:#1a9641;border-radius:3px;margin-right:7px'></i>High access</div>
-            <div><i style='display:inline-block;width:12px;height:12px;background:#bdbdbd;border-radius:3px;margin-right:7px'></i>No score</div>
           </div>
         """
     else:
@@ -637,17 +636,17 @@ page_guides = {
         "DUN means a state constituency. Each dot represents one DUN. ‘Median income’ is the "
         "middle household income value, and rho shows whether income or population tends to "
         "rise or fall with TAI. Rho near 1 means they tend to rise together, near -1 means one "
-        "tends to rise as the other falls, and near 0 means little pattern. This page helps "
+        "tends to rise as the other falls, and near 0 means no clear relationship. This page helps "
         "check whether access differences may align with social or population differences. "
         "A pattern does not prove that one factor causes another."
     ),
     "LinkBike Connections": (
         "This page checks whether LinkBike stations and RapidPenang bus stops are near each "
-        "other by a walking route. The selected distance is the maximum route length used to "
-        "call them ‘near’. The tables list bus stops or bike stations without a nearby match. "
+        "other by a walking route. The selected distance is the longest walking route allowed "
+        "for a bus stop and bike station to count as connected. The tables list bus stops with "
+        "no LinkBike station within that distance, and bike stations with no bus stop within that distance. "
         "The four-zone map groups residents as Bus only, LinkBike only, Both, or Neither within "
-        "the selected distance. ‘Added by LinkBike’ counts estimated residents near a bike "
-        "station but not a bus stop. This helps show where bike-sharing may add access. It does "
+        "the selected distance. This helps show where bike-sharing may add access. It does "
         "not count trips or prove that people transfer between services."
     ),
     "Scenario Simulation": (
@@ -883,12 +882,11 @@ elif page == "TAI Rankings":
 
     st.subheader("Area rankings")
     st.caption(
-        "TAI rank is the area’s position, with 1 being the highest score. TAI is the combined score. "
-        "TAI category is its Low, Medium or High group. Stop density score rates stops for the area’s "
-        "size. Population coverage score rates the share of residents within 400 m. Walking distance "
-        "score rates how short residents’ walks are. Destination access score rates access to schools, "
-        "hospitals, clinics and malls. The raw counts and percentages show the values behind those scores. "
-        "All four scores run from 0 to 1, and higher is better."
+        "Area is the mukim name. TAI rank orders areas, with 1 highest. TAI is the combined score, and TAI category is the Low, Medium or High group. "
+        "Stop density score measures bus stops relative to the area’s size. Population coverage score measures the share of residents within 400 m. "
+        "Walking distance score rewards shorter walks. Destination access score measures access to schools, hospitals, clinics and malls. "
+        "These four scores range from 0 to 1; higher is better. Bus stops per km² is the number of stops per square kilometre. "
+        "Population coverage (%) is the share of residents within 400 m. Average walk distance (metres) is the estimated population-weighted walk to the nearest stop."
     )
     ranked = scored.sort_values("TAI", ascending=False)
     columns = [
@@ -927,55 +925,11 @@ elif page == "TAI Rankings":
 
     with st.expander("How the TAI indicators relate"):
         st.write(
-            "Calculation: TAI = (stop density score + population coverage score + walking distance score "
-            "+ destination access score) ÷ 4. Each part is put on a 0–1 scale first. The four parts "
-            "have equal weight. For walking distance, shorter walks receive higher scores."
+            "We chose these four measures because they show different parts of public transport access. "
+            "Bus-stop density shows how available stops are in an area. Population coverage estimates how many residents live within a 400 m walk of a stop. "
+            "Walking distance shows how far residents travel on foot to reach a stop. Destination access shows how well stops connect people to schools, hospitals, clinics and malls. "
+            "We score each measure from 0 to 1 and average them equally to calculate TAI. Higher scores mean better access; shorter walks receive a higher walking-distance score."
         )
-        indicator_columns = {
-            "Bus stop density": "bus_stops_per_km2",
-            "Population coverage": "population_coverage_percent",
-            "Average walk to a bus stop (metres)": "mean_walk_distance_m_routable_population",
-            "Destination access": "destination_access_score",
-        }
-        st.write(
-            "Average walking distance from residents to the nearest bus stop, in metres. "
-            "It is weighted by population and includes only places connected to the walking network. "
-            "The TAI reverses this measure, so shorter distances give a better score."
-        )
-        st.write(
-            "Spearman rho shows whether two indicators tend to rise or fall together. "
-            "It does not show that one causes another."
-        )
-        st.caption(
-            "Indicator 1 and Indicator 2 name the pair being compared. Spearman rho ranges "
-            "from -1 to 1. Areas compared is the number of mukims with data for both indicators."
-        )
-        available = {
-            label: column
-            for label, column in indicator_columns.items()
-            if column in scored.columns
-        }
-        rows = []
-        items = list(available.items())
-        for index, (label_a, column_a) in enumerate(items):
-            for label_b, column_b in items[index + 1:]:
-                pair = scored[[column_a, column_b]].dropna()
-                rows.append({
-                    "Indicator 1": label_a,
-                    "Indicator 2": label_b,
-                    "Spearman rho": _spearman_rho(
-                        pair[column_a], pair[column_b]
-                    ),
-                    "Areas compared": len(pair),
-                })
-        correlation_table = pd.DataFrame(rows)
-        st.dataframe(
-            correlation_table.style.format({"Spearman rho": "{:.3f}"}),
-            hide_index=True,
-            use_container_width=True,
-        )
-
-
 elif page == "Clustering":
     profile_columns = {
         "Bus stop density": "stop_density_score",

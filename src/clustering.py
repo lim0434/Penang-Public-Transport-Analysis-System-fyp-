@@ -96,17 +96,21 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         if not scores:
             st.write("There is not enough complete area data to calculate these scores.")
         else:
-            score_text = ", ".join(
-                f"{count} groups: {score:.3f}"
-                for count, score in sorted(scores.items())
-            )
             best_count = max(scores, key=scores.get)
-            st.write(f"Calculated from the current mukim scores: {score_text}.")
-            st.write(
-                f"{best_count} groups had the highest score, meaning clearer separation "
-                "for these data. The page uses three groups to show Low, Medium and High. "
-                "If another count scored higher, three groups remain a reporting choice."
-            )
+            if best_count == 2:
+                st.write(
+                    "Two groups gave the clearest separation between mukims. We chose three groups because "
+                    "Low, Medium and High are easier to understand and use for planning. The extra group "
+                    "shows areas with medium accessibility instead of forcing every mukim into only a high "
+                    "or low group."
+                )
+            else:
+                st.write(
+                    f"{best_count} groups gave the clearest separation between mukims. We chose three "
+                    "groups because Low, Medium and High are easier to understand and use for planning. "
+                    "The extra group shows areas with medium accessibility instead of forcing every mukim "
+                    "into only a high or low group."
+                )
 
 def show_silhouette_results(scored):
     """Show freshly calculated K-means silhouette scores on the clustering page."""
@@ -118,15 +122,11 @@ def show_silhouette_results(scored):
             st.write("There is not enough complete area data to calculate these scores.")
             return
 
-        score_text = ", ".join(
-            f"{count} groups: {score:.3f}"
-            for count, score in sorted(scores.items())
-        )
         best_count = max(scores, key=scores.get)
-        st.write(f"Calculated from the current mukim scores: {score_text}.")
         st.write(
-            f"{best_count} groups had the highest score, meaning clearer separation "
-            "for these data. The page uses three groups to show Low, Medium and High. "
-            "If another count scored higher, three groups remain a reporting choice."
+            f"{best_count} groups gave the clearest separation between mukims. We chose three "
+            "groups because Low, Medium and High are easier to understand and use for planning. "
+            "The extra group shows areas with medium accessibility instead of forcing every mukim "
+            "into only a high or low group."
         )
 
