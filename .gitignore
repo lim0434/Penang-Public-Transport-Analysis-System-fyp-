@@ -1,2 +1,5 @@
 data/processed/walking_network.graphml
 data/processed/walking_network_candidate.graphml
+.env
+__pycache__/
+*.py[cod]
