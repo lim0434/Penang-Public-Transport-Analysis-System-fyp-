@@ -948,12 +948,19 @@ elif page == "Clustering":
     profile = (
         scored.groupby("TAI_category")[list(available_profile.values())]
         .mean()
-        .reindex(["Low", "Medium", "High"])
+        .reindex(["High", "Medium", "Low"])
         .rename(columns={
             column: label
             for label, column in available_profile.items()
         })
     )
+    profile.index = pd.CategoricalIndex(
+        profile.index,
+        categories=["High", "Medium", "Low"],
+        ordered=True,
+        name=profile.index.name,
+    )
+    profile = profile.sort_index()
 
     low_col, medium_col, high_col = st.columns(3)
     low_col.metric("Low accessibility", int(counts["Low"]))

@@ -951,19 +951,6 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 f"{remaining_destinations:,}",
                 delta=f"−{new_destinations} newly within range",
             )
-            st.subheader("Residents within a short walk")
-            st.caption(
-                "Estimated residents living within a 400 m walking route of a bus stop. Before uses current stops. "
-                "After includes the selected proposed stops. The difference is the estimated number newly within range."
-            )
-            st.bar_chart(
-                pd.DataFrame(
-                    {"Estimated residents": [base_population, scenario_population]},
-                    index=["Before", "After"],
-                ),
-                y_label="Estimated residents",
-                color="#3678c8",
-            )
             with destination_types_placeholder.container():
                 st.subheader("Key places newly within a short walk")
                 place_columns = st.columns(4)

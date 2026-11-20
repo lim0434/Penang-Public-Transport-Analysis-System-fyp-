@@ -572,40 +572,19 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 )
                 if not bike_export.empty:
                     export_frames.append(bike_export)
-                area_col, rank_col = st.columns(2)
-                with area_col:
-                    chosen_area = st.selectbox(
-                        "Area",
-                        ["All Penang", *sorted(resident_coverage)],
-                        format_func=lambda name: (
-                            name if name == "All Penang"
-                            else clean_web_text(display_names.get(name, _area_label(name)))
-                        ),
-                        key="recommendations_linkbike_area",
-                    )
-                with rank_col:
-                    rank_by = st.selectbox(
-                        "Rank by",
-                        ["Most residents", "Highest share"],
-                        key="recommendations_linkbike_rank",
-                    )
                 st.caption(
-                    "Most residents ranks by the estimated number. Highest share ranks by the "
-                    "percentage of that mukim’s residents. Both show residents near LinkBike "
-                    "but not a bus stop within 400 m."
+                    "All mukims with estimated residents near LinkBike but not a bus stop "
+                    "within 400 m are listed, ordered from most residents to fewest."
                 )
-                metric_key = "residents" if rank_by == "Most residents" else "share_percent"
                 candidates = [
                     (name, values)
                     for name, values in resident_coverage.items()
                     if values["residents"] > 0
-                    and (chosen_area == "All Penang" or name == chosen_area)
                 ]
                 candidates.sort(
-                    key=lambda item: (item[1][metric_key], item[1]["residents"]),
+                    key=lambda item: item[1]["residents"],
                     reverse=True,
                 )
-                candidates = candidates[:3] if chosen_area == "All Penang" else candidates[:1]
                 if candidates:
                     for name, values in candidates:
                         area_name = clean_web_text(display_names.get(name, _area_label(name)))
@@ -615,7 +594,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                             f"({values['share_percent']:.1f}% of the mukim)."
                         )
                 else:
-                    st.info("No extra residents are estimated near LinkBike only in this area at 400 m.")
+                    st.info("No LinkBike-only resident access is estimated in Penang at 400 m.")
         except (OSError, ValueError, KeyError, ImportError) as error:
             st.caption(
                 f"LinkBike resident estimate is unavailable: {clean_web_text(str(error))}"
