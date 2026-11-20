@@ -193,10 +193,46 @@ def _linkbike_resident_coverage(area_names, threshold_m, station_mtime, stop_mti
         for area_name, values in area_stats.items()
     }
 
+EXPORT_COLUMNS = [
+    "Result type",
+    "Priority",
+    "Mukim",
+    "Place",
+    "Place type",
+    "Review status",
+    "TAI score",
+    "Residents within short walk (%)",
+    "Residents outside a short walk",
+    "Key places beyond 400 m",
+    "Estimated residents gaining access",
+    "Key places gaining access",
+    "Current walk to bus stop (min)",
+    "Proposed stops",
+    "TAI before",
+    "TAI after",
+    "Residents newly within a short walk",
+    "Key places newly within a short walk",
+    "Schools newly within a short walk",
+    "Hospitals newly within a short walk",
+    "Clinics newly within a short walk",
+    "Malls newly within a short walk",
+    "Estimated residents near LinkBike only",
+    "LinkBike only share (%)",
+]
+
+
+def _combined_export(frames):
+    available = [frame for frame in frames if frame is not None and not frame.empty]
+    if not available:
+        return pd.DataFrame(columns=EXPORT_COLUMNS)
+    return pd.concat(available, ignore_index=True, sort=False).reindex(columns=EXPORT_COLUMNS)
+
+
 def render(tai, all_areas, all_stops, scored, socioeconomic):
     destinations = _load_destinations()
     display_names = all_areas.set_index("match_name")["display_name"].to_dict()
     priority = _priority_table(scored, destinations, display_names)
+    export_frames = []
 
     st.caption(
         "Priority mukims are areas suggested for closer review, ordered from the lowest TAI upwards. "
@@ -226,8 +262,13 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             "population_coverage_percent": "Residents within short walk (%)",
         })
         maximum_area_priority = max(int(priority["Priority"].max()), 1)
-        page_export = shown_priority.copy()
-        page_export_name = "priority_mukims.csv"
+        priority_export = priority[priority_columns].rename(columns={
+            "Area": "Mukim",
+            "TAI": "TAI score",
+            "population_coverage_percent": "Residents within short walk (%)",
+        }).copy()
+        priority_export.insert(0, "Result type", "Priority mukim")
+        export_frames.append(priority_export)
         st.dataframe(
             shown_priority.style.format({
                 "TAI score": "{:.2f}",
@@ -262,7 +303,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
     eligible_areas = scored[scored["TAI_category"] == "Low"].sort_values("TAI")
     if eligible_areas.empty:
         st.warning("No low-access mukims have a TAI score for recommendations.")
-        return
+        return _combined_export(export_frames), "recommendations_all_results.csv"
     area_names = eligible_areas["match_name"].tolist()
     default_area = next(
         (name for name in priority["match_name"].tolist() if name in area_names),
@@ -293,7 +334,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                         "population gains. Ask your administrator to allow the "
                         f"Rasterio files. Details: {clean_web_text(str(error))}"
                     )
-                    return
+                    return _combined_export(export_frames), "recommendations_all_results.csv"
             st.session_state["recommendation_candidate_area"] = selected_area
             st.session_state["recommendation_ranked_sites"] = ranked
             st.session_state["recommendation_candidate_points"] = candidates
@@ -306,10 +347,13 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 shown["Current estimated walking distance to a bus stop (m)"]
                 / WALKING_SPEED_M_PER_MIN
             ).round(1)
-            page_export = shown[[
-                "Priority", "Place", "Type", "Current walk to bus stop (min)",
-            ]].copy()
-            page_export_name = "suggested_bus_stop_locations.csv"
+            suggested_export = shown[[
+                "Priority", "Place", "Type", "Estimated residents gaining access",
+                "Key places gaining access", "Current walk to bus stop (min)",
+            ]].copy().rename(columns={"Type": "Place type"})
+            suggested_export.insert(0, "Mukim", display_names.get(selected_area, _area_label(selected_area)))
+            suggested_export.insert(0, "Result type", "Suggested bus stop")
+            export_frames.append(suggested_export)
             display_columns = [
                 "Priority",
                 "Place",
@@ -353,15 +397,28 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
 
     simulation = st.session_state.get("recommendation_simulation_result")
     if simulation:
-        page_export = pd.DataFrame([{
+        scenario_export_row = {
             "Mukim": display_names.get(simulation["area"], _area_label(simulation["area"])),
             "Proposed stops": ", ".join(simulation["sites"]),
             "TAI before": simulation["tai_before"],
             "TAI after": simulation["tai_after"],
             "Residents newly within a short walk": simulation["residents_gained"],
             "Key places newly within a short walk": simulation["key_places_gained"],
-        }])
-        page_export_name = "latest_scenario_summary.csv"
+        }
+        for place_type, count in simulation.get("place_gains_by_type", {}).items():
+            scenario_export_row[f"{place_type} places newly within a short walk"] = count
+        scenario_export_row["Result type"] = "Latest scenario"
+        for place_type, count in simulation.get("place_gains_by_type", {}).items():
+            type_column = {
+                "School": "Schools newly within a short walk",
+                "Hospital": "Hospitals newly within a short walk",
+                "Clinic": "Clinics newly within a short walk",
+                "Mall": "Malls newly within a short walk",
+            }.get(str(place_type), f"{place_type} newly within a short walk")
+            if type_column in EXPORT_COLUMNS:
+                scenario_export_row[type_column] = count
+        scenario_export = pd.DataFrame([scenario_export_row])
+        export_frames.append(scenario_export)
         with st.container(border=True):
             st.subheader("Latest tested scenario")
             st.caption(
@@ -409,6 +466,28 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
         no_route = destinations[
             destinations["status"].astype(str).str.contains("No route", case=False, na=False)
         ].copy()
+        key_place_export = pd.concat([no_route, beyond], ignore_index=True).copy()
+        key_place_export["Mukim"] = key_place_export["mukim"].map(display_names).fillna(
+            key_place_export["mukim"]
+        )
+        key_place_export["Current walk to bus stop (min)"] = (
+            key_place_export["estimated_walking_distance_m"] / WALKING_SPEED_M_PER_MIN
+        ).round(1)
+        key_place_export["Review status"] = np.where(
+            key_place_export["status"].astype(str).str.contains("No route", case=False, na=False),
+            "No route in map data",
+            "Beyond short walk",
+        )
+        key_place_export = key_place_export[[
+            "destination_type", "destination_name", "Mukim",
+            "Current walk to bus stop (min)", "Review status",
+        ]].rename(columns={
+            "destination_type": "Place type",
+            "destination_name": "Place",
+        })
+        key_place_export.insert(0, "Result type", "Key place review")
+        export_frames.append(key_place_export)
+
         disconnected = pd.concat([no_route, beyond.head(8)], ignore_index=True)
         disconnected["mukim"] = disconnected["mukim"].map(display_names).fillna(
             disconnected["mukim"]
@@ -478,40 +557,34 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 dataset_version(LINKBIKE_NETWORK_FILE),
             )
             if resident_coverage:
-                area_col, rank_col = st.columns(2)
-                with area_col:
-                    chosen_area = st.selectbox(
-                        "Area",
-                        ["All Penang", *sorted(resident_coverage)],
-                        format_func=lambda name: (
-                            name if name == "All Penang"
-                            else clean_web_text(display_names.get(name, _area_label(name)))
-                        ),
-                        key="recommendations_linkbike_area",
-                    )
-                with rank_col:
-                    rank_by = st.selectbox(
-                        "Rank by",
-                        ["Most residents", "Highest share"],
-                        key="recommendations_linkbike_rank",
-                    )
-                st.caption(
-                    "Most residents ranks by the estimated number. Highest share ranks by the "
-                    "percentage of that mukim’s residents. Both show residents near LinkBike "
-                    "but not a bus stop within 400 m."
+                bike_export = pd.DataFrame([
+                    {
+                        "Result type": "LinkBike resident access",
+                        "Mukim": clean_web_text(display_names.get(name, _area_label(name))),
+                        "Estimated residents near LinkBike only": round(float(values["residents"])),
+                        "LinkBike only share (%)": round(float(values["share_percent"]), 2),
+                    }
+                    for name, values in resident_coverage.items()
+                    if float(values.get("residents", 0)) > 0
+                ]).sort_values(
+                    "Estimated residents near LinkBike only",
+                    ascending=False,
                 )
-                metric_key = "residents" if rank_by == "Most residents" else "share_percent"
+                if not bike_export.empty:
+                    export_frames.append(bike_export)
+                st.caption(
+                    "All mukims with estimated residents near LinkBike but not a bus stop "
+                    "within 400 m are listed, ordered from most residents to fewest."
+                )
                 candidates = [
                     (name, values)
                     for name, values in resident_coverage.items()
                     if values["residents"] > 0
-                    and (chosen_area == "All Penang" or name == chosen_area)
                 ]
                 candidates.sort(
-                    key=lambda item: (item[1][metric_key], item[1]["residents"]),
+                    key=lambda item: item[1]["residents"],
                     reverse=True,
                 )
-                candidates = candidates[:3] if chosen_area == "All Penang" else candidates[:1]
                 if candidates:
                     for name, values in candidates:
                         area_name = clean_web_text(display_names.get(name, _area_label(name)))
@@ -521,14 +594,14 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                             f"({values['share_percent']:.1f}% of the mukim)."
                         )
                 else:
-                    st.info("No extra residents are estimated near LinkBike only in this area at 400 m.")
+                    st.info("No LinkBike-only resident access is estimated in Penang at 400 m.")
         except (OSError, ValueError, KeyError, ImportError) as error:
             st.caption(
                 f"LinkBike resident estimate is unavailable: {clean_web_text(str(error))}"
             )
         st.caption("This is an estimate of nearby access, not confirmed bus-bike trips.")
 
-    return page_export, page_export_name
+    return _combined_export(export_frames), "recommendations_all_results.csv"
 
 
 

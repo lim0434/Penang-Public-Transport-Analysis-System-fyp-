@@ -34,7 +34,11 @@ def _remember_map_row(widget_key, kind):
     selection = getattr(event, "selection", None)
     rows = getattr(selection, "rows", [])
     if rows:
-        st.session_state["linkbike_map_selection"] = {"kind": kind, "row": int(rows[0]), "table_key": widget_key}
+        visible_rows = st.session_state.get(f"{widget_key}_visible_rows", [])
+        selected_row = int(rows[0])
+        if 0 <= selected_row < len(visible_rows):
+            selected_row = int(visible_rows[selected_row])
+        st.session_state["linkbike_map_selection"] = {"kind": kind, "row": selected_row, "table_key": widget_key}
     else:
         current = st.session_state.get("linkbike_map_selection")
         if current and current.get("kind") == kind:
@@ -675,6 +679,11 @@ def _render_four_zone_analysis(stations, bus_stops, all_areas, threshold_m):
         "Added by LinkBike",
         f"{added_residents:,.0f}",
         "estimated",
+        help=(
+            "Estimated residents within the selected walking distance of a LinkBike station "
+            "but not within that distance of a RapidPenang bus stop. This is a potential "
+            "additional access estimate, not a count of trips or transfers."
+        ),
     )
     st.caption(
         "This counts residents near a bus stop, a LinkBike station, or both. "
@@ -801,6 +810,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
                 on_select=lambda: _remember_map_row(stop_table_key, "stop"),
                 selection_mode="single-row",
                 key=stop_table_key,
+                filter_column="Bus stop",
             )
 
     station_gaps = station_gap_rows[["station_name"]].rename(columns={"station_name": "LinkBike station"})
@@ -819,6 +829,7 @@ def render(tai, all_areas, all_stops, scored, socioeconomic):
             on_select=lambda: _remember_map_row(station_table_key, "station"),
             selection_mode="single-row",
             key=station_table_key,
+            show_filter=False,
         )
 
     _render_four_zone_analysis(stations, bus_stops, all_areas, int(threshold_m))

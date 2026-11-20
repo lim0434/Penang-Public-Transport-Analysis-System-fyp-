@@ -15,6 +15,14 @@ DATA_ROOT = ROOT / "data"
 TABLE_EXTENSIONS = {".csv"}
 ASSET_EXTENSIONS = {".geojson", ".tif", ".tiff", ".graphml", ".txt"}
 SKIP_EXTENSIONS = {".html", ".pyc", ".bak"}
+
+# Keep only fields used by the Penang destination analysis in PostgreSQL.
+# Original CSV files remain unchanged and can still be used as full source data.
+CURATED_COLUMNS = {
+    f"data/processed/{name}{suffix}.csv": ["geometry", "name"]
+    for name in ("schools", "hospitals", "clinics", "malls")
+    for suffix in ("", "_penang")
+}
 IDENTIFIER = re.compile(r"(^id$|_id$|^id_|_code$|^kod_|nearest_node$)", re.I)
 
 
@@ -80,6 +88,12 @@ def import_table(conn, path, key, checksum):
     header = pd.read_csv(path, nrows=0, encoding="utf-8-sig").columns
     dtype = {column: str for column in header if IDENTIFIER.search(str(column))}
     frame = pd.read_csv(path, dtype=dtype or None, low_memory=False, encoding="utf-8-sig")
+    keep_columns = CURATED_COLUMNS.get(key)
+    if keep_columns:
+        missing = [column for column in keep_columns if column not in frame.columns]
+        if missing:
+            raise ValueError(f"Missing required columns in {key}: {missing}")
+        frame = frame.loc[:, keep_columns].copy()
     name = table_name(key)
     columns = list(frame.columns)
     definitions = ", ".join(

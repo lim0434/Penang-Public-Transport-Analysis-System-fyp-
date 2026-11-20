@@ -78,7 +78,6 @@ def nearest_node(lon, lat):
 
     return node, offset
 
-
 # Snap each destination to its nearest network node.
 destinations = {category: [] for category in DESTINATION_FILES}
 snap_records = []
